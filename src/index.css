@@ -9,15 +9,15 @@
     margin: 0;
     padding: 0;
     text-align: left;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #1E1C19;
-    color: #FFFFFF;
-    overflow-x: hidden;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-color: #1e1c19;
+    color: #ffffff;
+    overflow-x: clip;
   }
 }
 
 .font-logo {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
 }
 @keyframes marquee {
   0% {

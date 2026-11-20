@@ -5,6 +5,9 @@ import StudioSection from "./components/StudioSection";
 import ServiceMenuSection from "./components/ServiceMenuSection";
 import NailServicesSection from "./components/NailServicesSection";
 import TransformationsSection from "./components/TransformationsSection";
+import StylistSection from "./components/StylistSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import GallerySection from "./components/GallerySection";
 
 export default function App() {
   return (
@@ -17,7 +20,10 @@ export default function App() {
         <ServiceMenuSection />
         <NailServicesSection />
         <TransformationsSection />
-        {/* Drop Section 7 here */}
+        <StylistSection />
+        <TestimonialsSection />
+        <GallerySection />
+        {/* Drop Section 10 (Booking / Footer) here */}
       </main>
     </div>
   );
