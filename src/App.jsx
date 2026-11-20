@@ -4,6 +4,7 @@ import ServiceTicker from "./components/ServiceTicker";
 import StudioSection from "./components/StudioSection";
 import ServiceMenuSection from "./components/ServiceMenuSection";
 import NailServicesSection from "./components/NailServicesSection";
+import TransformationsSection from "./components/TransformationsSection";
 
 export default function App() {
   return (
@@ -15,7 +16,8 @@ export default function App() {
         <StudioSection />
         <ServiceMenuSection />
         <NailServicesSection />
-        {/* Drop Section 6 here */}
+        <TransformationsSection />
+        {/* Drop Section 7 here */}
       </main>
     </div>
   );
