@@ -2,6 +2,8 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import ServiceTicker from "./components/ServiceTicker";
 import StudioSection from "./components/StudioSection";
+import ServiceMenuSection from "./components/ServiceMenuSection";
+import NailServicesSection from "./components/NailServicesSection";
 
 export default function App() {
   return (
@@ -11,7 +13,9 @@ export default function App() {
         <HeroSection />
         <ServiceTicker />
         <StudioSection />
-        {/* Drop Section 4 here */}
+        <ServiceMenuSection />
+        <NailServicesSection />
+        {/* Drop Section 6 here */}
       </main>
     </div>
   );
