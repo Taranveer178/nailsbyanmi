@@ -8,6 +8,8 @@ import TransformationsSection from "./components/TransformationsSection";
 import StylistSection from "./components/StylistSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import GallerySection from "./components/GallerySection";
+import ContactBookingSection from "./components/ContactBookingSection";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -23,8 +25,9 @@ export default function App() {
         <StylistSection />
         <TestimonialsSection />
         <GallerySection />
-        {/* Drop Section 10 (Booking / Footer) here */}
+        <ContactBookingSection />
       </main>
+      <Footer />
     </div>
   );
 }
