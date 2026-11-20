@@ -51,13 +51,12 @@ export default function Footer() {
         >
           {/* Brand Column (Full width on mobile, 5 cols on desktop) */}
           <div className="col-span-2 lg:col-span-5 flex flex-col items-start">
-            <a href="#" className="inline-flex flex-col items-start mb-4">
-              <span className="font-logo text-xl md:text-[23px] tracking-[0.26em] text-white font-normal leading-none uppercase">
-                GLAM BY AMNI
-              </span>
-              <span className="text-[7.5px] tracking-[0.36em] text-white/65 uppercase mt-1.5">
-                HAIR &amp; NAIL DESIGN STUDIO
-              </span>
+            <a href="#" className="inline-flex mb-4" aria-label="Glam by Anmi home">
+              <img
+                src="/logo.png"
+                alt="Glam by Anmi - Nail and Hair Studio"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
             </a>
 
             <p className="text-[13.5px] md:text-[14px] text-[#9E988E] leading-[1.65] max-w-[270px]">
