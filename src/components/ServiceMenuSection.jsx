@@ -118,7 +118,7 @@ export default function ServiceMenuSection() {
             >
               <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full overflow-hidden rounded-[2px] bg-[#2F2C29] group">
                 <motion.img
-                  src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=85"
+                  src="/Hair%20menu.webp"
                   alt="Signature Hair Services at Glam By Anmi Mohali"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.8, ease: framerEase }}

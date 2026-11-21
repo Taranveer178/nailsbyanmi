@@ -7,36 +7,31 @@ const studioServices = [
     id: "01",
     title: "Hair Spa & Care",
     description: "Deep scalp nourishment and restorative shine rituals.",
-    image:
-      "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1000&q=85",
+    image: "/Hair and Spa.webp",
   },
   {
     id: "02",
     title: "Gel & Acrylic Nails",
     description: "Sculpted extensions with chip-free mirror gloss.",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1000&q=85",
+    image: "/Gel & Acrylic Nails.webp",
   },
   {
     id: "03",
     title: "Balayage & Colour",
     description: "Hand-painted dimension with seamless, natural grow-out.",
-    image:
-      "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1000&q=85",
+    image: "/balayage.webp",
   },
   {
     id: "04",
     title: "Custom Nail Art",
     description: "Minimalist chrome, French micro-tips, and bridal sets.",
-    image:
-      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1000&q=85",
+    image: "/Nail Art.webp",
   },
   {
     id: "05",
     title: "Signature Layers",
     description: "Weightless movement and soft face-framing volume.",
-    image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=85",
+    image: "/signature layers.webp",
   },
 ];
 
