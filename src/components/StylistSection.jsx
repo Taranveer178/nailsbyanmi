@@ -126,11 +126,6 @@ export default function StylistSection() {
                   </div>
                   <Sparkles className="w-4 h-4 text-white/60 shrink-0" />
                 </div>
-
-                <p className="text-[13.5px] sm:text-[14.5px] text-white/90 font-light italic leading-relaxed">
-                  “Great hair and nails shouldn’t only look effortless when you
-                  leave the chair—they should feel effortless weeks later.”
-                </p>
               </motion.div>
             </div>
           </motion.div>
