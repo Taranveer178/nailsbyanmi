@@ -6,7 +6,7 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "I had such an amazing experience at Glam By Amni in Mohali! Amni really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
+      "I had such an amazing experience at Glam By Anmi in Mohali! Anmi really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
     name: "Komal Singla",
     service: "Balayage & Gel Extensions",
     image:
@@ -15,7 +15,7 @@ const testimonials = [
   {
     id: 2,
     quote:
-      "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Amni has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
+      "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Anmi has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
     name: "Arsh Gill",
     service: "Russian Manicure & Nail Art",
     image:

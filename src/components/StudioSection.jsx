@@ -73,9 +73,7 @@ export default function StudioSection() {
 
             {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] font-medium text-[#2F2C29] leading-[1.16] tracking-[-0.02em]">
-              Lived-in balayage and sculpted gel nails. One studio in Mohali,
-              one <span className="text-[#8A755F]">standard,</span> and every
-              detail crafted with care.
+             Balayage, sculpted nails, and beauty <span className="text-[#8A755F]">crafted</span> with care.
             </h2>
           </motion.div>
 
@@ -102,9 +100,7 @@ export default function StudioSection() {
             </div>
 
             <p className="text-[15.5px] md:text-[16.5px] text-[#6E6961] leading-[1.65] mb-8">
-              At Glam By Amni, every visit begins with an unhurried, one-on-one
-              consultation—so your hair colour, cut, and nail design fit your
-              personal style before we begin.
+             Every visit starts with a personal consultation to create hair and nail looks that match your style.
             </p>
 
             <motion.a

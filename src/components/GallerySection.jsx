@@ -328,7 +328,7 @@ export default function GallerySection() {
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#8A755F]" />
                   <h3 className="text-lg sm:text-xl font-medium text-[#2F2C29]">
-                    Glam By Amni — Mohali Lookbook
+                    Glam By Anmi — Mohali Lookbook
                   </h3>
                 </div>
                 <button

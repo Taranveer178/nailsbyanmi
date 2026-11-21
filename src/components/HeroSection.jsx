@@ -76,7 +76,7 @@ export default function HeroSection() {
         >
           <img
             src={current.image}
-            alt="Glam By Amni - Nail and Hair Studio in Mohali"
+            alt="Glam By Anmi - Nail and Hair Studio in Mohali"
             className="w-full h-full object-cover object-right md:object-center"
           />
           <div

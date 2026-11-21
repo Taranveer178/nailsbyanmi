@@ -90,7 +90,7 @@ export default function Footer() {
               Visit
             </h3>
             <div className="space-y-2.5 text-[14px] text-[#F6F5F1] leading-relaxed">
-              <p>Glam by Amni, Mohali</p>
+              <p>Glam by Anmi, Mohali</p>
               <p className="text-[#C8C3BA]">Tue to Sun, 9 am to 8 pm</p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function Footer() {
 
         {/* Bottom Copyright & Legal Bar */}
         <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#9E988E]">
-          <p>© 2026 Glam by Amni. All rights reserved.</p>
+          <p>© 2026 Glam by Anmi. All rights reserved.</p>
 
           <div className="flex items-center gap-6 text-[#F6F5F1]/90">
             <a href="#privacy" className="hover:text-white transition-colors">
@@ -145,7 +145,11 @@ export default function Footer() {
           </div>
 
           <p className="hidden md:block">
-            Hair, colour and nail artistry in Mohali
+            Developed by  <a href="https://taranveer.in" target="_blank" rel="noreferrer" className="text-white hover:text-[#DFD6C7] transition-colors">
+              Taranveer Singh
+            </a> and <a href="https://sushantmonga.in" target="_blank" rel="noreferrer" className="text-white hover:text-[#DFD6C7] transition-colors">
+              Sushant Monga
+            </a>
           </p>
         </div>
       </div>

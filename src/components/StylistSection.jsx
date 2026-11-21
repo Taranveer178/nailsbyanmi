@@ -39,17 +39,17 @@ export default function StylistSection() {
             {/* Artist Name & Studio */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <h3 className="text-xl md:text-[24px] font-medium text-[#2F2C29]">
-                Amni
+                Anmi
               </h3>
               <span className="w-1.5 h-1.5 rounded-full bg-[#8A755F]" />
               <span className="text-[13.5px] font-medium text-[#8A755F] uppercase tracking-wider">
-                Founder &amp; Lead Artist · Glam By Amni, Mohali
+                Founder &amp; Lead Artist · Glam By Anmi, Mohali
               </span>
             </div>
 
             {/* Personal Bio */}
             <p className="text-[15.5px] md:text-[17px] text-[#6E6961] leading-[1.75] max-w-[540px] mb-10">
-              At Glam By Amni in Mohali, every appointment is an unhurried,
+              At Glam By Anmi in Mohali, every appointment is an unhurried,
               one-on-one experience. From dimensional hair colour and precision
               cuts to sculpted nail extensions and custom nail art, every detail
               is personally crafted for your style—never rushed or handed off.
@@ -64,7 +64,7 @@ export default function StylistSection() {
                 transition={{ duration: 0.25, ease: framerEase }}
                 className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14.5px] font-medium px-7 py-3.5 rounded-[3px] transition-colors"
               >
-                <span>Book with Amni</span>
+                <span>Book with Anmi</span>
                 <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
               </motion.a>
 
@@ -106,7 +106,7 @@ export default function StylistSection() {
             <div className="relative w-full aspect-[4/4.6] overflow-hidden rounded-[3px] bg-[#2F2C29] group shadow-[0_24px_48px_-16px_rgba(47,44,41,0.18)]">
               <motion.img
                 src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1100&q=85"
-                alt="Luxmi - Founder & Lead Artist at Glam By Amni Mohali"
+                alt="Luxmi - Founder & Lead Artist at Glam By Anmi Mohali"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.85, ease: framerEase }}
                 className="w-full h-full object-cover object-top"
@@ -124,7 +124,7 @@ export default function StylistSection() {
                 <div className="flex items-center justify-between gap-4 mb-2">
                   <div className="flex items-center gap-2 text-[#DFD6C7] text-[11.5px] font-medium tracking-wider uppercase">
                     <Award className="w-3.5 h-3.5 text-[#DFD6C7]" />
-                    <span>Glam By Amni · Nail &amp; Hair Studio, Mohali</span>
+                    <span>Glam By Anmi · Nail &amp; Hair Studio, Mohali</span>
                   </div>
                   <Sparkles className="w-4 h-4 text-white/60 shrink-0" />
                 </div>

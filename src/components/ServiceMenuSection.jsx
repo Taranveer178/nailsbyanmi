@@ -106,7 +106,7 @@ export default function ServiceMenuSection() {
             transition={{ duration: 0.8, delay: 0.12, ease: framerEase }}
             className="text-[14.5px] md:text-[15.5px] text-[#5C554C] leading-[1.6] max-w-[360px]"
           >
-            Prices vary by hair length and density. Amni confirms your exact
+            Prices vary by hair length and density. Anmi confirms your exact
             quote during consultation before we begin.
           </motion.p>
         </div>
@@ -165,7 +165,7 @@ export default function ServiceMenuSection() {
               <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full overflow-hidden rounded-[2px] bg-[#2F2C29] group">
                 <motion.img
                   src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=85"
-                  alt="Signature Hair Services at Glam By Amni Mohali"
+                  alt="Signature Hair Services at Glam By Anmi Mohali"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.8, ease: framerEase }}
                   className="w-full h-full object-cover object-center"

@@ -87,7 +87,7 @@ export default function ContactBookingSection() {
               </h2>
 
               <p className="text-[15.5px] md:text-[16.5px] text-[#C8C3BA] leading-[1.65] max-w-[430px] mb-12 md:mb-16">
-                Send a request and Amni will confirm your slot within the hour.
+                Send a request and Anmi will confirm your slot within the hour.
                 Prefer to talk? Call our Mohali studio directly.
               </p>
 
@@ -97,7 +97,7 @@ export default function ContactBookingSection() {
                     Visit us
                   </span>
                   <p className="text-[16px] md:text-[17px] font-medium text-white">
-                    Glam By Amni, Mohali, Punjab
+                    Glam By Anmi, Mohali, Punjab
                   </p>
                 </div>
 
@@ -127,10 +127,10 @@ export default function ContactBookingSection() {
                     Instagram &amp; Email
                   </span>
                   <a
-                    href="mailto:hello@glambyamni.in"
+                    href="mailto:hello@glambyanmi.in"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    hello@glambyamni.in
+                    hello@glambyanmi.in
                   </a>
                 </div>
               </div>
@@ -334,7 +334,7 @@ export default function ContactBookingSection() {
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#DFD6C7]" />
                   <span>
-                    Request sent! Amni will confirm your slot within the hour.
+                    Request sent! Anmi will confirm your slot within the hour.
                   </span>
                 </motion.div>
               ) : (
