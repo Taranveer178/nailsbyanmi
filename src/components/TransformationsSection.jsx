@@ -208,10 +208,10 @@ function BeforeAfterCard({ item, index }) {
 
         <a
           href="#book"
-          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2F2C29] hover:text-[#8A755F] transition-colors"
+          className="group inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2F2C29] hover:text-[#8A755F] transition-colors"
         >
           <span>Book this look</span>
-          <ArrowRight className="w-3.5 h-3.5 stroke-[2] transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRight className="w-3.5 h-3.5 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
         </a>
       </div>
     </motion.div>
@@ -263,12 +263,11 @@ export default function TransformationsSection() {
 
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px] transition-colors"
+              className="cta-fill cta-fill--dark group inline-flex items-center gap-3 bg-[#2F2C29] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px]"
             >
               <span>Start your transformation</span>
-              <ArrowRight className="w-4 h-4 stroke-[1.75]" />
+              <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </motion.div>
         </div>

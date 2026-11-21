@@ -59,22 +59,20 @@ export default function StylistSection() {
             <div className="flex flex-wrap items-center gap-4">
               <motion.a
                 href="#book"
-                whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25, ease: framerEase }}
-                className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14.5px] font-medium px-7 py-3.5 rounded-[3px] transition-colors"
+                className="cta-fill cta-fill--dark group inline-flex items-center gap-3 bg-[#2F2C29] text-[#F6F5F1] text-[14.5px] font-medium px-7 py-3.5 rounded-[3px]"
               >
                 <span>Book with Anmi</span>
-                <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
               </motion.a>
 
               <motion.a
                 href="https://www.instagram.com/nails_hairs_by_anmi/"
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2.5 border border-[#2F2C29]/35 hover:border-[#2F2C29] text-[#2F2C29] text-[14px] font-medium px-5 py-3.5 rounded-[3px] transition-colors"
+                className="cta-fill cta-fill--light inline-flex items-center gap-2.5 border border-[#2F2C29]/35 hover:border-[#8A755F] text-[#2F2C29] text-[14px] font-medium px-5 py-3.5 rounded-[3px] transition-colors"
               >
                 <svg
                   className="w-4 h-4 stroke-current"

@@ -139,13 +139,12 @@ export default function ContactBookingSection() {
             <div>
               <motion.a
                 href="tel:+919876543210"
-                whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25, ease: framerEase }}
-                className="group inline-flex items-center gap-3 bg-[#F6F5F1] hover:bg-white text-[#1E1C19] text-[14px] font-semibold px-7 py-4 rounded-[3px] transition-colors"
+                className="cta-fill cta-fill--light group inline-flex items-center gap-3 bg-[#F6F5F1] text-[#1E1C19] text-[14px] font-semibold px-7 py-4 rounded-[3px]"
               >
                 <span>Call the studio</span>
-                <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
               </motion.a>
             </div>
           </motion.div>
@@ -239,7 +238,7 @@ export default function ContactBookingSection() {
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
+                    className="date-field bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] px-4 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -341,11 +340,10 @@ export default function ContactBookingSection() {
                 <motion.button
                   type="submit"
                   disabled={!isFormValid}
-                  whileHover={isFormValid ? { scale: 1.01 } : {}}
                   whileTap={isFormValid ? { scale: 0.99 } : {}}
                   className={`w-full text-[14px] font-medium py-4 px-6 rounded-[3px] transition-all duration-300 flex items-center justify-center gap-2.5 ${
                     isFormValid
-                      ? "bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] cursor-pointer shadow-sm"
+                      ? "cta-fill cta-fill--dark group bg-[#2F2C29] text-[#F6F5F1] cursor-pointer shadow-sm"
                       : "bg-[#6A6055] text-[#F6F5F1]/90 cursor-not-allowed"
                   }`}
                 >
@@ -354,7 +352,9 @@ export default function ContactBookingSection() {
                       ? "Request appointment"
                       : "Please fill in the required fields"}
                   </span>
-                  {isFormValid && <ArrowRight className="w-4 h-4 stroke-[1.75]" />}
+                  {isFormValid && (
+                    <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
+                  )}
                 </motion.button>
               )}
             </form>

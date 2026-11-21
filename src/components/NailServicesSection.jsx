@@ -130,12 +130,11 @@ export default function NailServicesSection() {
 
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 border border-[#2F2C29]/45 hover:border-[#2F2C29] hover:bg-[#2F2C29] hover:text-white text-[#2F2C29] text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors duration-200"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-3 border border-[#2F2C29]/45 hover:border-[#8A755F] text-[#2F2C29] text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors duration-200"
             >
               <span>View nail menu</span>
-              <ArrowRight className="w-4 h-4 stroke-[1.75]" />
+              <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </motion.div>
         </div>
@@ -190,12 +189,11 @@ export default function NailServicesSection() {
                 <div className="pt-1">
                   <motion.a
                     href="#book"
-                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center justify-center gap-2.5 bg-[#2F2C29] hover:bg-[#8A755F] text-[#F6F5F1] text-[13.5px] font-medium px-6 py-2.5 rounded-[3px] transition-colors duration-300"
+                    className="cta-fill cta-fill--dark group inline-flex items-center justify-center gap-2.5 bg-[#2F2C29] text-[#F6F5F1] text-[13.5px] font-medium px-6 py-2.5 rounded-[3px]"
                   >
                     <span>Book Now</span>
-                    <ArrowRight className="w-3.5 h-3.5 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
                   </motion.a>
                 </div>
               </div>

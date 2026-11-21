@@ -30,13 +30,12 @@ export default function Footer() {
           <div className="shrink-0">
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.25, ease: framerEase }}
-              className="group inline-flex items-center gap-2.5 bg-[#F6F5F1] hover:bg-white text-[#1E1C19] text-[14px] font-semibold px-6 py-3.5 rounded-[3px] transition-colors"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-2.5 bg-[#F6F5F1] text-[#1E1C19] text-[14px] font-semibold px-6 py-3.5 rounded-[3px]"
             >
               <span>Book a chair</span>
-              <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </div>
         </motion.div>

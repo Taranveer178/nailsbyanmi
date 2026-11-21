@@ -65,13 +65,13 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-[#1E1C19] text-left">
       {/* Background Image with Smooth Auto-Crossfade & Slow Zoom */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={current.id}
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.15, ease: framerEase }}
+          transition={{ duration: 0.6, ease: framerEase }}
           className="absolute inset-0 z-0"
         >
           <img
@@ -135,22 +135,20 @@ export default function HeroSection() {
           >
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 bg-white text-[#1E1C19] text-[14.5px] font-semibold px-7 py-3.5 rounded-[3px] hover:bg-[#F3F2EF] transition-colors"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-3 bg-white text-[#1E1C19] text-[14.5px] font-semibold px-7 py-3.5 rounded-[3px]"
             >
               <span>Book an Appointment</span>
-              <ArrowRight className="w-4 h-4 stroke-[2]" />
+              <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
 
             <motion.a
               href="#services"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-white text-[14.5px] font-medium px-7 py-3.5 rounded-[3px] transition-colors"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/15 text-white text-[14.5px] font-medium px-7 py-3.5 rounded-[3px]"
             >
               <span>Explore services</span>
-              <ArrowRight className="w-4 h-4 stroke-[1.75]" />
+              <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </motion.div>
 

@@ -105,12 +105,11 @@ export default function StudioSection() {
 
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 border border-[#2F2C29]/45 hover:border-[#2F2C29] hover:bg-[#2F2C29] hover:text-white text-[#2F2C29] text-[14.5px] font-medium px-6 py-3.5 rounded-[3px] transition-colors duration-200"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-3 border border-[#2F2C29]/45 hover:border-[#8A755F] text-[#2F2C29] text-[14.5px] font-medium px-6 py-3.5 rounded-[3px] transition-colors duration-200"
             >
               <span>Book a consultation</span>
-              <ArrowRight className="w-4 h-4 stroke-[1.75]" />
+              <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </motion.div>
         </div>

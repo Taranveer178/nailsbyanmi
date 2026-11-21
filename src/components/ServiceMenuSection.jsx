@@ -223,13 +223,12 @@ export default function ServiceMenuSection() {
               >
                 <motion.a
                   href="#book"
-                  whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.25, ease: framerEase }}
-                  className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px] transition-colors shadow-sm"
+                  className="cta-fill cta-fill--dark group inline-flex items-center gap-3 bg-[#2F2C29] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px] shadow-sm"
                 >
                   <span>Book hair service</span>
-                  <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
                 </motion.a>
               </motion.div>
             </div>

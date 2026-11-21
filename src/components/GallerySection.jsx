@@ -297,13 +297,12 @@ export default function GallerySection() {
           <motion.button
             type="button"
             onClick={() => setShowAllModal(true)}
-            whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.25, ease: framerEase }}
-            className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#8A755F] text-[#F6F5F1] text-[14px] font-medium px-7 py-3.5 rounded-[3px] transition-colors duration-300"
+            className="cta-fill cta-fill--dark group inline-flex items-center gap-3 bg-[#2F2C29] text-[#F6F5F1] text-[14px] font-medium px-7 py-3.5 rounded-[3px]"
           >
             <span>See all looks</span>
-            <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
           </motion.button>
         </div>
       </div>

@@ -77,12 +77,11 @@ export default function Header() {
           >
             <motion.a
               href="#book"
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2.5 bg-white text-[#1E1C19] text-[13.5px] font-semibold px-6 py-3.5 rounded-[3px] hover:bg-[#F3F2EF] transition-colors"
+              className="cta-fill cta-fill--light group inline-flex items-center gap-2.5 bg-white text-[#1E1C19] text-[13.5px] font-semibold px-6 py-3.5 rounded-[3px]"
             >
               <span>Book an Appointment</span>
-              <ArrowRight className="w-4 h-4 stroke-[2]" />
+              <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
             </motion.a>
           </motion.div>
 
@@ -122,10 +121,10 @@ export default function Header() {
               <a
                 href="#book"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 bg-white text-[#1E1C19] text-sm font-semibold px-5 py-3 rounded-[3px]"
+                className="cta-fill cta-fill--light group mt-2 inline-flex items-center justify-center gap-2 bg-white text-[#1E1C19] text-sm font-semibold px-5 py-3 rounded-[3px]"
               >
                 <span>Book an Appointment</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
               </a>
             </div>
           </motion.div>
