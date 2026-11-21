@@ -1,42 +1,35 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-const serviceTags = [
-  "Haircuts",
-  "Balayage & Colour",
-  "Keratin & Smoothening",
-  "Hair Spa",
-  "Bridal Styling",
-];
-
 const menuServices = [
   {
-    name: "Signature Cut & Blow Dry",
+    name: "Signature Cut & Blowout",
     description: "Consultation, relaxing wash, precision haircut, and round-brush finish.",
     price: "from ₹900",
     duration: "45 min",
   },
   {
-    name: "Dimensional Balayage & Gloss",
+    name: "Balayage & Gloss",
     description: "Hand-painted highlights, custom root blend, and shine-sealing toner.",
     price: "from ₹4,500",
     duration: "150 min",
   },
   {
-    name: "Global Hair Colour & Root Touch-Up",
+    name: "Hair Colour",
     description: "Ammonia-free rich coverage tailored to your skin undertone.",
     price: "from ₹2,200",
     duration: "90 min",
   },
   {
-    name: "Keratin & Botox Hair Therapy",
+    name: "Keratin Therapy",
     description: "Deep frizz-control and protein restoration for silky, manageable hair.",
     price: "from ₹3,800",
     duration: "120 min",
   },
   {
-    name: "Luxury Scalp & Bond Repair Spa",
-    description: "Restorative mask, steam therapy, and therapeutic head massage.",
+    name: "Curly Hair",
+    description:
+      "Curl-focused shaping and styling to define natural texture, control frizz, and enhance bounce.",
     price: "from ₹1,500",
     duration: "60 min",
   },
@@ -113,47 +106,8 @@ export default function ServiceMenuSection() {
 
         {/* Always-Open Service Showcase Layout */}
         <div className="pt-12 md:pt-16">
-          {/* Sub-header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.75, ease: framerEase }}
-            className="flex items-start gap-6 sm:gap-12 mb-10 md:mb-12"
-          >
-            <span className="text-[12px] font-medium text-[#7A7165] pt-2.5 shrink-0">
-              01
-            </span>
-
-            <div>
-              <h3 className="text-3xl sm:text-4xl md:text-[42px] font-medium text-[#2F2C29] tracking-[-0.02em] leading-none mb-4">
-                Signature Hair Services
-              </h3>
-
-              <div className="flex flex-wrap items-center gap-2">
-                {serviceTags.map((tag, idx) => (
-                  <motion.span
-                    key={tag}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.08 * idx,
-                      ease: framerEase,
-                    }}
-                    whileHover={{ y: -2, backgroundColor: "#FFFFFF" }}
-                    className="bg-[#F6F5F1] text-[#2F2C29] text-[12px] font-medium px-3 py-1 rounded-[2px] transition-colors cursor-default"
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
           {/* 2-Column Content Grid */}
-          <div className="pl-0 sm:pl-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
             {/* Left Image Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.97, y: 24 }}

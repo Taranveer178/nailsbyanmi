@@ -5,12 +5,12 @@ import { ArrowRight, Menu, X } from "lucide-react";
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Studio", href: "#studio" },
-  { name: "Services", href: "#services" },
+  { name: "Hair", href: "#services" },
+  { name: "Nails", href: "#nails" },
   { name: "Stylists", href: "#stylists" },
-  { name: "Contact", href: "#contact" },
 ];
 
-export default function Header() {
+export default function Header({ onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,6 +21,19 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLinkClick = (e, href) => {
+    setMobileOpen(false);
+    if (onNavigate) {
+      onNavigate("home");
+      if (href && href !== "#") {
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 60);
+      }
+    }
+  };
 
   const showSolidBg = isScrolled || mobileOpen;
 
@@ -38,7 +51,12 @@ export default function Header() {
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
         {/* Left: Brand Logo */}
         <div className="flex-1 flex items-center justify-start">
-          <a href="#" className="shrink-0" aria-label="Glam by Anmi home">
+          <a
+            href="#"
+            onClick={(e) => handleLinkClick(e, "#")}
+            className="shrink-0"
+            aria-label="Glam by Anmi home"
+          >
             <img
               src="/logo.png"
               alt="Glam by Anmi - Nail and Hair Studio"
@@ -53,6 +71,7 @@ export default function Header() {
             <motion.a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -77,6 +96,7 @@ export default function Header() {
           >
             <motion.a
               href="#book"
+              onClick={(e) => handleLinkClick(e, "#book")}
               whileTap={{ scale: 0.98 }}
               className="cta-fill cta-fill--light group inline-flex items-center gap-2.5 bg-white text-[#1E1C19] text-[13.5px] font-semibold px-6 py-3.5 rounded-[3px]"
             >
@@ -112,7 +132,7 @@ export default function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   className="text-base font-medium text-white/95 hover:text-white py-2 border-b border-white/5"
                 >
                   {link.name}
@@ -120,7 +140,7 @@ export default function Header() {
               ))}
               <a
                 href="#book"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleLinkClick(e, "#book")}
                 className="cta-fill cta-fill--light group mt-2 inline-flex items-center justify-center gap-2 bg-white text-[#1E1C19] text-sm font-semibold px-5 py-3 rounded-[3px]"
               >
                 <span>Book an Appointment</span>

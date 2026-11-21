@@ -10,7 +10,17 @@ const exploreLinks = [
 
 const framerEase = [0.22, 1, 0.36, 1];
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
+  const handleAnchorClick = (e, href) => {
+    if (onNavigate) {
+      onNavigate("home");
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+    }
+  };
+
   return (
     <footer className="w-full bg-[#1E1C19] text-[#F6F5F1] border-t border-white/10">
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
@@ -30,6 +40,7 @@ export default function Footer() {
           <div className="shrink-0">
             <motion.a
               href="#book"
+              onClick={(e) => handleAnchorClick(e, "#book")}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.25, ease: framerEase }}
               className="cta-fill cta-fill--light group inline-flex items-center gap-2.5 bg-[#F6F5F1] text-[#1E1C19] text-[14px] font-semibold px-6 py-3.5 rounded-[3px]"
@@ -50,7 +61,12 @@ export default function Footer() {
         >
           {/* Brand Column (Full width on mobile, 5 cols on desktop) */}
           <div className="col-span-2 lg:col-span-5 flex flex-col items-start">
-            <a href="#" className="inline-flex mb-4" aria-label="Glam by Anmi home">
+            <a
+              href="#"
+              onClick={() => onNavigate && onNavigate("home")}
+              className="inline-flex mb-4"
+              aria-label="Glam by Anmi home"
+            >
               <img
                 src="/logo.png"
                 alt="Glam by Anmi - Nail and Hair Studio"
@@ -59,8 +75,8 @@ export default function Footer() {
             </a>
 
             <p className="text-[13.5px] md:text-[14px] text-[#9E988E] leading-[1.65] max-w-[270px]">
-              A hair and nail studio in Mohali. Precision cuts, bespoke
-              colour, and nail artistry tailored for you.
+              A hair and nail studio in Mohali. Precision cuts, bespoke colour,
+              and nail artistry tailored for you.
             </p>
           </div>
 
@@ -74,6 +90,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleAnchorClick(e, link.href)}
                     className="text-[14px] text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
                   >
                     {link.name}
@@ -135,18 +152,39 @@ export default function Footer() {
           <p>© 2026 Glam by Anmi. All rights reserved.</p>
 
           <div className="flex items-center gap-6 text-[#F6F5F1]/90">
-            <a href="#privacy" className="hover:text-white transition-colors">
+            <button
+              type="button"
+              onClick={() => onNavigate && onNavigate("privacy")}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Privacy
-            </a>
-            <a href="#terms" className="hover:text-white transition-colors">
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate && onNavigate("terms")}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Terms
-            </a>
+            </button>
           </div>
 
           <p className="hidden md:block">
-            Developed by  <a href="https://taranveer.in" target="_blank" rel="noreferrer" className="text-white hover:text-[#DFD6C7] transition-colors">
+            Developed by{" "}
+            <a
+              href="https://taranveer.in"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white hover:text-[#DFD6C7] transition-colors"
+            >
               Taranveer Singh
-            </a> and <a href="https://sushantmonga.in" target="_blank" rel="noreferrer" className="text-white hover:text-[#DFD6C7] transition-colors">
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://sushantmonga.in"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white hover:text-[#DFD6C7] transition-colors"
+            >
               Sushant Monga
             </a>
           </p>

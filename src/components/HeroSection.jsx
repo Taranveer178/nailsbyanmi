@@ -11,19 +11,19 @@ const slides = [
     titleLine2: "Bespoke Nail Artistry",
     subtitle:
       "Precision cuts, luminous colour, and refined nail care – crafted just for you.",
-    image:
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2000&q=85",
+    image: "/Hero%20image%20Nail%20-Glam%20by%20ANMI.webp",
+    imageAlt: "Nail artistry at Glam by Anmi in Mohali",
   },
   {
     id: 2,
-    badgeNumber: "01",
+    badgeNumber: "02",
     badgeText: "Nail & Hair Studio in Mohali",
     titleLine1: "Luxury Hair &",
     titleLine2: "Bespoke Nail Artistry",
     subtitle:
       "Precision cuts, luminous colour, and refined nail care – crafted just for you.",
-    image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=2000&q=85",
+    image: "/hero%20image%20hair%20Glam%20By%20ANMI.webp",
+    imageAlt: "Hair styling at Glam by Anmi in Mohali",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function HeroSection() {
         >
           <img
             src={current.image}
-            alt="Glam By Anmi - Nail and Hair Studio in Mohali"
+            alt={current.imageAlt}
             className="w-full h-full object-cover object-right md:object-center"
           />
           <div
