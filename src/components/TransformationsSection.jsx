@@ -10,10 +10,8 @@ const transformations = [
     duration: "3 hrs · Hair Transformation",
     description:
       "Lifted warm brassy tones into a soft, lived-in caramel blonde with seamless root blending and deep bond-repair shine.",
-    beforeImage:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85",
-    afterImage:
-      "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=85",
+    beforeImage: "/Balayage-Gloss-before.webp",
+    afterImage: "/Balayage-Gloss-after.webp",
   },
   {
     id: "02",
@@ -22,10 +20,8 @@ const transformations = [
     duration: "90 min · Nail Studio",
     description:
       "Transformed short natural nails into sculpted almond gel extensions finished with a sheer nude base and pearl chrome glaze.",
-    beforeImage:
-      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
-    afterImage:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
+    beforeImage: "/nail%20extension%20before.webp",
+    afterImage: "/nail%20extension%20after.webp",
   },
   {
     id: "03",
@@ -203,7 +199,9 @@ function BeforeAfterCard({ item, index }) {
       <div className="pt-5 mt-5 border-t border-[#2F2C29]/10 flex items-center justify-between">
         <span className="text-[12.5px] font-medium text-[#5C554C]">
           Client:{" "}
-          <strong className="font-semibold text-[#2F2C29]">{item.client}</strong>
+          <strong className="font-semibold text-[#2F2C29]">
+            {item.client}
+          </strong>
         </span>
 
         <a
