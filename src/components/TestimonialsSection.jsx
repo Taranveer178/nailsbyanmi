@@ -6,39 +6,39 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "I had such a great experience with Anmi at Glam by Luxmi today! She did an amazing job with my haircut and treatment. She really listened to what I wanted and took the time to understand my hair goals. I truly appreciated her expertise and attention to detail—I will absolutely be going back!",
-    name: "Alex Keefe",
-    service: "Hair Treatment",
+      "I had such an amazing experience at Glam By Amni in Mohali! Amni really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
+    name: "Komal Singla",
+    service: "Balayage & Gel Extensions",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=85",
   },
   {
     id: 2,
     quote:
-      "My dimensional balayage and gel manicure have never looked this clean or lasted this long. Anmi has such a calm, welcoming energy and walks you through every step before starting so you feel completely confident in the chair.",
-    name: "Mina Patel",
-    service: "Balayage & Gel Nails",
+      "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Amni has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
+    name: "Arsh Gill",
+    service: "Russian Manicure & Nail Art",
     image:
       "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&q=85",
   },
   {
     id: 3,
     quote:
-      "Hands down the best blowout and Kérastase ritual I have ever had. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
-    name: "Sofia R.",
-    service: "Kérastase & BlowOut",
+      "Hands down the best hair spa and blowout in Mohali. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
+    name: "Riya Sharma",
+    service: "Keratin Spa & BlowOut",
     image:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
   },
 ];
 
 const miniTickerReviews = [
-  { text: "Worth every minute", author: "Tom H." },
-  { text: "Calm, kind and so skilled", author: "Mina L." },
-  { text: "Best nails and hair in town", author: "Daniel O." },
-  { text: "My colour has never looked this soft", author: "Sofia R." },
-  { text: "Unhurried, personal care", author: "Priya K." },
-  { text: "Obsessed with my gel set", author: "Elena R." },
+  { text: "Best nail studio in Mohali", author: "Harleen G." },
+  { text: "Calm, kind and so skilled", author: "Navneet G." },
+  { text: "My balayage looks so natural", author: "Simran K." },
+  { text: "Obsessed with my gel extensions", author: "Riya S." },
+  { text: "Unhurried, personal care", author: "Amanpreet D." },
+  { text: "Flawless bridal nail set", author: "Mehak S." },
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -60,7 +60,6 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev - 1 + total) % total);
   };
 
-  // Auto-slide timer (pauses on hover/interaction)
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
@@ -69,7 +68,6 @@ export default function TestimonialsSection() {
     return () => clearInterval(timer);
   }, [isPaused, total]);
 
-  // Mobile Touch Swipe Handlers
   const onTouchStart = (e) => {
     setIsPaused(true);
     touchEndX.current = null;
@@ -88,11 +86,8 @@ export default function TestimonialsSection() {
     const distance = touchStartX.current - touchEndX.current;
     const minSwipeDistance = 45;
 
-    if (distance > minSwipeDistance) {
-      handleNext();
-    } else if (distance < -minSwipeDistance) {
-      handlePrev();
-    }
+    if (distance > minSwipeDistance) handleNext();
+    else if (distance < -minSwipeDistance) handlePrev();
     setIsPaused(false);
   };
 
@@ -110,7 +105,7 @@ export default function TestimonialsSection() {
       className="w-full bg-[#DFD6C7] text-[#2F2C29] pt-20 md:pt-28 pb-12 md:pb-16 border-t border-[#2F2C29]/10 overflow-hidden"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Top Row: [07] Client reviews (Left) + Google Rating (Right) */}
+        {/* Top Row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +113,6 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.75, ease: framerEase }}
           className="flex flex-wrap items-center justify-between gap-4 mb-12 md:mb-16"
         >
-          {/* Eyebrow Badge: [07] Client reviews */}
           <div className="inline-flex items-center bg-[#F6F5F1] rounded-[3px] p-1 pr-4">
             <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
               07
@@ -128,7 +122,6 @@ export default function TestimonialsSection() {
             </span>
           </div>
 
-          {/* 5 Outlined Stars + Google Rating */}
           <div className="flex items-center gap-2.5">
             <div className="flex items-center gap-1 text-[#8A755F]">
               {[...Array(5)].map((_, i) => (
@@ -139,21 +132,20 @@ export default function TestimonialsSection() {
               ))}
             </div>
             <span className="text-[13px] font-medium text-[#5C554C]">
-              4.9 from 980+ Google reviews
+              4.9 rated by clients in Mohali
             </span>
           </div>
         </motion.div>
 
-        {/* Main Split Testimonial Area (Swipe-enabled on touch devices) */}
+        {/* Main Split Testimonial Area */}
         <div
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 md:mb-20 touch-pan-y"
         >
-          {/* LEFT COLUMN: Quote Mark, Testimonial Text, Client Info, 3 Avatars + Nav Controls */}
+          {/* LEFT COLUMN */}
           <div className="lg:col-span-7 flex flex-col items-start text-left order-2 lg:order-1">
-            {/* Outlined Double Quote SVG matching reference */}
             <div className="mb-6 text-[#8A755F]">
               <svg
                 width="36"
@@ -172,7 +164,6 @@ export default function TestimonialsSection() {
               </svg>
             </div>
 
-            {/* Animated Testimonial Quote & Author */}
             <div className="min-h-[210px] sm:min-h-[190px] flex flex-col justify-between w-full max-w-[600px]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -198,9 +189,8 @@ export default function TestimonialsSection() {
               </AnimatePresence>
             </div>
 
-            {/* Bottom Controls: 3 Small Clickable Client Avatars + Prev/Next Buttons */}
+            {/* Bottom Controls */}
             <div className="w-full max-w-[600px] flex items-center justify-between gap-4 mt-8 pt-2">
-              {/* Three Small Circular Client Images */}
               <div className="flex items-center gap-3.5">
                 {testimonials.map((item, idx) => {
                   const isActive = idx === activeIndex;
@@ -226,7 +216,6 @@ export default function TestimonialsSection() {
                 })}
               </div>
 
-              {/* Navigation Buttons (Great for Mobile & Desktop) */}
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -248,7 +237,7 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Large Active Client Portrait */}
+          {/* RIGHT COLUMN */}
           <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[460px] aspect-[4/4.4] overflow-hidden rounded-[3px] bg-[#2F2C29] shadow-[0_20px_44px_-16px_rgba(47,44,41,0.18)]">
               <AnimatePresence mode="wait">
@@ -264,7 +253,6 @@ export default function TestimonialsSection() {
                 />
               </AnimatePresence>
 
-              {/* Subtle Auto-slide Progress Bar at Bottom Edge */}
               {!isPaused && (
                 <motion.div
                   key={`progress-${activeIndex}`}
@@ -282,7 +270,6 @@ export default function TestimonialsSection() {
 
       {/* Bottom Mini-Review Pill Ticker */}
       <div className="relative w-full overflow-hidden pt-2 select-none">
-        {/* Soft Edge Fade Masks matching #DFD6C7 */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 z-10"
           style={{

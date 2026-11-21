@@ -3,18 +3,21 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 
 const serviceOptions = [
-  "Signature Cut & Finish",
-  "Skin Fade & Grooming",
-  "Long Cut & Blow Dry",
-  "Dimensional Balayage & Colour",
-  "Kérastase & Scalp Care",
-  "Manicure / Gel Coloring / Nail Art",
-  "Pedicure",
+  "Signature Cut & Blow Dry",
+  "Dimensional Balayage & Gloss",
+  "Global Hair Colour",
+  "Keratin / Botox Hair Therapy",
+  "Luxury Hair Spa",
+  "Gel / Acrylic Nail Extensions",
+  "Classic / Russian Manicure",
+  "Bespoke Nail Art",
+  "Spa Pedicure",
 ];
 
-const stylistOptions = [
-  "No preference",
-  "Anmi (Founder & Master Stylist)",
+const categoryOptions = [
+  "Nail & Hair Combo",
+  "Hair Studio",
+  "Nail Studio",
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -26,7 +29,7 @@ export default function ContactBookingSection() {
     email: "",
     date: "",
     service: "",
-    stylist: "No preference",
+    category: "Nail & Hair Combo",
     notes: "",
   });
 
@@ -59,7 +62,6 @@ export default function ContactBookingSection() {
         id="contact"
         className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16"
       >
-        {/* Two-Card Split Layout (No Section Heading or Outer Eyebrow) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-8 items-stretch">
           {/* LEFT CARD: Dark Studio Booking Info (#1E1C19) */}
           <motion.div
@@ -70,7 +72,6 @@ export default function ContactBookingSection() {
             className="lg:col-span-6 bg-[#1E1C19] text-[#F6F5F1] rounded-[3px] p-8 sm:p-11 md:p-14 flex flex-col justify-between shadow-[0_24px_50px_-18px_rgba(30,28,25,0.28)]"
           >
             <div>
-              {/* Card Eyebrow Badge: [09] Booking */}
               <div className="inline-flex items-center bg-white/10 rounded-[3px] p-1 pr-4 mb-9">
                 <span className="bg-[#F6F5F1] text-[#1E1C19] text-[11.5px] font-bold px-2 py-0.5 rounded-[2px]">
                   09
@@ -80,26 +81,23 @@ export default function ContactBookingSection() {
                 </span>
               </div>
 
-              {/* Large Two-Tone Display Headline */}
               <h2 className="text-4xl sm:text-5xl md:text-[56px] font-medium leading-[1.08] tracking-[-0.025em] mb-6">
                 <span className="text-white">Book your </span>
                 <span className="text-[#9E8870]">chair.</span>
               </h2>
 
-              {/* Lead Copy */}
               <p className="text-[15.5px] md:text-[16.5px] text-[#C8C3BA] leading-[1.65] max-w-[430px] mb-12 md:mb-16">
-                Send a request and we will confirm your time within the hour.
-                Prefer to talk? Call the studio.
+                Send a request and Amni will confirm your slot within the hour.
+                Prefer to talk? Call our Mohali studio directly.
               </p>
 
-              {/* 2x2 Studio Contact Details Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mb-12 md:mb-14">
                 <div>
                   <span className="block text-[12px] text-[#9E988E] font-normal mb-1.5">
                     Visit us
                   </span>
                   <p className="text-[16px] md:text-[17px] font-medium text-white">
-                    Glam by Luxmi, Waterloo
+                    Glam By Amni, Mohali, Punjab
                   </p>
                 </div>
 
@@ -108,7 +106,7 @@ export default function ContactBookingSection() {
                     Opening hours
                   </span>
                   <p className="text-[16px] md:text-[17px] font-medium text-white">
-                    Tue to Sun, 9 am to 8 pm
+                    Tue to Sun, 10 am to 8 pm
                   </p>
                 </div>
 
@@ -117,31 +115,30 @@ export default function ContactBookingSection() {
                     Call
                   </span>
                   <a
-                    href="tel:+15195550147"
+                    href="tel:+919876543210"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    (519) 555 0147
+                    +91 98765 43210
                   </a>
                 </div>
 
                 <div>
                   <span className="block text-[12px] text-[#9E988E] font-normal mb-1.5">
-                    Email
+                    Instagram &amp; Email
                   </span>
                   <a
-                    href="mailto:hello@glambyluxmi.com"
+                    href="mailto:hello@glambyamni.in"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    hello@glambyluxmi.com
+                    hello@glambyamni.in
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Bottom White Button: Call the studio -> */}
             <div>
               <motion.a
-                href="tel:+15195550147"
+                href="tel:+919876543210"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25, ease: framerEase }}
@@ -162,7 +159,6 @@ export default function ContactBookingSection() {
             className="lg:col-span-6 bg-[#F6F5F1] text-[#2F2C29] rounded-[3px] p-8 sm:p-11 md:p-14 flex flex-col justify-between border border-[#2F2C29]/10 shadow-[0_24px_50px_-18px_rgba(47,44,41,0.12)]"
           >
             <form onSubmit={handleSubmit} noValidate>
-              {/* Form Card Header */}
               <div className="mb-8">
                 <h3 className="text-2xl sm:text-[28px] font-medium text-[#2F2C29] tracking-[-0.02em] leading-tight">
                   Request an appointment
@@ -172,9 +168,7 @@ export default function ContactBookingSection() {
                 </p>
               </div>
 
-              {/* 2-Column Input Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-5 mb-5">
-                {/* Name * */}
                 <div>
                   <label
                     htmlFor="name"
@@ -194,13 +188,12 @@ export default function ContactBookingSection() {
                   />
                 </div>
 
-                {/* Phone * */}
                 <div>
                   <label
                     htmlFor="phone"
                     className="block text-[12px] font-medium text-[#2F2C29] mb-2"
                   >
-                    Phone <span className="text-[#8A755F]">*</span>
+                    Phone / WhatsApp <span className="text-[#8A755F]">*</span>
                   </label>
                   <input
                     id="phone"
@@ -209,12 +202,11 @@ export default function ContactBookingSection() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="(519) 555 0100"
+                    placeholder="+91 98765 00000"
                     className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>
 
-                {/* Email * */}
                 <div>
                   <label
                     htmlFor="email"
@@ -234,7 +226,6 @@ export default function ContactBookingSection() {
                   />
                 </div>
 
-                {/* Preferred date */}
                 <div>
                   <label
                     htmlFor="date"
@@ -252,7 +243,6 @@ export default function ContactBookingSection() {
                   />
                 </div>
 
-                {/* Service * */}
                 <div>
                   <label
                     htmlFor="service"
@@ -288,29 +278,28 @@ export default function ContactBookingSection() {
                   </div>
                 </div>
 
-                {/* Preferred stylist */}
                 <div>
                   <label
-                    htmlFor="stylist"
+                    htmlFor="category"
                     className="block text-[12px] font-medium text-[#2F2C29] mb-2"
                   >
-                    Preferred stylist
+                    Studio session
                   </label>
                   <div className="relative">
                     <select
-                      id="stylist"
-                      name="stylist"
-                      value={formData.stylist}
+                      id="category"
+                      name="category"
+                      value={formData.category}
                       onChange={handleChange}
                       className="w-full appearance-none bg-[#E6DDD0] text-[#2F2C29] text-[14px] px-4 py-3.5 pr-10 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                     >
-                      {stylistOptions.map((sty) => (
+                      {categoryOptions.map((cat) => (
                         <option
-                          key={sty}
-                          value={sty}
+                          key={cat}
+                          value={cat}
                           className="text-[#2F2C29] bg-[#F6F5F1]"
                         >
-                          {sty}
+                          {cat}
                         </option>
                       ))}
                     </select>
@@ -319,7 +308,6 @@ export default function ContactBookingSection() {
                 </div>
               </div>
 
-              {/* Full-Width Textarea */}
               <div className="mb-7">
                 <label
                   htmlFor="notes"
@@ -333,12 +321,11 @@ export default function ContactBookingSection() {
                   rows={4}
                   value={formData.notes}
                   onChange={handleChange}
-                  placeholder="Hair type, nail style, the look you want, or questions"
+                  placeholder="Hair length, nail shape/art ideas, or bridal event dates"
                   className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors resize-none"
                 />
               </div>
 
-              {/* Full-Width Submit Bar matching Reference */}
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
@@ -347,7 +334,7 @@ export default function ContactBookingSection() {
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#DFD6C7]" />
                   <span>
-                    Request sent! Anmi will confirm your chair within the hour.
+                    Request sent! Amni will confirm your slot within the hour.
                   </span>
                 </motion.div>
               ) : (

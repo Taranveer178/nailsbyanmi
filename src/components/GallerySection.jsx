@@ -10,50 +10,50 @@ import { ArrowRight, ChevronUp, ChevronDown, X, Sparkles } from "lucide-react";
 const galleryItems = [
   {
     id: "01",
-    title: "Soft Caramel Waves",
-    category: "Balayage & Styling",
+    title: "Soft Caramel Balayage",
+    category: "Hair Colour",
     image:
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "02",
-    title: "Textured Crop & Taper",
-    category: "Men's Grooming",
+    title: "Pearl Chrome Almond Set",
+    category: "Nail Artistry",
     image:
-      "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "03",
     title: "Glass-Shine Blunt Bob",
-    category: "Precision Cut",
+    category: "Signature Cut",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "04",
-    title: "Classic Beard & Fade",
-    category: "Grooming",
+    title: "French Micro-Tip Gel",
+    category: "Gel Extensions",
     image:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "05",
     title: "Natural Curl Definition",
-    category: "Curl Care",
+    category: "Hair Care",
     image:
       "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "06",
-    title: "Silver Blend & Scissor Cut",
-    category: "Men's Styling",
+    title: "Bridal Red Gel Gloss",
+    category: "Nail Studio",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=85",
   },
   {
     id: "07",
-    title: "Silk Press & Gloss",
-    category: "Kérastase Ritual",
+    title: "Silk Press & Keratin",
+    category: "Hair Therapy",
     image:
       "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=85",
   },
@@ -83,14 +83,12 @@ export default function GallerySection() {
     return () => window.removeEventListener("resize", checkViewport);
   }, []);
 
-  // Track vertical page scroll across this section (works seamlessly on desktop & mobile)
   const { scrollYProgress } = useScroll({
     target: sectionTrackRef,
     offset: ["start start", "end end"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Map scroll progress (0 -> 1) across all gallery items
     const mappedIndex = Math.min(
       total - 1,
       Math.max(0, Math.floor(latest * total))
@@ -98,7 +96,6 @@ export default function GallerySection() {
     setActiveIndex(mappedIndex);
   });
 
-  // Scroll the page smoothly to a specific card index when buttons/dots/side-cards are clicked
   const scrollToCardIndex = (targetIdx) => {
     const clampedIdx = ((targetIdx % total) + total) % total;
     setActiveIndex(clampedIdx);
@@ -118,7 +115,6 @@ export default function GallerySection() {
   const stepForward = () => scrollToCardIndex(activeIndex + 1);
   const stepBackward = () => scrollToCardIndex(activeIndex - 1);
 
-  // Visible offsets: 3 cards on mobile [-1, 0, 1], 5 cards on desktop [-2, -1, 0, 1, 2]
   const visibleOffsets = isMobile ? [-1, 0, 1] : [-2, -1, 0, 1, 2];
 
   const getCardTransform = (offset) => {
@@ -159,7 +155,6 @@ export default function GallerySection() {
       ref={sectionTrackRef}
       className="relative w-full h-[260vh] bg-[#F6F5F1] text-[#2F2C29] border-t border-[#2F2C29]/10"
     >
-      {/* Sticky Viewport Container that stays pinned while scrolling through the gallery */}
       <div className="sticky top-0 w-full min-h-screen flex flex-col justify-center py-16 md:py-20 overflow-hidden">
         {/* Top Header Row */}
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mb-8 md:mb-12">
@@ -171,7 +166,6 @@ export default function GallerySection() {
               transition={{ duration: 0.75, ease: framerEase }}
               className="max-w-[700px]"
             >
-              {/* Eyebrow Badge: [08] Studio gallery */}
               <div className="inline-flex items-center bg-[#E1D9CC] rounded-[3px] p-1 pr-4 mb-5">
                 <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
                   08
@@ -181,14 +175,13 @@ export default function GallerySection() {
                 </span>
               </div>
 
-              {/* Editorial Headline */}
               <h2 className="text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] font-medium text-[#2F2C29] leading-[1.15] tracking-[-0.02em]">
-                Captured in natural light,{" "}
-                <span className="text-[#8A755F]">styled</span> for real life.
+                Hair &amp; nail artistry,{" "}
+                <span className="text-[#8A755F]">captured</span> in natural
+                light.
               </h2>
             </motion.div>
 
-            {/* Right Controls & Scroll Hint */}
             <div className="flex items-center justify-between lg:justify-end gap-4">
               <span className="text-[12.5px] font-medium text-[#7A7165] tracking-wide">
                 Scroll page to explore ({String(activeIndex + 1).padStart(2, "0")} /{" "}
@@ -265,7 +258,6 @@ export default function GallerySection() {
                     className="w-full h-full object-cover object-center"
                   />
 
-                  {/* Subtle Caption Overlay on Active Center Portrait */}
                   <div
                     className={`absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-[#1E1C19]/85 via-[#1E1C19]/35 to-transparent transition-opacity duration-300 ${
                       isCenter ? "opacity-100" : "opacity-0"
@@ -284,9 +276,8 @@ export default function GallerySection() {
           </div>
         </div>
 
-        {/* Active Look Indicator + Bottom "See all" Button */}
+        {/* Bottom Progress Dots + "See all" Button */}
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-6 md:mt-10 flex flex-col items-center text-center">
-          {/* Progress Dots */}
           <div className="flex items-center gap-2 mb-6">
             {galleryItems.map((item, idx) => (
               <button
@@ -303,7 +294,6 @@ export default function GallerySection() {
             ))}
           </div>
 
-          {/* Bottom "See all" CTA Button */}
           <motion.button
             type="button"
             onClick={() => setShowAllModal(true)}
@@ -318,7 +308,7 @@ export default function GallerySection() {
         </div>
       </div>
 
-      {/* Full Lookbook Grid Modal when "See all looks" is clicked */}
+      {/* Full Lookbook Modal */}
       <AnimatePresence>
         {showAllModal && (
           <motion.div
@@ -334,12 +324,11 @@ export default function GallerySection() {
               transition={{ duration: 0.4, ease: framerEase }}
               className="relative w-full max-w-[1200px] max-h-[88vh] bg-[#F6F5F1] text-[#2F2C29] rounded-[3px] overflow-hidden flex flex-col shadow-2xl"
             >
-              {/* Modal Header */}
               <div className="px-6 sm:px-10 py-5 border-b border-[#2F2C29]/12 flex items-center justify-between bg-[#F6F5F1]">
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#8A755F]" />
                   <h3 className="text-lg sm:text-xl font-medium text-[#2F2C29]">
-                    Glam by Luxmi — Complete Lookbook
+                    Glam By Amni — Mohali Lookbook
                   </h3>
                 </div>
                 <button
@@ -352,7 +341,6 @@ export default function GallerySection() {
                 </button>
               </div>
 
-              {/* Scrollable Grid of All Looks */}
               <div className="p-6 sm:p-10 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {galleryItems.map((item) => (
                   <div

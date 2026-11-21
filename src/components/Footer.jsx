@@ -60,7 +60,7 @@ export default function Footer() {
             </a>
 
             <p className="text-[13.5px] md:text-[14px] text-[#9E988E] leading-[1.65] max-w-[270px]">
-              A hair and nail studio in Waterloo. Precision cuts, bespoke
+              A hair and nail studio in Mohali. Precision cuts, bespoke
               colour, and nail artistry tailored for you.
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
               Visit
             </h3>
             <div className="space-y-2.5 text-[14px] text-[#F6F5F1] leading-relaxed">
-              <p>Glam by Amni, Waterloo</p>
+              <p>Glam by Amni, Mohali</p>
               <p className="text-[#C8C3BA]">Tue to Sun, 9 am to 8 pm</p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function Footer() {
           </div>
 
           <p className="hidden md:block">
-            Hair, colour and nail artistry in Waterloo
+            Hair, colour and nail artistry in Mohali
           </p>
         </div>
       </div>

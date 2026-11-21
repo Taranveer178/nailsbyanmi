@@ -2,44 +2,43 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const serviceTags = [
-  "Cuts",
-  "Fades",
-  "Colour & Balayage",
-  "Grooming",
-  "Care & Treatments",
+  "Haircuts",
+  "Balayage & Colour",
+  "Keratin & Smoothening",
+  "Hair Spa",
+  "Bridal Styling",
 ];
 
 const menuServices = [
   {
-    name: "Signature cut",
-    description: "Consultation, wash, precision cut and finish.",
-    price: "from $65",
+    name: "Signature Cut & Blow Dry",
+    description: "Consultation, relaxing wash, precision haircut, and round-brush finish.",
+    price: "from ₹900",
     duration: "45 min",
   },
   {
-    name: "Skin fade",
-    description: "Clipper fade blended by hand, with a sharp line up.",
-    price: "from $45",
-    duration: "40 min",
+    name: "Dimensional Balayage & Gloss",
+    description: "Hand-painted highlights, custom root blend, and shine-sealing toner.",
+    price: "from ₹4,500",
+    duration: "150 min",
   },
   {
-    name: "Long cut and blow dry",
-    description:
-      "For hair past the shoulders, shaped and finished with a round brush.",
-    price: "from $85",
-    duration: "75 min",
+    name: "Global Hair Colour & Root Touch-Up",
+    description: "Ammonia-free rich coverage tailored to your skin undertone.",
+    price: "from ₹2,200",
+    duration: "90 min",
   },
   {
-    name: "Balayage & Colour",
-    description: "Hand-painted dimension, gloss toning, and seamless blend.",
-    price: "from $140",
+    name: "Keratin & Botox Hair Therapy",
+    description: "Deep frizz-control and protein restoration for silky, manageable hair.",
+    price: "from ₹3,800",
     duration: "120 min",
   },
   {
-    name: "Kérastase & Scalp Care",
-    description: "Deep restorative ritual tailored to scalp and strand health.",
-    price: "from $85",
-    duration: "45 min",
+    name: "Luxury Scalp & Bond Repair Spa",
+    description: "Restorative mask, steam therapy, and therapeutic head massage.",
+    price: "from ₹1,500",
+    duration: "60 min",
   },
 ];
 
@@ -82,20 +81,20 @@ export default function ServiceMenuSection() {
             transition={{ duration: 0.8, ease: framerEase }}
             className="max-w-[650px]"
           >
-            {/* Eyebrow Badge: [03] Service menu */}
+            {/* Eyebrow Badge: [03] Hair menu */}
             <div className="inline-flex items-center bg-[#F6F5F1] rounded-[3px] p-1 pr-4 mb-7">
               <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
                 03
               </span>
               <span className="text-[#2F2C29] text-[13px] font-medium tracking-wide ml-3">
-                Service menu
+                Hair menu
               </span>
             </div>
 
             {/* Two-Tone Editorial Headline */}
             <h2 className="text-4xl sm:text-5xl md:text-[54px] font-medium leading-[1.1] tracking-[-0.025em]">
-              <span className="block text-[#2F2C29]">One menu for</span>
-              <span className="block text-[#8A755F]">every head of hair.</span>
+              <span className="block text-[#2F2C29]">Bespoke hair care</span>
+              <span className="block text-[#8A755F]">tailored to you.</span>
             </h2>
           </motion.div>
 
@@ -107,14 +106,14 @@ export default function ServiceMenuSection() {
             transition={{ duration: 0.8, delay: 0.12, ease: framerEase }}
             className="text-[14.5px] md:text-[15.5px] text-[#5C554C] leading-[1.6] max-w-[360px]"
           >
-            Prices start from the time your service takes. Your stylist confirms
-            the final price at consultation, before a single snip.
+            Prices vary by hair length and density. Amni confirms your exact
+            quote during consultation before we begin.
           </motion.p>
         </div>
 
         {/* Always-Open Service Showcase Layout */}
         <div className="pt-12 md:pt-16">
-          {/* Sub-header with Index Number, Section Title & Category Tags */}
+          {/* Sub-header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,10 +127,9 @@ export default function ServiceMenuSection() {
 
             <div>
               <h3 className="text-3xl sm:text-4xl md:text-[42px] font-medium text-[#2F2C29] tracking-[-0.02em] leading-none mb-4">
-                Signature Services
+                Signature Hair Services
               </h3>
 
-              {/* Small Cream Tag Pills */}
               <div className="flex flex-wrap items-center gap-2">
                 {serviceTags.map((tag, idx) => (
                   <motion.span
@@ -154,9 +152,9 @@ export default function ServiceMenuSection() {
             </div>
           </motion.div>
 
-          {/* 2-Column Content Grid: Stretched to End at the Exact Same Level */}
+          {/* 2-Column Content Grid */}
           <div className="pl-0 sm:pl-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
-            {/* Left Image Card (Stretches to match full height of right column) */}
+            {/* Left Image Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.97, y: 24 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -167,19 +165,17 @@ export default function ServiceMenuSection() {
               <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full overflow-hidden rounded-[2px] bg-[#2F2C29] group">
                 <motion.img
                   src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=85"
-                  alt="Signature Hair Services at Virtuoso"
+                  alt="Signature Hair Services at Glam By Amni Mohali"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.8, ease: framerEase }}
                   className="w-full h-full object-cover object-center"
                 />
-                {/* Subtle Editorial Hover Vignette */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
             </motion.div>
 
             {/* Right Service List & Booking Button */}
             <div className="lg:col-span-7 flex flex-col justify-between">
-              {/* Service Pricing Rows with Staggered Scroll Entrance & Hover Slide */}
               <motion.div
                 variants={listContainerVariants}
                 initial="hidden"
@@ -218,7 +214,6 @@ export default function ServiceMenuSection() {
                 ))}
               </motion.div>
 
-              {/* Bottom CTA Button */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -233,7 +228,7 @@ export default function ServiceMenuSection() {
                   transition={{ duration: 0.25, ease: framerEase }}
                   className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px] transition-colors shadow-sm"
                 >
-                  <span>Book this service</span>
+                  <span>Book hair service</span>
                   <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
                 </motion.a>
               </motion.div>

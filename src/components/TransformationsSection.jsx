@@ -5,11 +5,11 @@ import { ArrowRight, MoveHorizontal } from "lucide-react";
 const transformations = [
   {
     id: "01",
-    client: "Elena R.",
+    client: "Simran K.",
     service: "Dimensional Balayage & Gloss",
-    duration: "3.5 hrs · Master Colourist",
+    duration: "3 hrs · Hair Transformation",
     description:
-      "Lifted brassy mid-lengths into a soft, lived-in champagne blonde with a root smudge and Kérastase bond repair.",
+      "Lifted warm brassy tones into a soft, lived-in caramel blonde with seamless root blending and deep bond-repair shine.",
     beforeImage:
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85",
     afterImage:
@@ -17,23 +17,23 @@ const transformations = [
   },
   {
     id: "02",
-    client: "Marcus T.",
-    service: "Precision Skin Fade & Beard Sculpt",
-    duration: "50 min · Senior Barber",
+    client: "Harleen G.",
+    service: "Almond Gel Extensions & Chrome Art",
+    duration: "90 min · Nail Studio",
     description:
-      "Restructured overgrown crown volume into a textured crop paired with a seamless taper fade and hot-towel beard line-up.",
+      "Transformed short natural nails into sculpted almond gel extensions finished with a sheer nude base and pearl chrome glaze.",
     beforeImage:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
     afterImage:
-      "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
   },
   {
     id: "03",
-    client: "Sophia K.",
+    client: "Mehak S.",
     service: "Keratin Silk & Long Layer Reshape",
-    duration: "2 hrs · Creative Director",
+    duration: "2 hrs · Hair Care",
     description:
-      "Eliminated humidity frizz while adding weightless face-framing movement and mirror-like shine without losing length.",
+      "Tamed frizz and dryness while adding weightless face-framing layers and mirror-like smoothness without losing length.",
     beforeImage:
       "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=85",
     afterImage:
@@ -83,7 +83,6 @@ function BeforeAfterCard({ item, index }) {
       className="group bg-[#F6F5F1] border border-[#2F2C29]/12 rounded-[3px] p-4 sm:p-5 flex flex-col justify-between transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(47,44,41,0.12)] hover:-translate-y-1"
     >
       <div>
-        {/* Interactive Before / After Comparison Viewport */}
         <div
           ref={containerRef}
           onPointerDown={handlePointerDown}
@@ -91,7 +90,7 @@ function BeforeAfterCard({ item, index }) {
           onPointerUp={handlePointerUp}
           className="relative w-full aspect-[4/4.6] overflow-hidden rounded-[2px] select-none touch-none cursor-ew-resize bg-[#2F2C29]"
         >
-          {/* Base Layer: AFTER Image */}
+          {/* AFTER Image */}
           <img
             src={item.afterImage}
             alt={`${item.service} - After`}
@@ -99,7 +98,7 @@ function BeforeAfterCard({ item, index }) {
             className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
 
-          {/* Top Clipped Layer: BEFORE Image */}
+          {/* BEFORE Image */}
           <div
             style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
             className="absolute inset-0 w-full h-full"
@@ -112,10 +111,8 @@ function BeforeAfterCard({ item, index }) {
             />
           </div>
 
-          {/* Subtle Bottom Vignette */}
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent pointer-events-none" />
 
-          {/* Top Corner Badges: BEFORE & AFTER */}
           <div className="absolute top-3.5 left-3.5 z-10 pointer-events-none">
             <span className="bg-[#1E1C19]/75 backdrop-blur-md text-white/90 text-[10.5px] font-medium tracking-[0.14em] uppercase px-2.5 py-1 rounded-[2px] border border-white/15">
               Before
@@ -128,7 +125,6 @@ function BeforeAfterCard({ item, index }) {
             </span>
           </div>
 
-          {/* Vertical Divider Line & Draggable Handle */}
           <div
             style={{ left: `${sliderPos}%` }}
             className="absolute top-0 bottom-0 w-[2px] bg-white shadow-[0_0_12px_rgba(0,0,0,0.45)] z-20 pointer-events-none -translate-x-1/2"
@@ -142,7 +138,6 @@ function BeforeAfterCard({ item, index }) {
             </div>
           </div>
 
-          {/* Bottom Interactive Hint */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none opacity-85 group-hover:opacity-100 transition-opacity">
             <span className="text-[10.5px] text-white/90 bg-black/45 backdrop-blur-sm px-2.5 py-0.5 rounded-[2px] tracking-wide whitespace-nowrap">
               Drag slider to compare
@@ -150,7 +145,7 @@ function BeforeAfterCard({ item, index }) {
           </div>
         </div>
 
-        {/* Quick-Snap Controls & Meta Info */}
+        {/* Quick-Snap Controls */}
         <div className="flex items-center justify-between pt-4 pb-3 border-b border-[#2F2C29]/10">
           <div className="flex items-center gap-2 text-[12px] font-medium text-[#8A755F]">
             <span>{item.id}</span>
@@ -158,7 +153,6 @@ function BeforeAfterCard({ item, index }) {
             <span>{item.duration}</span>
           </div>
 
-          {/* One-click view toggles */}
           <div className="flex items-center gap-1 bg-[#E1D9CC]/70 p-0.5 rounded-[2px]">
             <button
               type="button"
@@ -196,7 +190,6 @@ function BeforeAfterCard({ item, index }) {
           </div>
         </div>
 
-        {/* Service Name & Description */}
         <div className="pt-4">
           <h3 className="text-[21px] md:text-[23px] font-medium text-[#2F2C29] tracking-[-0.015em] leading-snug group-hover:text-[#8A755F] transition-colors">
             {item.service}
@@ -207,10 +200,10 @@ function BeforeAfterCard({ item, index }) {
         </div>
       </div>
 
-      {/* Card Footer CTA */}
       <div className="pt-5 mt-5 border-t border-[#2F2C29]/10 flex items-center justify-between">
         <span className="text-[12.5px] font-medium text-[#5C554C]">
-          Client: <strong className="font-semibold text-[#2F2C29]">{item.client}</strong>
+          Client:{" "}
+          <strong className="font-semibold text-[#2F2C29]">{item.client}</strong>
         </span>
 
         <a
@@ -232,9 +225,7 @@ export default function TransformationsSection() {
       className="w-full bg-[#DFD6C7] text-[#2F2C29] py-20 md:py-28 border-t border-[#2F2C29]/10 overflow-hidden"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Top Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-14 md:mb-18">
-          {/* Left: Eyebrow Badge + Editorial Headline */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -242,7 +233,6 @@ export default function TransformationsSection() {
             transition={{ duration: 0.75, ease: framerEase }}
             className="max-w-[740px]"
           >
-            {/* Eyebrow Badge: [05] Transformations */}
             <div className="inline-flex items-center bg-[#F6F5F1] rounded-[3px] p-1 pr-4 mb-7">
               <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
                 05
@@ -252,14 +242,12 @@ export default function TransformationsSection() {
               </span>
             </div>
 
-            {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] font-medium text-[#2F2C29] leading-[1.15] tracking-[-0.02em]">
               Real results,{" "}
               <span className="text-[#8A755F]">side by side.</span>
             </h2>
           </motion.div>
 
-          {/* Right: Supporting Copy & CTA */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -268,9 +256,9 @@ export default function TransformationsSection() {
             className="w-full lg:max-w-[390px] flex flex-col items-start shrink-0"
           >
             <p className="text-[15.5px] md:text-[16.5px] text-[#5C554C] leading-[1.65] mb-6">
-              Unfiltered chair-side transformations from our Waterloo floor.
+              Unfiltered chair-side transformations from our Mohali studio.
               Slide across each client portrait to see the tone, texture, and
-              shape before and after.
+              nail finish before and after.
             </p>
 
             <motion.a
@@ -285,7 +273,6 @@ export default function TransformationsSection() {
           </motion.div>
         </div>
 
-        {/* 3-Column Before & After Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 md:gap-8">
           {transformations.map((item, index) => (
             <BeforeAfterCard key={item.id} item={item} index={index} />

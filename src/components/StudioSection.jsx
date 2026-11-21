@@ -5,35 +5,35 @@ import { ArrowRight, Star } from "lucide-react";
 const studioServices = [
   {
     id: "01",
-    title: "Hair Treatment",
-    description: "Healthier scalp. Beautiful hair.",
+    title: "Hair Spa & Care",
+    description: "Deep scalp nourishment and restorative shine rituals.",
     image:
       "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1000&q=85",
   },
   {
     id: "02",
-    title: "Curls",
-    description: "Defined bounce, hydration, and frizz-free shape.",
+    title: "Gel & Acrylic Nails",
+    description: "Sculpted extensions with chip-free mirror gloss.",
     image:
-      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1000&q=85",
   },
   {
     id: "03",
-    title: "Balayage",
+    title: "Balayage & Colour",
     description: "Hand-painted dimension with seamless, natural grow-out.",
     image:
       "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1000&q=85",
   },
   {
     id: "04",
-    title: "Men's Cut",
-    description: "Tailored scissor work and precision skin fades.",
+    title: "Custom Nail Art",
+    description: "Minimalist chrome, French micro-tips, and bridal sets.",
     image:
-      "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1000&q=85",
+      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1000&q=85",
   },
   {
     id: "05",
-    title: "Long layers",
+    title: "Signature Layers",
     description: "Weightless movement and soft face-framing volume.",
     image:
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=85",
@@ -51,9 +51,9 @@ export default function StudioSection() {
       className="w-full bg-[#F6F5F1] text-[#2F2C29] py-20 md:py-28"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-        {/* Top Row: Exact 2-Column Layout from Reference */}
+        {/* Top Row */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 lg:gap-16 mb-16 md:mb-20">
-          {/* Left Column: Eyebrow Badge + Large Editorial Headline */}
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,15 +71,15 @@ export default function StudioSection() {
               </span>
             </div>
 
-            {/* Larger Editorial Headline */}
+            {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] font-medium text-[#2F2C29] leading-[1.16] tracking-[-0.02em]">
-              Fades and finger waves, beards and balayage. One studio, one{" "}
-              <span className="text-[#8A755F]">standard,</span> and every head of
-              hair treated with the same care.
+              Lived-in balayage and sculpted gel nails. One studio in Mohali,
+              one <span className="text-[#8A755F]">standard,</span> and every
+              detail crafted with care.
             </h2>
           </motion.div>
 
-          {/* Right Column: Google Rating + Larger Paragraph + Outlined Button */}
+          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,6 @@ export default function StudioSection() {
             transition={{ duration: 0.75, delay: 0.12, ease: framerEase }}
             className="w-full lg:max-w-[390px] lg:pt-2 flex flex-col items-start shrink-0"
           >
-            {/* 5 Outlined Stars + Google Rating */}
             <div className="flex items-center gap-2.5 mb-5">
               <div className="flex items-center gap-1 text-[#8A755F]">
                 {[...Array(5)].map((_, i) => (
@@ -98,20 +97,18 @@ export default function StudioSection() {
                 ))}
               </div>
               <span className="text-[13px] font-medium text-[#5A554E]">
-                4.9 from 980+ Google reviews
+                4.9 client rating in Mohali
               </span>
             </div>
 
-            {/* Larger Description */}
             <p className="text-[15.5px] md:text-[16.5px] text-[#6E6961] leading-[1.65] mb-8">
-              Twelve stylists, one open floor. Every visit starts with a real
-              consultation at the mirror, so you know the plan and the price
-              before we begin.
+              At Glam By Amni, every visit begins with an unhurried, one-on-one
+              consultation—so your hair colour, cut, and nail design fit your
+              personal style before we begin.
             </p>
 
-            {/* Outlined Button */}
             <motion.a
-              href="#consultation"
+              href="#book"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 border border-[#2F2C29]/45 hover:border-[#2F2C29] hover:bg-[#2F2C29] hover:text-white text-[#2F2C29] text-[14.5px] font-medium px-6 py-3.5 rounded-[3px] transition-colors duration-200"
@@ -122,14 +119,14 @@ export default function StudioSection() {
           </motion.div>
         </div>
 
-        {/* Bottom Gallery Widget: Desktop Expanding Accordion / Mobile Vertical Stack */}
+        {/* Bottom Gallery Widget */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.85, delay: 0.15, ease: framerEase }}
         >
-          {/* DESKTOP EXPANDING GALLERY (lg and up) */}
+          {/* DESKTOP EXPANDING GALLERY */}
           <div className="hidden lg:flex w-full h-[520px] gap-3.5">
             {studioServices.map((service, index) => {
               const isExpanded = activeIndex === index;
@@ -145,7 +142,6 @@ export default function StudioSection() {
                   }}
                   className="relative h-full overflow-hidden rounded-[2px] cursor-pointer group bg-[#2F2C29]"
                 >
-                  {/* Background Photo */}
                   <img
                     src={service.image}
                     alt={service.title}
@@ -154,7 +150,6 @@ export default function StudioSection() {
                     }`}
                   />
 
-                  {/* Bottom Dark Gradient Overlay */}
                   <div
                     className="absolute inset-0 transition-opacity duration-500"
                     style={{
@@ -164,7 +159,7 @@ export default function StudioSection() {
                     }}
                   />
 
-                  {/* EXPANDED STATE CONTENT */}
+                  {/* EXPANDED STATE */}
                   <div
                     className={`absolute bottom-7 left-7 right-7 transition-all duration-500 ${
                       isExpanded
@@ -190,7 +185,7 @@ export default function StudioSection() {
                     </p>
                   </div>
 
-                  {/* COLLAPSED STATE CONTENT (Vertical Heading + Side Dot & Number) */}
+                  {/* COLLAPSED STATE */}
                   <div
                     className={`absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center transition-all duration-300 ${
                       isExpanded

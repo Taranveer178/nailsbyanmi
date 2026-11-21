@@ -11,7 +11,7 @@ export default function StylistSection() {
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* LEFT COLUMN: Eyebrow, Large Heading, Bio & CTA */}
+          {/* LEFT COLUMN */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +25,7 @@ export default function StylistSection() {
                 06
               </span>
               <span className="text-[#2F2C29] text-[13px] font-medium tracking-wide ml-3">
-                Meet the stylist
+                Meet the artist
               </span>
             </div>
 
@@ -36,24 +36,23 @@ export default function StylistSection() {
               to finish.
             </h2>
 
-            {/* Stylist Name & Studio */}
+            {/* Artist Name & Studio */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <h3 className="text-xl md:text-[24px] font-medium text-[#2F2C29]">
-                Anmi
+                Amni
               </h3>
               <span className="w-1.5 h-1.5 rounded-full bg-[#8A755F]" />
               <span className="text-[13.5px] font-medium text-[#8A755F] uppercase tracking-wider">
-                Founder & Master Stylist · Glam by AMNI
+                Founder &amp; Lead Artist · Glam By Amni, Mohali
               </span>
             </div>
 
             {/* Personal Bio */}
             <p className="text-[15.5px] md:text-[17px] text-[#6E6961] leading-[1.75] max-w-[540px] mb-10">
-              At Glam by AMNI, every appointment is an unhurried, one-on-one
-              experience. From precision haircuts and lived-in colour to
-              bespoke nail artistry, every detail is personally tailored to
-              your hair texture, style, and daily routine—never rushed or
-              handed off.
+              At Glam By Amni in Mohali, every appointment is an unhurried,
+              one-on-one experience. From dimensional hair colour and precision
+              cuts to sculpted nail extensions and custom nail art, every detail
+              is personally crafted for your style—never rushed or handed off.
             </p>
 
             {/* Action Buttons */}
@@ -65,7 +64,7 @@ export default function StylistSection() {
                 transition={{ duration: 0.25, ease: framerEase }}
                 className="group inline-flex items-center gap-3 bg-[#2F2C29] hover:bg-[#1E1C19] text-[#F6F5F1] text-[14.5px] font-medium px-7 py-3.5 rounded-[3px] transition-colors"
               >
-                <span>Book an appointment</span>
+                <span>Book with Amni</span>
                 <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:translate-x-1" />
               </motion.a>
 
@@ -94,7 +93,7 @@ export default function StylistSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Editorial Portrait + Floating Quote Card */}
+          {/* RIGHT COLUMN: Editorial Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97, y: 28 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -102,23 +101,19 @@ export default function StylistSection() {
             transition={{ duration: 0.9, delay: 0.15, ease: framerEase }}
             className="lg:col-span-6 relative"
           >
-            {/* Subtle Decorative Offset Backdrop Frame */}
             <div className="hidden sm:block absolute -top-4 -right-4 w-full h-full border border-[#8A755F]/35 rounded-[3px] pointer-events-none" />
 
-            {/* Main Stylist Portrait */}
             <div className="relative w-full aspect-[4/4.6] overflow-hidden rounded-[3px] bg-[#2F2C29] group shadow-[0_24px_48px_-16px_rgba(47,44,41,0.18)]">
               <motion.img
                 src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1100&q=85"
-                alt="Luxmi Anmol Soni - Founder & Stylist at Glam by Luxmi"
+                alt="Luxmi - Founder & Lead Artist at Glam By Amni Mohali"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.85, ease: framerEase }}
                 className="w-full h-full object-cover object-top"
               />
 
-              {/* Subtle Bottom Gradient */}
               <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#1E1C19]/85 via-[#1E1C19]/30 to-transparent pointer-events-none" />
 
-              {/* Floating Quote / Studio Card at Bottom of Portrait */}
               <motion.div
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +124,7 @@ export default function StylistSection() {
                 <div className="flex items-center justify-between gap-4 mb-2">
                   <div className="flex items-center gap-2 text-[#DFD6C7] text-[11.5px] font-medium tracking-wider uppercase">
                     <Award className="w-3.5 h-3.5 text-[#DFD6C7]" />
-                    <span>Glam by Luxmi · Hair & Nail Studio</span>
+                    <span>Glam By Amni · Nail &amp; Hair Studio, Mohali</span>
                   </div>
                   <Sparkles className="w-4 h-4 text-white/60 shrink-0" />
                 </div>

@@ -1,12 +1,12 @@
 const tickerItems = [
-  "Grooming",
-  "Ladies Hair Services",
-  "BlowOut",
-  "Color Correction",
-  "Colour Retouches",
-  "Bridal Styling",
-  "Kérastase Treatments",
-  "Balayage",
+  "Gel Nail Extensions",
+  "Signature Haircuts",
+  "Balayage & Global Colour",
+  "Luxury Nail Art",
+  "Keratin & Hair Spa",
+  "Russian Manicure",
+  "BlowOut & Styling",
+  "Spa Pedicure",
 ];
 
 export default function ServiceTicker() {

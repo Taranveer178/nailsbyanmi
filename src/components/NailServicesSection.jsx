@@ -7,7 +7,7 @@ const nailServices = [
     title: "Manicure",
     description:
       "Cuticle care, precision shaping, hydrating hand massage, and high-shine finish.",
-    price: "from $40",
+    price: "from ₹2000",
     image:
       "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
   },
@@ -16,7 +16,7 @@ const nailServices = [
     title: "Nail Polish",
     description:
       "Long-wear lacquer application in classic neutrals, deep reds, or seasonal tones.",
-    price: "from $25",
+    price: "from ₹1500",
     image:
       "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85",
   },
@@ -25,7 +25,7 @@ const nailServices = [
     title: "Pedicure",
     description:
       "Soothing mineral soak, exfoliation, heel smoothing, and flawless polish.",
-    price: "from $55",
+    price: "from ₹4000",
     image:
       "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=900&q=85",
   },
@@ -34,7 +34,7 @@ const nailServices = [
     title: "Nail Trim",
     description:
       "Clean length reduction, edge refinement, and natural nail buffing.",
-    price: "from $20",
+    price: "from ₹8000",
     image:
       "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
   },
@@ -43,7 +43,7 @@ const nailServices = [
     title: "Gel Coloring",
     description:
       "Chip-resistant LED-cured gel color with mirror gloss that lasts up to three weeks.",
-    price: "from $50",
+    price: "from ₹4500",
     image:
       "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=900&q=85",
   },
@@ -52,7 +52,7 @@ const nailServices = [
     title: "Nail Art",
     description:
       "Bespoke minimalist line work, French micro-tips, chrome, and custom accents.",
-    price: "from $65",
+    price: "from ₹5000",
     image:
       "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=85",
   },
