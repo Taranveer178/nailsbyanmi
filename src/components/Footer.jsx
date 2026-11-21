@@ -168,7 +168,7 @@ export default function Footer({ onNavigate }) {
             </button>
           </div>
 
-          <p className="hidden md:block">
+          <p className="text-center sm:text-right">
             Developed by{" "}
             <a
               href="https://taranveer.in"
