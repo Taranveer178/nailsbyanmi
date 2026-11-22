@@ -101,7 +101,7 @@ export default function Footer({ onNavigate }) {
           </div>
 
           {/* Visit Column */}
-          <div className="col-span-1 lg:col-span-3">
+          <div className="col-span-1 lg:col-span-2">
             <h3 className="text-[12px] font-medium text-[#9E988E] tracking-wide mb-4">
               Visit
             </h3>
@@ -112,25 +112,25 @@ export default function Footer({ onNavigate }) {
           </div>
 
           {/* Contact Column */}
-          <div className="col-span-2 sm:col-span-1 lg:col-span-2">
+          <div className="col-span-2 sm:col-span-1 lg:col-span-3">
             <h3 className="text-[12px] font-medium text-[#9E988E] tracking-wide mb-4">
               Contact
             </h3>
             <ul className="space-y-2.5 text-[14px]">
               <li>
                 <a
-                  href="tel:+15195550147"
+                  href="tel:+918571952209"
                   className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
                 >
-                  (519) 555 0147
+                  +91 85719 52209
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:hello@glambyluxmi.com"
-                  className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors break-all"
+                  href="mailto:sehdevra30009@gmail.com"
+                  className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors whitespace-nowrap"
                 >
-                  hello@glambyluxmi.com
+                  sehdevra30009@gmail.com
                 </a>
               </li>
               <li>

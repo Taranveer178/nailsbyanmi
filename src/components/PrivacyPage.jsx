@@ -30,7 +30,7 @@ const privacySections = [
     number: "05",
     title: "Contact Us Regarding Privacy",
     content:
-      "For any questions regarding this Privacy Policy or your personal data, please email hello@glambyamni.in or call +91 98765 43210 during studio hours (Tue–Sun, 10 am to 8 pm).",
+      "For any questions regarding this Privacy Policy or your personal data, please email sehdevra30009@gmail.com or call +91 85719 52209 during studio hours (Tue–Sun, 9 am to 8 pm).",
   },
 ];
 

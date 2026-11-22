@@ -115,10 +115,10 @@ export default function ContactBookingSection() {
                     Call
                   </span>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+918571952209"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    +91 98765 43210
+                    +91 85719 52209
                   </a>
                 </div>
 
@@ -127,10 +127,10 @@ export default function ContactBookingSection() {
                     Instagram &amp; Email
                   </span>
                   <a
-                    href="mailto:hello@glambyanmi.in"
+                    href="mailto:sehdevra30009@gmail.com"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    hello@glambyanmi.in
+                    sehdevra30009@gmail.com
                   </a>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function ContactBookingSection() {
 
             <div>
               <motion.a
-                href="tel:+919876543210"
+                href="tel:+918571952209"
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25, ease: framerEase }}
                 className="cta-fill cta-fill--light group inline-flex items-center gap-3 bg-[#F6F5F1] text-[#1E1C19] text-[14px] font-semibold px-7 py-4 rounded-[3px]"
@@ -201,7 +201,7 @@ export default function ContactBookingSection() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+91 98765 00000"
+                    placeholder="+91 85719 52209"
                     className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>

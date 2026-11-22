@@ -7,7 +7,7 @@ const navLinks = [
   { name: "Studio", href: "#studio" },
   { name: "Hair", href: "#services" },
   { name: "Nails", href: "#nails" },
-  { name: "Stylists", href: "#stylists" },
+  { name: "Stylist", href: "#stylists" },
 ];
 
 export default function Header({ onNavigate }) {

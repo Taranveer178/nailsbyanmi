@@ -97,11 +97,11 @@ export default function StylistSection() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, delay: 0.15, ease: framerEase }}
-            className="lg:col-span-6 relative"
+            className="lg:col-span-6 relative lg:max-w-[520px] lg:justify-self-end"
           >
             <div className="hidden sm:block absolute -top-4 -right-4 w-full h-full border border-[#8A755F]/35 rounded-[3px] pointer-events-none" />
 
-            <div className="relative w-full aspect-[4/4.6] overflow-hidden rounded-[3px] bg-[#2F2C29] group shadow-[0_24px_48px_-16px_rgba(47,44,41,0.18)]">
+            <div className="relative w-full aspect-[4/4.6] lg:h-[560px] lg:aspect-auto overflow-hidden rounded-[3px] bg-[#2F2C29] group shadow-[0_24px_48px_-16px_rgba(47,44,41,0.18)]">
               <motion.img
                 src="/ANMI-%20Stylist.webp"
                 alt="Anmi - Founder & Lead Artist at Glam By Anmi Mohali"

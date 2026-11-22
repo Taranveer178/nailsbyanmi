@@ -107,7 +107,7 @@ export default function TermsPage({ onBack }) {
             <FileText className="w-5 h-5 text-[#8A755F] shrink-0 mt-0.5" />
             <p className="text-[14px] text-[#2F2C29] leading-relaxed">
               Questions before booking? Reach out to{" "}
-              <strong>hello@glambyamni.in</strong> or message{" "}
+              <strong>sehdevra30009@gmail.com</strong> or message{" "}
               <strong>@nails_hairs_by_anmi</strong> on Instagram.
             </p>
           </div>
