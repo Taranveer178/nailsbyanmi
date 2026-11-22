@@ -8,6 +8,7 @@ const navLinks = [
   { name: "Hair", href: "#services" },
   { name: "Nails", href: "#nails" },
   { name: "Stylist", href: "#stylists" },
+  { name: "Gallery", page: "gallery" },
 ];
 
 export default function Header({ onNavigate }) {
@@ -22,8 +23,13 @@ export default function Header({ onNavigate }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (e, href) => {
+  const handleLinkClick = (e, href, page) => {
     setMobileOpen(false);
+    if (page && onNavigate) {
+      e.preventDefault();
+      onNavigate(page);
+      return;
+    }
     if (onNavigate) {
       onNavigate("home");
       if (href && href !== "#") {
@@ -70,8 +76,8 @@ export default function Header({ onNavigate }) {
           {navLinks.map((link, idx) => (
             <motion.a
               key={link.name}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
+              href={link.href || "#gallery"}
+              onClick={(e) => handleLinkClick(e, link.href, link.page)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -131,8 +137,8 @@ export default function Header({ onNavigate }) {
               {navLinks.map((link) => (
                 <a
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
+                  href={link.href || "#gallery"}
+                  onClick={(e) => handleLinkClick(e, link.href, link.page)}
                   className="text-base font-medium text-white/95 hover:text-white py-2 border-b border-white/5"
                 >
                   {link.name}

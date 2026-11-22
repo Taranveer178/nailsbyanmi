@@ -5,7 +5,7 @@ const exploreLinks = [
   { name: "Studio", href: "#studio" },
   { name: "Services", href: "#services" },
   { name: "Nails", href: "#nails" },
-  { name: "Gallery", href: "#gallery" },
+  { name: "Gallery", href: "#gallery", page: "gallery" },
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -13,6 +13,12 @@ const framerEase = [0.22, 1, 0.36, 1];
 export default function Footer({ onNavigate }) {
   const handleAnchorClick = (e, href) => {
     if (onNavigate) {
+      const link = exploreLinks.find((item) => item.href === href);
+      if (link?.page) {
+        e.preventDefault();
+        onNavigate(link.page);
+        return;
+      }
       onNavigate("home");
       setTimeout(() => {
         const el = document.querySelector(href);
