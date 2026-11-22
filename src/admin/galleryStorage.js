@@ -96,6 +96,8 @@ function mergeSavedSections(savedSections, deletedItemIds) {
         const replaceDemoImage =
           (isUnsplashImage(normalizedSavedItem.image) &&
             !isUnsplashImage(item.image)) ||
+          (defaultSection.id === "reviews" &&
+            normalizedSavedItem.image === "/ANMI-%20Stylist.webp") ||
           (defaultSection.id === "nails" &&
             !isCloudinaryImage(normalizedSavedItem.image));
         const restoreStudioDescription =

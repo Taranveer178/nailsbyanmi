@@ -184,8 +184,7 @@ export const adminSections = [
         tag: "from ₹2000",
         meta: "Cuticle care, precision shaping, hydrating hand massage, and high-shine finish.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
+        image: "/manicure.webp",
       },
       {
         id: "02",
@@ -193,8 +192,7 @@ export const adminSections = [
         tag: "from ₹1500",
         meta: "Long-wear lacquer application in classic neutrals, deep reds, or seasonal tones.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85",
+        image: "/nail%20polish.webp",
       },
       {
         id: "03",
@@ -202,8 +200,7 @@ export const adminSections = [
         tag: "from ₹4000",
         meta: "Soothing mineral soak, exfoliation, heel smoothing, and flawless polish.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=900&q=85",
+        image: "/padicure.webp",
       },
       {
         id: "04",
@@ -211,8 +208,7 @@ export const adminSections = [
         tag: "from ₹8000",
         meta: "Clean length reduction, edge refinement, and natural nail buffing.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=85",
+        image: "/nail%20trim.webp",
       },
       {
         id: "05",
@@ -220,8 +216,7 @@ export const adminSections = [
         tag: "from ₹4500",
         meta: "Chip-resistant LED-cured gel color with mirror gloss that lasts up to three weeks.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=900&q=85",
+        image: "/gel%20coloring.webp",
       },
       {
         id: "06",
@@ -229,8 +224,7 @@ export const adminSections = [
         tag: "from ₹5000",
         meta: "Bespoke minimalist line work, French micro-tips, chrome, and custom accents.",
         status: "visible",
-        image:
-          "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
+        image: "/nail%20arts.webp",
       },
     ],
   },
@@ -337,34 +331,34 @@ export const adminSections = [
         id: "review-1",
         title: "Komal Singla",
         tag: "Balayage & Gel Extensions",
-        meta: "I had such an amazing experience at Glam By Anmi in Mohali! Anmi really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
+        meta: "Anmi understood exactly what I wanted for my balayage and extensions. The colour looks natural, the extensions feel comfortable, and every detail was finished carefully. I felt listened to throughout my appointment.",
         name: "Komal Singla",
         service: "Balayage & Gel Extensions",
-        quote: "I had such an amazing experience at Glam By Anmi in Mohali! Anmi really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
+        quote: "Anmi understood exactly what I wanted for my balayage and extensions. The colour looks natural, the extensions feel comfortable, and every detail was finished carefully. I felt listened to throughout my appointment.",
         status: "visible",
-        image: "/ANMI-%20Stylist.webp",
+        image: "/client%201.webp",
       },
       {
         id: "review-2",
         title: "Arsh Gill",
         tag: "Russian Manicure & Nail Art",
-        meta: "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Anmi has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
+        meta: "My Russian manicure and nail art were shaped so neatly, and the finish was exactly what I had in mind. The service felt calm and unhurried, and Anmi explained each step before starting.",
         name: "Arsh Gill",
         service: "Russian Manicure & Nail Art",
-        quote: "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Anmi has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
+        quote: "My Russian manicure and nail art were shaped so neatly, and the finish was exactly what I had in mind. The service felt calm and unhurried, and Anmi explained each step before starting.",
         status: "visible",
-        image: "/ANMI-%20Stylist.webp",
+        image: "/client%202.webp",
       },
       {
         id: "review-3",
         title: "Riya Sharma",
         tag: "Keratin Spa & BlowOut",
-        meta: "Hands down the best hair spa and blowout in Mohali. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
+        meta: "My hair spa and blowout left my hair soft, manageable, and naturally glossy. The appointment never felt rushed, and the styling lasted beautifully for several days.",
         name: "Riya Sharma",
         service: "Keratin Spa & BlowOut",
-        quote: "Hands down the best hair spa and blowout in Mohali. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
+        quote: "My hair spa and blowout left my hair soft, manageable, and naturally glossy. The appointment never felt rushed, and the styling lasted beautifully for several days.",
         status: "visible",
-        image: "/ANMI-%20Stylist.webp",
+        image: "/client%203.webp",
       },
     ],
   },

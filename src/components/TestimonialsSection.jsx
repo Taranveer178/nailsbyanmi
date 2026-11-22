@@ -8,26 +8,26 @@ const defaultTestimonials = [
   {
     id: 1,
     quote:
-      "I had such an amazing experience at Glam By Anmi in Mohali! Anmi really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
+      "Anmi understood exactly what I wanted for my balayage and extensions. The colour looks natural, the extensions feel comfortable, and every detail was finished carefully. I felt listened to throughout my appointment.",
     name: "Komal Singla",
     service: "Balayage & Gel Extensions",
-    image: "/ANMI-%20Stylist.webp",
+    image: "/client%201.webp",
   },
   {
     id: 2,
     quote:
-      "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Anmi has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
+      "My Russian manicure and nail art were shaped so neatly, and the finish was exactly what I had in mind. The service felt calm and unhurried, and Anmi explained each step before starting.",
     name: "Arsh Gill",
     service: "Russian Manicure & Nail Art",
-    image: "/ANMI-%20Stylist.webp",
+    image: "/client%202.webp",
   },
   {
     id: 3,
     quote:
-      "Hands down the best hair spa and blowout in Mohali. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
+      "My hair spa and blowout left my hair soft, manageable, and naturally glossy. The appointment never felt rushed, and the styling lasted beautifully for several days.",
     name: "Riya Sharma",
     service: "Keratin Spa & BlowOut",
-    image: "/ANMI-%20Stylist.webp",
+    image: "/client%203.webp",
   },
 ];
 
