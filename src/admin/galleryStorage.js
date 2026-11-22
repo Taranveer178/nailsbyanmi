@@ -44,6 +44,11 @@ const normalizePublicImagePath = (image) =>
     ? image.replace(/%26/gi, "&")
     : image;
 
+const isGalleryLogoOrBeforeImage = (image) =>
+  typeof image === "string" &&
+  (/^\/(?:logo|favicon)(?:\.|-|$)/i.test(image) ||
+    /before/i.test(decodeURIComponent(image)));
+
 function mergeSavedSections(savedSections, deletedItemIds) {
   const knownSectionIds = new Set(adminSections.map((section) => section.id));
   const mergedSections = adminSections.map((defaultSection) => {
@@ -253,7 +258,11 @@ export function getGalleryCollections() {
     const section = sections.find((entry) => entry.id === sectionId);
     if (!section) return defaults;
     return section.items
-      .filter((item) => item.status !== "hidden")
+      .filter(
+        (item) =>
+          item.status !== "hidden" &&
+          !isGalleryLogoOrBeforeImage(normalizePublicImagePath(item.image))
+      )
       .map((item) => ({
         id: item.id,
         title: item.title,

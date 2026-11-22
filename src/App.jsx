@@ -45,6 +45,67 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  useEffect(() => {
+    const seoByPage = {
+      home: {
+        title: "Glam by Anmi | Hair & Nail Studio in Mohali, Punjab",
+        description:
+          "Visit Glam by Anmi in Mohali for precision haircuts, balayage, hair treatments, gel nails, nail art and bridal beauty services.",
+        path: "/",
+      },
+      gallery: {
+        title: "Hair & Nail Gallery | Glam by Anmi Mohali",
+        description:
+          "Explore recent hair transformations, nail extensions, nail art and beauty looks from Glam by Anmi in Mohali.",
+        path: "/gallery",
+      },
+      privacy: {
+        title: "Privacy Policy | Glam by Anmi",
+        description:
+          "Read the privacy policy for Glam by Anmi, a hair and nail studio in Mohali.",
+        path: "/privacy",
+      },
+      terms: {
+        title: "Terms & Conditions | Glam by Anmi",
+        description:
+          "Review booking, cancellation and studio terms for Glam by Anmi in Mohali.",
+        path: "/terms",
+      },
+    };
+    const seo = seoByPage[activePage];
+    if (!seo) return;
+
+    const canonicalUrl = `https://glambyanmi.in${seo.path}`;
+    document.title = seo.title;
+
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", seo.description);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute("content", seo.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", seo.description);
+    document
+      .querySelector('meta[property="og:url"]')
+      ?.setAttribute("content", canonicalUrl);
+    document
+      .querySelector('meta[name="twitter:title"]')
+      ?.setAttribute("content", seo.title);
+    document
+      .querySelector('meta[name="twitter:description"]')
+      ?.setAttribute("content", seo.description);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", canonicalUrl);
+  }, [activePage]);
+
   const navigateTo = (page) => {
     const path = pagePaths[page] || pagePaths.home;
     if (window.location.pathname !== path) {

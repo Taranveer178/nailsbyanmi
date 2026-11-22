@@ -20,27 +20,6 @@ export const nailsGallery = [
     duration: "110 min",
     image: "/nail%20extension%20after.webp",
   },
-  {
-    id: "N-04",
-    title: "French Micro-Tip Soft Gel Overlay",
-    tag: "Gel Overlay",
-    duration: "75 min",
-    image: "/nail%20extension%20before.webp",
-  },
-  {
-    id: "N-05",
-    title: "Velvet Cat-Eye Sculpted Acrylics",
-    tag: "Acrylic Extensions",
-    duration: "105 min",
-    image: "/logo.png",
-  },
-  {
-    id: "N-06",
-    title: "Botanical Spa Pedicure & Gel Polish",
-    tag: "Spa Pedicure",
-    duration: "60 min",
-    image: "/logo.png",
-  },
 ];
 
 export const hairGallery = [
@@ -88,33 +67,4 @@ export const hairGallery = [
   },
 ];
 
-export const eyelashesGallery = [
-  {
-    id: "L-01",
-    title: "Wispy Hybrid Lash Extensions",
-    tag: "Hybrid Set",
-    duration: "90 min",
-    image: "/logo.png",
-  },
-  {
-    id: "L-02",
-    title: "Natural Classic 1:1 Silk Lashes",
-    tag: "Classic Extensions",
-    duration: "75 min",
-    image: "/logo.png",
-  },
-  {
-    id: "L-03",
-    title: "Fluffy Russian Volume Fan Set",
-    tag: "Volume Lashes",
-    duration: "120 min",
-    image: "/logo.png",
-  },
-  {
-    id: "L-04",
-    title: "Keratin Lash Lift & Deep Tint",
-    tag: "Lash Lift & Tint",
-    duration: "45 min",
-    image: "/logo.png",
-  },
-];
+export const eyelashesGallery = [];

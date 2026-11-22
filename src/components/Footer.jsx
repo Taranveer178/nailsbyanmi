@@ -146,7 +146,7 @@ export default function Footer({ onNavigate }) {
               </li>
               <li>
                 <a
-                  href="https://www.instagram.com/nails_hairs_by_anmi/"
+                  href="https://www.instagram.com/glam_by_anmi/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"

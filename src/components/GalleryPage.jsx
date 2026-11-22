@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, X, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import {
   getGalleryCollections,
   getVisibleAdminItems,
@@ -14,7 +14,7 @@ const defaultGalleryHeroImages = [
   "/hero%20image%20hair%20Glam%20By%20ANMI.webp",
 ];
 
-function LookbookCard({ item, idx, cardBg = "bg-white", onSelect }) {
+function LookbookCard({ item, idx, onSelect }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 26 }}
@@ -22,44 +22,20 @@ function LookbookCard({ item, idx, cardBg = "bg-white", onSelect }) {
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: 0.7, delay: (idx % 3) * 0.08, ease: framerEase }}
       onClick={() => onSelect(item)}
-      className={`group cursor-pointer rounded-[2px] overflow-hidden border border-[#2F2C29]/10 ${cardBg} flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_42px_-16px_rgba(47,44,41,0.16)]`}
+      className="group cursor-pointer rounded-[2px] overflow-hidden border border-[#2F2C29]/10 bg-[#E1D9CC] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_42px_-16px_rgba(47,44,41,0.16)]"
     >
-      {/* Portrait Image Frame */}
       <div className="relative w-full aspect-[4/4.6] overflow-hidden bg-[#2F2C29]">
         <ImageWithFallback
           src={item.image}
           alt={item.title}
           className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
         />
-
-        {/* Subtle Top Tag & Expand Icon */}
-        <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
-          <span className="bg-[#1E1C19]/75 backdrop-blur-md text-[#F6F5F1] text-[10.5px] font-medium tracking-[0.12em] uppercase px-2.5 py-1 rounded-[2px] border border-white/15">
-            {item.tag}
-          </span>
-
-          <span className="w-8 h-8 rounded-[2px] bg-[#F6F5F1]/90 text-[#2F2C29] flex items-center justify-center opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-            <ArrowUpRight className="w-4 h-4 stroke-[1.85]" />
-          </span>
-        </div>
-      </div>
-
-      {/* Caption Footer */}
-      <div className="p-5 flex items-center justify-between gap-4">
-        <div>
-          <span className="block text-[11px] font-medium text-[#8A755F] tracking-wider uppercase mb-1">
-            {item.id} · {item.duration}
-          </span>
-          <h3 className="text-[17.5px] md:text-[18.5px] font-medium text-[#2F2C29] leading-snug group-hover:text-[#8A755F] transition-colors">
-            {item.title}
-          </h3>
-        </div>
       </div>
     </motion.div>
   );
 }
 
-export default function GalleryPage({ onBookNow }) {
+export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeLightboxItem, setActiveLightboxItem] = useState(null);
   const [activeHeroImage, setActiveHeroImage] = useState(0);
@@ -72,6 +48,68 @@ export default function GalleryPage({ onBookNow }) {
   const [galleryCollections] = useState(getGalleryCollections);
   const { nails: nailsGallery, hair: hairGallery, eyelashes: eyelashesGallery } =
     galleryCollections;
+  const allGalleryItems = useMemo(
+    () => [...nailsGallery, ...hairGallery, ...eyelashesGallery],
+    [nailsGallery, hairGallery, eyelashesGallery]
+  );
+  const visibleGalleryItems = useMemo(() => {
+    if (selectedCategory === "nails") return nailsGallery;
+    if (selectedCategory === "hair") return hairGallery;
+    if (selectedCategory === "eyelashes") return eyelashesGallery;
+    return allGalleryItems;
+  }, [
+    selectedCategory,
+    nailsGallery,
+    hairGallery,
+    eyelashesGallery,
+    allGalleryItems,
+  ]);
+
+  const filterTabs = [
+    { id: "all", label: "All", count: allGalleryItems.length },
+    { id: "nails", label: "Nails", count: nailsGallery.length },
+    { id: "hair", label: "Hair", count: hairGallery.length },
+    { id: "eyelashes", label: "Eyelashes", count: eyelashesGallery.length },
+  ].filter((tab) => tab.id === "all" || tab.count > 0);
+
+  const activeLightboxIndex = activeLightboxItem
+    ? visibleGalleryItems.findIndex((item) => item.id === activeLightboxItem.id)
+    : -1;
+
+  const showPreviousImage = () => {
+    if (!visibleGalleryItems.length) return;
+    const nextIndex =
+      (activeLightboxIndex - 1 + visibleGalleryItems.length) %
+      visibleGalleryItems.length;
+    setActiveLightboxItem(visibleGalleryItems[nextIndex]);
+  };
+
+  const showNextImage = () => {
+    if (!visibleGalleryItems.length) return;
+    const nextIndex =
+      (activeLightboxIndex + 1) % visibleGalleryItems.length;
+    setActiveLightboxItem(visibleGalleryItems[nextIndex]);
+  };
+
+  useEffect(() => {
+    if (!activeLightboxItem) return;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setActiveLightboxItem(null);
+      if (event.key === "ArrowLeft") {
+        const nextIndex =
+          (activeLightboxIndex - 1 + visibleGalleryItems.length) %
+          visibleGalleryItems.length;
+        setActiveLightboxItem(visibleGalleryItems[nextIndex]);
+      }
+      if (event.key === "ArrowRight") {
+        const nextIndex =
+          (activeLightboxIndex + 1) % visibleGalleryItems.length;
+        setActiveLightboxItem(visibleGalleryItems[nextIndex]);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeLightboxItem, activeLightboxIndex, visibleGalleryItems]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -79,24 +117,6 @@ export default function GalleryPage({ onBookNow }) {
     }, 10000);
     return () => window.clearTimeout(timer);
   }, [activeHeroImage, galleryHeroImages.length]);
-
-  const filterTabs = [
-    {
-      id: "all",
-      label: "All Work",
-      count: String(
-        nailsGallery.length + hairGallery.length + eyelashesGallery.length
-      ).padStart(2, "0"),
-    },
-    { id: "nails", label: "01 · Nails", count: String(nailsGallery.length).padStart(2, "0") },
-    { id: "hair", label: "02 · Hair", count: String(hairGallery.length).padStart(2, "0") },
-    { id: "eyelashes", label: "03 · Eyelashes", count: String(eyelashesGallery.length).padStart(2, "0") },
-  ];
-
-  const showNails = selectedCategory === "all" || selectedCategory === "nails";
-  const showHair = selectedCategory === "all" || selectedCategory === "hair";
-  const showEyelashes =
-    selectedCategory === "all" || selectedCategory === "eyelashes";
 
   return (
     <div className="min-h-screen bg-[#F6F5F1] text-[#2F2C29]">
@@ -151,194 +171,56 @@ export default function GalleryPage({ onBookNow }) {
             </p>
           </motion.div>
 
-          {/* Interactive Filter Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: framerEase }}
-            className="pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4"
-          >
-            <div className="flex flex-wrap items-center gap-2.5">
-              {filterTabs.map((tab) => {
-                const isActive = selectedCategory === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setSelectedCategory(tab.id)}
-                    className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-[3px] text-[13.5px] font-medium transition-all duration-250 cursor-pointer ${
-                      isActive
-                        ? "bg-[#F6F5F1] text-[#1E1C19] font-semibold"
-                        : "bg-white/8 text-white/85 hover:bg-white/15 hover:text-white border border-white/10"
-                    }`}
-                  >
-                    <span>{tab.label}</span>
-                    <span
-                      className={`text-[11px] px-1.5 py-0.5 rounded-[2px] ${
-                        isActive
-                          ? "bg-[#1E1C19]/10 text-[#1E1C19]"
-                          : "bg-white/10 text-white/75"
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <button
-              type="button"
-              onClick={onBookNow}
-              className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-[#DFD6C7] hover:text-white transition-colors cursor-pointer"
-            >
-              <span>Book your session</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-          </motion.div>
         </div>
       </section>
 
       {/* =====================================================================
-          SECTION 2: NAIL STUDIO GALLERY (#F6F5F1)
+          SECTION 2: UNIFIED GALLERY
       ===================================================================== */}
-      {showNails && (
-        <section
-          id="gallery-nails"
-          className="w-full bg-[#F6F5F1] text-[#2F2C29] py-20 md:py-28 border-b border-[#2F2C29]/10"
-        >
-          <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
-              <div>
-                <div className="inline-flex items-center bg-[#E1D9CC] rounded-[3px] p-1 pr-4 mb-6">
-                  <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
-                    01
+      <section
+        id="gallery-images"
+        className="w-full bg-[#F6F5F1] text-[#2F2C29] py-10 md:py-14"
+      >
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex flex-wrap items-center gap-2 mb-8">
+            {filterTabs.map((tab) => {
+              const isActive = selectedCategory === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(tab.id)}
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] text-[13.5px] font-medium transition-colors ${
+                    isActive
+                      ? "bg-[#2F2C29] text-white"
+                      : "bg-[#E1D9CC] text-[#2F2C29] hover:bg-[#D3C7B5]"
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[11px] px-1.5 py-0.5 rounded-[2px] ${
+                      isActive ? "bg-white/15" : "bg-[#F6F5F1]/75"
+                    }`}
+                  >
+                    {tab.count}
                   </span>
-                  <span className="text-[#2F2C29] text-[13px] font-medium tracking-wide ml-3">
-                    Nail Studio
-                  </span>
-                </div>
-
-                <h2 className="text-3xl sm:text-4xl md:text-[46px] font-medium text-[#2F2C29] leading-[1.14] tracking-[-0.02em]">
-                  Sculpted extensions &amp;{" "}
-                  <span className="text-[#8A755F]">bespoke nail art.</span>
-                </h2>
-              </div>
-
-              <p className="text-[15px] text-[#6E6961] leading-[1.65] max-w-[380px]">
-                Russian cuticle care, lightweight soft-gel extensions, pearl
-                chrome finishes, and hand-painted bridal sets.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
-              {nailsGallery.map((item, idx) => (
-                <LookbookCard
-                  key={item.id}
-                  item={item}
-                  idx={idx}
-                  cardBg="bg-white"
-                  onSelect={setActiveLightboxItem}
-                />
-              ))}
-            </div>
+                </button>
+              );
+            })}
           </div>
-        </section>
-      )}
 
-      {/* =====================================================================
-          SECTION 3: HAIR ARTISTRY GALLERY (#DFD6C7 Warm Oatmeal Band)
-      ===================================================================== */}
-      {showHair && (
-        <section
-          id="gallery-hair"
-          className="w-full bg-[#DFD6C7] text-[#2F2C29] py-20 md:py-28 border-b border-[#2F2C29]/10"
-        >
-          <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
-              <div>
-                <div className="inline-flex items-center bg-[#F6F5F1] rounded-[3px] p-1 pr-4 mb-6">
-                  <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
-                    02
-                  </span>
-                  <span className="text-[#2F2C29] text-[13px] font-medium tracking-wide ml-3">
-                    Hair Artistry
-                  </span>
-                </div>
-
-                <h2 className="text-3xl sm:text-4xl md:text-[46px] font-medium text-[#2F2C29] leading-[1.14] tracking-[-0.02em]">
-                  Dimensional colour &amp;{" "}
-                  <span className="text-[#8A755F]">effortless movement.</span>
-                </h2>
-              </div>
-
-              <p className="text-[15px] text-[#5C554C] leading-[1.65] max-w-[380px]">
-                Hand-painted balayage, frizz-free keratin silk treatments, and
-                precision layered cuts tailored to your hair texture.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
-              {hairGallery.map((item, idx) => (
-                <LookbookCard
-                  key={item.id}
-                  item={item}
-                  idx={idx}
-                  cardBg="bg-[#F6F5F1]"
-                  onSelect={setActiveLightboxItem}
-                />
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
+            {visibleGalleryItems.map((item, idx) => (
+              <LookbookCard
+                key={item.id}
+                item={item}
+                idx={idx}
+                onSelect={setActiveLightboxItem}
+              />
+            ))}
           </div>
-        </section>
-      )}
-
-      {/* =====================================================================
-          SECTION 4: EYELASH STUDIO GALLERY (#F6F5F1 Alabaster Band)
-      ===================================================================== */}
-      {showEyelashes && (
-        <section
-          id="gallery-eyelashes"
-          className="w-full bg-[#F6F5F1] text-[#2F2C29] py-20 md:py-28"
-        >
-          <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
-              <div>
-                <div className="inline-flex items-center bg-[#E1D9CC] rounded-[3px] p-1 pr-4 mb-6">
-                  <span className="bg-[#2F2C29] text-white text-[12px] font-semibold px-2.5 py-0.5 rounded-[2px]">
-                    03
-                  </span>
-                  <span className="text-[#2F2C29] text-[13px] font-medium tracking-wide ml-3">
-                    Eyelash Studio
-                  </span>
-                </div>
-
-                <h2 className="text-3xl sm:text-4xl md:text-[46px] font-medium text-[#2F2C29] leading-[1.14] tracking-[-0.02em]">
-                  Featherlight extensions &amp;{" "}
-                  <span className="text-[#8A755F]">custom lash maps.</span>
-                </h2>
-              </div>
-
-              <p className="text-[15px] text-[#6E6961] leading-[1.65] max-w-[380px]">
-                From soft 1:1 classic silk lashes to wispy hybrid sets and
-                keratin lash lifts designed to frame your eye shape naturally.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-              {eyelashesGallery.map((item, idx) => (
-                <LookbookCard
-                  key={item.id}
-                  item={item}
-                  idx={idx}
-                  cardBg="bg-white"
-                  onSelect={setActiveLightboxItem}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* =====================================================================
           SECTION 5: FULL-SCREEN LIGHTBOX PREVIEW MODAL
@@ -350,7 +232,7 @@ export default function GalleryPage({ onBookNow }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveLightboxItem(null)}
-            className="fixed inset-0 z-50 bg-[#1E1C19]/88 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 z-50 bg-[#1E1C19]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 18 }}
@@ -358,66 +240,85 @@ export default function GalleryPage({ onBookNow }) {
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.35, ease: framerEase }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-[920px] bg-[#F6F5F1] text-[#2F2C29] rounded-[3px] overflow-hidden grid grid-cols-1 md:grid-cols-12 shadow-2xl"
+              className="relative w-full max-w-[1100px] flex flex-col items-center"
             >
-              {/* Left Portrait */}
-              <div className="md:col-span-7 bg-[#2F2C29] aspect-[4/4.3] md:aspect-auto max-h-[75vh]">
-                <ImageWithFallback
-                  src={activeLightboxItem.image}
-                  alt={activeLightboxItem.title}
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={() => setActiveLightboxItem(null)}
+                aria-label="Close preview"
+                className="fixed top-3 right-3 mb-0 sm:absolute sm:-right-12 sm:-top-12 z-20 w-10 h-10 rounded-full bg-[#F6F5F1] text-[#2F2C29] flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-              {/* Right Details & Direct Booking CTA */}
-              <div className="md:col-span-5 p-7 sm:p-9 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between gap-4 mb-6">
-                    <span className="inline-flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-wider text-[#8A755F]">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      {activeLightboxItem.tag}
-                    </span>
+              <div className="relative w-full max-h-[68vh] flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeLightboxItem.id}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.25, ease: framerEase }}
+                    className="w-full max-h-[68vh]"
+                  >
+                    <ImageWithFallback
+                      src={activeLightboxItem.image}
+                      alt={activeLightboxItem.title}
+                      className="w-full max-h-[68vh] object-contain"
+                    />
+                  </motion.div>
+                </AnimatePresence>
 
+                {visibleGalleryItems.length > 1 && (
+                  <>
                     <button
                       type="button"
-                      onClick={() => setActiveLightboxItem(null)}
-                      aria-label="Close preview"
-                      className="w-9 h-9 rounded-[3px] border border-[#2F2C29]/20 hover:bg-[#2F2C29] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                      onClick={showPreviousImage}
+                      aria-label="Previous image"
+                      className="absolute left-2 sm:left-4 w-11 h-11 rounded-full bg-[#F6F5F1]/95 text-[#2F2C29] flex items-center justify-center shadow-lg hover:bg-white transition-colors"
                     >
-                      <X className="w-4 h-4" />
+                      <ChevronLeft className="w-5 h-5" />
                     </button>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-[28px] font-medium text-[#2F2C29] leading-tight mb-3">
-                    {activeLightboxItem.title}
-                  </h3>
-
-                  <p className="text-[13px] font-medium text-[#7A7165] mb-6">
-                    Look {activeLightboxItem.id} · Estimated session:{" "}
-                    {activeLightboxItem.duration}
-                  </p>
-
-                  <p className="text-[14.5px] text-[#5C554C] leading-[1.7]">
-                    Customized in-studio at Glam By Amni, Mohali. Every shade,
-                    length, and curl is tailored during your one-on-one
-                    consultation.
-                  </p>
-                </div>
-
-                <div className="pt-8 mt-8 border-t border-[#2F2C29]/12">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setActiveLightboxItem(null);
-                      if (onBookNow) onBookNow();
-                    }}
-                    className="w-full group inline-flex items-center justify-center gap-2.5 bg-[#2F2C29] hover:bg-[#8A755F] text-[#F6F5F1] text-[14px] font-medium px-6 py-3.5 rounded-[3px] transition-colors cursor-pointer"
-                  >
-                    <span>Book this look</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                </div>
+                    <button
+                      type="button"
+                      onClick={showNextImage}
+                      aria-label="Next image"
+                      className="absolute right-2 sm:right-4 w-11 h-11 rounded-full bg-[#F6F5F1]/95 text-[#2F2C29] flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
               </div>
+
+              {visibleGalleryItems.length > 1 && (
+                <div className="mt-4 max-w-full overflow-x-auto no-scrollbar">
+                  <div className="flex items-center justify-center gap-2 px-2 pb-1">
+                    {visibleGalleryItems.map((item) => {
+                      const isActive = item.id === activeLightboxItem.id;
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setActiveLightboxItem(item)}
+                          aria-label={`View ${item.title}`}
+                          className={`shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-[2px] overflow-hidden border-2 transition-all ${
+                            isActive
+                              ? "border-white opacity-100 scale-105"
+                              : "border-white/20 opacity-60 hover:opacity-100"
+                          }`}
+                        >
+                          <ImageWithFallback
+                            src={item.image}
+                            alt=""
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
