@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { ArrowRight, ChevronUp, ChevronDown, X, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronUp, ChevronDown } from "lucide-react";
 
 const galleryItems = [
   {
@@ -68,10 +67,9 @@ const galleryItems = [
 
 const framerEase = [0.22, 1, 0.36, 1];
 
-export default function GallerySection() {
+export default function GallerySection({ onSeeAll }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [showAllModal, setShowAllModal] = useState(false);
 
   const sectionTrackRef = useRef(null);
   const total = galleryItems.length;
@@ -296,7 +294,7 @@ export default function GallerySection() {
 
           <motion.button
             type="button"
-            onClick={() => setShowAllModal(true)}
+            onClick={onSeeAll}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.25, ease: framerEase }}
             className="cta-fill cta-fill--dark group inline-flex items-center gap-3 bg-[#2F2C29] text-[#F6F5F1] text-[14px] font-medium px-7 py-3.5 rounded-[3px]"
@@ -307,65 +305,6 @@ export default function GallerySection() {
         </div>
       </div>
 
-      {/* Full Lookbook Modal */}
-      <AnimatePresence>
-        {showAllModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-[#1E1C19]/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.98 }}
-              transition={{ duration: 0.4, ease: framerEase }}
-              className="relative w-full max-w-[1200px] max-h-[88vh] bg-[#F6F5F1] text-[#2F2C29] rounded-[3px] overflow-hidden flex flex-col shadow-2xl"
-            >
-              <div className="px-6 sm:px-10 py-5 border-b border-[#2F2C29]/12 flex items-center justify-between bg-[#F6F5F1]">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-4 h-4 text-[#8A755F]" />
-                  <h3 className="text-lg sm:text-xl font-medium text-[#2F2C29]">
-                    Glam By Anmi — Mohali Lookbook
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setShowAllModal(false)}
-                  aria-label="Close gallery"
-                  className="w-9 h-9 rounded-[3px] border border-[#2F2C29]/20 hover:bg-[#2F2C29] hover:text-white flex items-center justify-center transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="p-6 sm:p-10 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                {galleryItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="group relative aspect-[3/4] rounded-[2px] overflow-hidden bg-[#E1D9CC]"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-3.5 bg-gradient-to-t from-[#1E1C19]/85 via-[#1E1C19]/35 to-transparent">
-                      <span className="block text-[10px] uppercase tracking-wider text-[#DFD6C7]">
-                        {item.category}
-                      </span>
-                      <p className="text-sm font-medium text-white mt-0.5">
-                        {item.title}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

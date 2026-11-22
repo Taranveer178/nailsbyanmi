@@ -141,7 +141,7 @@ const eyelashesGallery = [
 
 const framerEase = [0.22, 1, 0.36, 1];
 
-const galleryHeroSlides = [
+const galleryHeroImages = [
   "/Hero%20image%20Nail%20-Glam%20by%20ANMI.webp",
   "/hero%20image%20hair%20Glam%20By%20ANMI.webp",
 ];
@@ -194,32 +194,20 @@ function LookbookCard({ item, idx, cardBg = "bg-white", onSelect }) {
 export default function GalleryPage({ onBookNow }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeLightboxItem, setActiveLightboxItem] = useState(null);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeHeroImage, setActiveHeroImage] = useState(0);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setActiveSlide((current) => (current + 1) % galleryHeroSlides.length);
+      setActiveHeroImage((current) => (current + 1) % galleryHeroImages.length);
     }, 10000);
     return () => window.clearTimeout(timer);
-  }, [activeSlide]);
+  }, [activeHeroImage]);
 
   const filterTabs = [
     { id: "all", label: "All Work", count: "16" },
-    {
-      id: "nails",
-      label: "01 · Nails",
-      count: String(nailsGallery.length).padStart(2, "0"),
-    },
-    {
-      id: "hair",
-      label: "02 · Hair",
-      count: String(hairGallery.length).padStart(2, "0"),
-    },
-    {
-      id: "eyelashes",
-      label: "03 · Eyelashes",
-      count: String(eyelashesGallery.length).padStart(2, "0"),
-    },
+    { id: "nails", label: "01 · Nails", count: String(nailsGallery.length).padStart(2, "0") },
+    { id: "hair", label: "02 · Hair", count: String(hairGallery.length).padStart(2, "0") },
+    { id: "eyelashes", label: "03 · Eyelashes", count: String(eyelashesGallery.length).padStart(2, "0") },
   ];
 
   const showNails = selectedCategory === "all" || selectedCategory === "nails";
@@ -232,21 +220,25 @@ export default function GalleryPage({ onBookNow }) {
       {/* =====================================================================
           SECTION 1: DARK EDITORIAL GALLERY HERO & CATEGORY FILTER BAR
       ===================================================================== */}
-      <section className="relative w-full min-h-[520px] overflow-hidden bg-[#1E1C19] text-[#F6F5F1] pt-36 pb-16 md:pt-44 md:pb-20">
+      <section className="relative isolate w-full overflow-hidden bg-[#1E1C19] text-[#F6F5F1] pt-36 pb-16 md:pt-44 md:pb-20">
         <AnimatePresence>
-          <motion.img
-            key={galleryHeroSlides[activeSlide]}
-            src={galleryHeroSlides[activeSlide]}
-            alt="Glam by Anmi lookbook"
+          <motion.div
+            key={galleryHeroImages[activeHeroImage]}
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: framerEase }}
-            className="absolute inset-0 h-full w-full object-cover object-center"
-          />
+            transition={{ duration: 0.6, ease: framerEase }}
+            className="absolute inset-0 z-0"
+          >
+            <img
+              src={galleryHeroImages[activeHeroImage]}
+              alt="Glam by Anmi hair and nail studio"
+              className="h-full w-full object-cover object-right md:object-center"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,22,20,0.95)_0%,rgba(24,22,20,0.78)_44%,rgba(24,22,20,0.12)_100%)]" />
+            <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/55 to-transparent" />
+          </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1E1C19]/95 via-[#1E1C19]/78 to-[#1E1C19]/20" />
-        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/55 to-transparent" />
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
