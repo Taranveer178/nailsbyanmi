@@ -103,6 +103,11 @@ function mergeSavedSections(savedSections, deletedItemIds) {
             !isUnsplashImage(item.image)) ||
           (defaultSection.id === "reviews" &&
             normalizedSavedItem.image === "/ANMI-%20Stylist.webp") ||
+          (defaultSection.id === "hair-services" &&
+            (normalizedSavedItem.image === "/logo.png" ||
+              normalizedSavedItem.image === "/Balayage-Gloss-after.webp" ||
+              normalizedSavedItem.image === "/Hair%20and%20Spa.webp" ||
+              normalizedSavedItem.image === "/hero%20image%20hair%20Glam%20By%20ANMI.webp")) ||
           (defaultSection.id === "nails" &&
             !isCloudinaryImage(normalizedSavedItem.image));
         const restoreStudioDescription =

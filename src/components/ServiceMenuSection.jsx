@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getVisibleAdminItems } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
@@ -33,10 +33,27 @@ export default function ServiceMenuSection() {
       description: item.meta,
       price: item.tag,
       duration: item.duration,
+      image: item.image,
     }))
   );
-  const image =
+  const defaultImage =
     getVisibleAdminItems("hair-menu")[0]?.image || "/logo.png";
+  const [activeImage, setActiveImage] = useState(
+    () => defaultImage
+  );
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const syncViewport = () => {
+      setIsMobile(mediaQuery.matches);
+      if (mediaQuery.matches) setActiveImage(defaultImage);
+    };
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+    return () => mediaQuery.removeEventListener("change", syncViewport);
+  }, [defaultImage]);
 
   return (
     <section
@@ -97,14 +114,22 @@ export default function ServiceMenuSection() {
               className="lg:col-span-5 flex"
             >
               <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full overflow-hidden rounded-[2px] bg-[#2F2C29] group">
-                <ImageWithFallback
-                  component={motion.img}
-                  src={image}
-                  alt="Signature Hair Services at Glam By Anmi Mohali"
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.8, ease: framerEase }}
-                  className="w-full h-full object-cover object-center"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeImage}
+                    initial={{ opacity: 0, scale: 1.015 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: framerEase }}
+                    className="absolute inset-0"
+                  >
+                    <ImageWithFallback
+                      src={activeImage}
+                      alt="Signature Hair Services at Glam By Anmi Mohali"
+                      className="w-full h-full object-cover object-center transition-transform duration-300 ease-out lg:group-hover:scale-[1.04]"
+                    />
+                  </motion.div>
+                </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
             </motion.div>
@@ -119,11 +144,14 @@ export default function ServiceMenuSection() {
                 className="border-t border-[#2F2C29]/15"
               >
                 {menuServices.map((item) => (
-                  <motion.a
+                  <motion.div
                     key={item.name}
-                    href="#book"
                     variants={rowItemVariants}
-                    className="py-5 md:py-6 border-b border-[#2F2C29]/15 flex items-start justify-between gap-6 group relative transition-colors hover:bg-[#2F2C29]/[0.03] px-2 -mx-2 rounded-[2px]"
+                    onMouseEnter={() => !isMobile && setActiveImage(item.image)}
+                    onPointerEnter={() => !isMobile && setActiveImage(item.image)}
+                    onFocus={() => !isMobile && setActiveImage(item.image)}
+                    tabIndex={0}
+                    className="py-5 md:py-6 border-b border-[#2F2C29]/15 flex items-start justify-between gap-6 group relative transition-colors hover:bg-[#2F2C29]/[0.03] px-2 -mx-2 rounded-[2px] cursor-default"
                   >
                     <div className="transition-transform duration-300 ease-out group-hover:translate-x-2">
                       <div className="flex items-center gap-2">
@@ -145,7 +173,7 @@ export default function ServiceMenuSection() {
                         {item.duration}
                       </span>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </motion.div>
 

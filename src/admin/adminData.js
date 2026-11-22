@@ -132,7 +132,7 @@ export const adminSections = [
         meta: "Consultation, relaxing wash, precision haircut, and round-brush finish.",
         duration: "45 min",
         status: "visible",
-        image: "/logo.png",
+        image: "/signature%20layers.webp",
       },
       {
         id: "hair-service-2",
@@ -141,7 +141,7 @@ export const adminSections = [
         meta: "Hand-painted highlights, custom root blend, and shine-sealing toner.",
         duration: "150 min",
         status: "visible",
-        image: "/logo.png",
+        image: "/balayage.webp",
       },
       {
         id: "hair-service-3",
@@ -150,7 +150,7 @@ export const adminSections = [
         meta: "Ammonia-free rich coverage tailored to your skin undertone.",
         duration: "90 min",
         status: "visible",
-        image: "/logo.png",
+        image: "/hair%20color.webp",
       },
       {
         id: "hair-service-4",
@@ -159,7 +159,7 @@ export const adminSections = [
         meta: "Deep frizz-control and protein restoration for silky, manageable hair.",
         duration: "120 min",
         status: "visible",
-        image: "/logo.png",
+        image: "/keratin.webp",
       },
       {
         id: "hair-service-5",
@@ -168,7 +168,7 @@ export const adminSections = [
         meta: "Curl-focused shaping and styling to define natural texture, control frizz, and enhance bounce.",
         duration: "60 min",
         status: "visible",
-        image: "/logo.png",
+        image: "/curly%20hair.webp",
       },
     ],
   },
