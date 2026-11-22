@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Sparkles } from "lucide-react";
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function StylistSection() {
+  const portrait =
+    getVisibleAdminItems("stylist")[0]?.image || "/ANMI-%20Stylist.webp";
+
   return (
     <section
       id="stylists"
@@ -102,8 +107,9 @@ export default function StylistSection() {
             <div className="hidden sm:block absolute -top-4 -right-4 w-full h-full border border-[#8A755F]/35 rounded-[3px] pointer-events-none" />
 
             <div className="relative w-full aspect-[4/4.6] lg:h-[560px] lg:aspect-auto overflow-hidden rounded-[3px] bg-[#2F2C29] group shadow-[0_24px_48px_-16px_rgba(47,44,41,0.18)]">
-              <motion.img
-                src="/ANMI-%20Stylist.webp"
+              <ImageWithFallback
+                component={motion.img}
+                src={portrait}
                 alt="Anmi - Founder & Lead Artist at Glam By Anmi Mohali"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.85, ease: framerEase }}

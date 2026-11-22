@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import ServiceTicker from "./components/ServiceTicker";
@@ -14,7 +14,8 @@ import Footer from "./components/Footer";
 import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from "./components/TermsPage";
 import GalleryPage from "./components/GalleryPage";
-import AdminDashboard from "./admin/AdminDashboard";
+
+const AdminDashboard = lazy(() => import("./admin/AdminDashboard"));
 
 const pagePaths = {
   home: "/",
@@ -62,7 +63,17 @@ export default function App() {
   };
 
   if (activePage === "admin") {
-    return <AdminDashboard onBackToSite={() => navigateTo("home")} />;
+    return (
+      <Suspense
+        fallback={
+          <div className="min-h-screen bg-[#F6F5F1] p-8 text-[#2F2C29]">
+            Loading admin…
+          </div>
+        }
+      >
+        <AdminDashboard onBackToSite={() => navigateTo("home")} />
+      </Suspense>
+    );
   }
 
   return (

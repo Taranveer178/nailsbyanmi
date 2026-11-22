@@ -1,39 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-
-const menuServices = [
-  {
-    name: "Signature Cut & Blowout",
-    description: "Consultation, relaxing wash, precision haircut, and round-brush finish.",
-    price: "from ₹900",
-    duration: "45 min",
-  },
-  {
-    name: "Balayage & Gloss",
-    description: "Hand-painted highlights, custom root blend, and shine-sealing toner.",
-    price: "from ₹4,500",
-    duration: "150 min",
-  },
-  {
-    name: "Hair Colour",
-    description: "Ammonia-free rich coverage tailored to your skin undertone.",
-    price: "from ₹2,200",
-    duration: "90 min",
-  },
-  {
-    name: "Keratin Therapy",
-    description: "Deep frizz-control and protein restoration for silky, manageable hair.",
-    price: "from ₹3,800",
-    duration: "120 min",
-  },
-  {
-    name: "Curly Hair",
-    description:
-      "Curl-focused shaping and styling to define natural texture, control frizz, and enhance bounce.",
-    price: "from ₹1,500",
-    duration: "60 min",
-  },
-];
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
@@ -58,6 +27,17 @@ const rowItemVariants = {
 };
 
 export default function ServiceMenuSection() {
+  const [menuServices] = useState(() =>
+    getVisibleAdminItems("hair-services").map((item) => ({
+      name: item.title,
+      description: item.meta,
+      price: item.tag,
+      duration: item.duration,
+    }))
+  );
+  const image =
+    getVisibleAdminItems("hair-menu")[0]?.image || "/logo.png";
+
   return (
     <section
       id="services"
@@ -117,8 +97,9 @@ export default function ServiceMenuSection() {
               className="lg:col-span-5 flex"
             >
               <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full overflow-hidden rounded-[2px] bg-[#2F2C29] group">
-                <motion.img
-                  src="/Hair%20menu.webp"
+                <ImageWithFallback
+                  component={motion.img}
+                  src={image}
                   alt="Signature Hair Services at Glam By Anmi Mohali"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.8, ease: framerEase }}

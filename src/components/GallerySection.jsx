@@ -5,69 +5,13 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { ArrowRight, ChevronUp, ChevronDown } from "lucide-react";
-
-const galleryItems = [
-  {
-    id: "01",
-    title: "Soft Caramel Balayage",
-    category: "Hair Colour",
-    image:
-      "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "02",
-    title: "Pearl Chrome Almond Set",
-    category: "Nail Artistry",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "03",
-    title: "Glass-Shine Blunt Bob",
-    category: "Signature Cut",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "04",
-    title: "French Micro-Tip Gel",
-    category: "Gel Extensions",
-    image:
-      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "05",
-    title: "Natural Curl Definition",
-    category: "Hair Care",
-    image:
-      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "06",
-    title: "Bridal Red Gel Gloss",
-    category: "Nail Studio",
-    image:
-      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "07",
-    title: "Silk Press & Keratin",
-    category: "Hair Therapy",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=85",
-  },
-  {
-    id: "08",
-    title: "Feathered Fringe Layers",
-    category: "Signature Cut",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=85",
-  },
-];
+import { getHomeGalleryItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function GallerySection({ onSeeAll }) {
+  const [galleryItems] = useState(getHomeGalleryItems);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -249,7 +193,7 @@ export default function GallerySection({ onSeeAll }) {
                       : "cursor-pointer hover:brightness-105"
                   }`}
                 >
-                  <img
+                  <ImageWithFallback
                     src={item.image}
                     alt={item.title}
                     draggable="false"

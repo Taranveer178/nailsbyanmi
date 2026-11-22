@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
-const slides = [
+const defaultSlides = [
   {
     id: 1,
     badgeNumber: "01",
@@ -51,6 +53,21 @@ const itemVariants = {
 };
 
 export default function HeroSection() {
+  const [slides] = useState(() => {
+    const heroItems = getVisibleAdminItems("hero");
+    if (!heroItems.length) return defaultSlides;
+    return heroItems.map((item, index) => ({
+      ...defaultSlides[index % defaultSlides.length],
+      id: item.id,
+      image: item.image,
+      imageAlt: item.title,
+    }));
+  });
+  const [featuredImage] = useState(
+    () =>
+      getVisibleAdminItems("hero-feature")[0]?.image ||
+      "/Gel%20%26%20Acrylic%20Nails.webp"
+  );
   const [activeSlide, setActiveSlide] = useState(0);
   const current = slides[activeSlide];
 
@@ -60,7 +77,7 @@ export default function HeroSection() {
     }, SLIDE_DURATION);
 
     return () => clearTimeout(timer);
-  }, [activeSlide]);
+  }, [activeSlide, slides.length]);
 
   return (
     <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-[#1E1C19] text-left">
@@ -74,7 +91,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: framerEase }}
           className="absolute inset-0 z-0"
         >
-          <img
+          <ImageWithFallback
             src={current.image}
             alt={current.imageAlt}
             className="w-full h-full object-cover object-right md:object-center"
@@ -160,8 +177,8 @@ export default function HeroSection() {
             className="group flex items-center justify-between w-full max-w-[385px] bg-[#2A2622]/75 backdrop-blur-md border border-white/15 rounded-[4px] p-3.5"
           >
             <div className="flex items-center gap-4 text-left">
-              <img
-                src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=300&q=80"
+              <ImageWithFallback
+                src={featuredImage}
                 alt="Gel Extensions & Hair Spa"
                 className="w-[74px] h-[84px] object-cover rounded-[3px] shrink-0"
               />

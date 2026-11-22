@@ -1,43 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-
-const studioServices = [
-  {
-    id: "01",
-    title: "Hair Spa & Care",
-    description: "Deep scalp nourishment and restorative shine rituals.",
-    image: "/Hair and Spa.webp",
-  },
-  {
-    id: "02",
-    title: "Gel & Acrylic Nails",
-    description: "Sculpted extensions with chip-free mirror gloss.",
-    image: "/Gel & Acrylic Nails.webp",
-  },
-  {
-    id: "03",
-    title: "Balayage & Colour",
-    description: "Hand-painted dimension with seamless, natural grow-out.",
-    image: "/balayage.webp",
-  },
-  {
-    id: "04",
-    title: "Custom Nail Art",
-    description: "Minimalist chrome, French micro-tips, and bridal sets.",
-    image: "/Nail Art.webp",
-  },
-  {
-    id: "05",
-    title: "Signature Layers",
-    description: "Weightless movement and soft face-framing volume.",
-    image: "/signature layers.webp",
-  },
-];
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function StudioSection() {
+  const [studioServices] = useState(() =>
+    getVisibleAdminItems("studio").map((item) => ({
+      id: item.id,
+      title: item.title,
+      description: item.meta,
+      image: item.image,
+    }))
+  );
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -132,7 +109,7 @@ export default function StudioSection() {
                   }}
                   className="relative h-full overflow-hidden rounded-[2px] cursor-pointer group bg-[#2F2C29]"
                 >
-                  <img
+                  <ImageWithFallback
                     src={service.image}
                     alt={service.title}
                     className={`w-full h-full object-cover object-center transition-transform duration-700 ease-out ${
@@ -214,7 +191,7 @@ export default function StudioSection() {
                 key={service.id}
                 className="relative h-[320px] sm:h-[350px] overflow-hidden rounded-[3px] bg-[#2F2C29]"
               >
-                <img
+                <ImageWithFallback
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover object-center"

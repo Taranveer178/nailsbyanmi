@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const exploreLinks = [
   { name: "Studio", href: "#studio" },
@@ -11,6 +13,9 @@ const exploreLinks = [
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function Footer({ onNavigate }) {
+  const logoImage =
+    getVisibleAdminItems("branding")[0]?.image || "/logo.png";
+
   const handleAnchorClick = (e, href) => {
     if (onNavigate) {
       const link = exploreLinks.find((item) => item.href === href);
@@ -73,8 +78,8 @@ export default function Footer({ onNavigate }) {
               className="inline-flex mb-4"
               aria-label="Glam by Anmi home"
             >
-              <img
-                src="/logo.png"
+              <ImageWithFallback
+                src={logoImage}
                 alt="Glam by Anmi - Nail and Hair Studio"
                 className="h-16 md:h-20 w-auto object-contain"
               />

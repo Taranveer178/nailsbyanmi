@@ -1,62 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-
-const nailServices = [
-  {
-    id: "01",
-    title: "Manicure",
-    description:
-      "Cuticle care, precision shaping, hydrating hand massage, and high-shine finish.",
-    price: "from ₹2000",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "02",
-    title: "Nail Polish",
-    description:
-      "Long-wear lacquer application in classic neutrals, deep reds, or seasonal tones.",
-    price: "from ₹1500",
-    image:
-      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "03",
-    title: "Pedicure",
-    description:
-      "Soothing mineral soak, exfoliation, heel smoothing, and flawless polish.",
-    price: "from ₹4000",
-    image:
-      "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "04",
-    title: "Nail Trim",
-    description:
-      "Clean length reduction, edge refinement, and natural nail buffing.",
-    price: "from ₹8000",
-    image:
-      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "05",
-    title: "Gel Coloring",
-    description:
-      "Chip-resistant LED-cured gel color with mirror gloss that lasts up to three weeks.",
-    price: "from ₹4500",
-    image:
-      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "06",
-    title: "Nail Art",
-    description:
-      "Bespoke minimalist line work, French micro-tips, chrome, and custom accents.",
-    price: "from ₹5000",
-    image:
-      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=85",
-  },
-];
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
@@ -81,6 +27,17 @@ const cardVariants = {
 };
 
 export default function NailServicesSection() {
+  const [nailServices] = useState(() =>
+    getVisibleAdminItems("nails").map((item, index) => ({
+      id: String(index + 1).padStart(2, "0"),
+      itemId: item.id,
+      title: item.title,
+      description: item.meta,
+      price: item.tag,
+      image: item.image,
+    }))
+  );
+
   return (
     <section
       id="nails"
@@ -155,7 +112,7 @@ export default function NailServicesSection() {
             >
               {/* Top Square Image Container */}
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[2px] bg-[#2F2C29]">
-                <img
+                <ImageWithFallback
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

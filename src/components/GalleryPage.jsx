@@ -1,147 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight, X, Sparkles } from "lucide-react";
-
-const nailsGallery = [
-  {
-    id: "N-01",
-    title: "Pearl Chrome Almond Extensions",
-    tag: "Gel Extensions",
-    duration: "90 min",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "N-02",
-    title: "Clean Russian Manicure & Nude Gloss",
-    tag: "Russian Manicure",
-    duration: "60 min",
-    image:
-      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "N-03",
-    title: "Bridal Crimson & Gold Foil Art",
-    tag: "Bridal Nail Art",
-    duration: "110 min",
-    image:
-      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "N-04",
-    title: "French Micro-Tip Soft Gel Overlay",
-    tag: "Gel Overlay",
-    duration: "75 min",
-    image:
-      "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "N-05",
-    title: "Velvet Cat-Eye Sculpted Acrylics",
-    tag: "Acrylic Extensions",
-    duration: "105 min",
-    image:
-      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "N-06",
-    title: "Botanical Spa Pedicure & Gel Polish",
-    tag: "Spa Pedicure",
-    duration: "60 min",
-    image:
-      "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=900&q=85",
-  },
-];
-
-const hairGallery = [
-  {
-    id: "H-01",
-    title: "Lived-In Caramel Balayage",
-    tag: "Balayage & Gloss",
-    duration: "150 min",
-    image:
-      "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "H-02",
-    title: "Keratin Silk & Mirror-Shine Finish",
-    tag: "Keratin Therapy",
-    duration: "120 min",
-    image:
-      "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "H-03",
-    title: "Feathered Butterfly Layers & Blowout",
-    tag: "Signature Cut",
-    duration: "60 min",
-    image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "H-04",
-    title: "Espresso Global Tint & Bond Repair",
-    tag: "Global Colour",
-    duration: "90 min",
-    image:
-      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "H-05",
-    title: "Glass-Shine Precision Blunt Bob",
-    tag: "Precision Cut",
-    duration: "45 min",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "H-06",
-    title: "Soft Editorial Waves & Bridal Styling",
-    tag: "Bridal Hair",
-    duration: "90 min",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
-  },
-];
-
-const eyelashesGallery = [
-  {
-    id: "L-01",
-    title: "Wispy Hybrid Lash Extensions",
-    tag: "Hybrid Set",
-    duration: "90 min",
-    image:
-      "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "L-02",
-    title: "Natural Classic 1:1 Silk Lashes",
-    tag: "Classic Extensions",
-    duration: "75 min",
-    image:
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "L-03",
-    title: "Fluffy Russian Volume Fan Set",
-    tag: "Volume Lashes",
-    duration: "120 min",
-    image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    id: "L-04",
-    title: "Keratin Lash Lift & Deep Tint",
-    tag: "Lash Lift & Tint",
-    duration: "45 min",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&q=85",
-  },
-];
+import {
+  getGalleryCollections,
+  getVisibleAdminItems,
+} from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
-const galleryHeroImages = [
+const defaultGalleryHeroImages = [
   "/Hero%20image%20Nail%20-Glam%20by%20ANMI.webp",
   "/hero%20image%20hair%20Glam%20By%20ANMI.webp",
 ];
@@ -158,7 +26,7 @@ function LookbookCard({ item, idx, cardBg = "bg-white", onSelect }) {
     >
       {/* Portrait Image Frame */}
       <div className="relative w-full aspect-[4/4.6] overflow-hidden bg-[#2F2C29]">
-        <img
+        <ImageWithFallback
           src={item.image}
           alt={item.title}
           className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -195,16 +63,31 @@ export default function GalleryPage({ onBookNow }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeLightboxItem, setActiveLightboxItem] = useState(null);
   const [activeHeroImage, setActiveHeroImage] = useState(0);
+  const [galleryHeroImages] = useState(() => {
+    const heroItems = getVisibleAdminItems("hero");
+    return heroItems.length
+      ? heroItems.map((item) => item.image)
+      : defaultGalleryHeroImages;
+  });
+  const [galleryCollections] = useState(getGalleryCollections);
+  const { nails: nailsGallery, hair: hairGallery, eyelashes: eyelashesGallery } =
+    galleryCollections;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setActiveHeroImage((current) => (current + 1) % galleryHeroImages.length);
     }, 10000);
     return () => window.clearTimeout(timer);
-  }, [activeHeroImage]);
+  }, [activeHeroImage, galleryHeroImages.length]);
 
   const filterTabs = [
-    { id: "all", label: "All Work", count: "16" },
+    {
+      id: "all",
+      label: "All Work",
+      count: String(
+        nailsGallery.length + hairGallery.length + eyelashesGallery.length
+      ).padStart(2, "0"),
+    },
     { id: "nails", label: "01 · Nails", count: String(nailsGallery.length).padStart(2, "0") },
     { id: "hair", label: "02 · Hair", count: String(hairGallery.length).padStart(2, "0") },
     { id: "eyelashes", label: "03 · Eyelashes", count: String(eyelashesGallery.length).padStart(2, "0") },
@@ -230,7 +113,7 @@ export default function GalleryPage({ onBookNow }) {
             transition={{ duration: 0.6, ease: framerEase }}
             className="absolute inset-0 z-0"
           >
-            <img
+            <ImageWithFallback
               src={galleryHeroImages[activeHeroImage]}
               alt="Glam by Anmi hair and nail studio"
               className="h-full w-full object-cover object-right md:object-center"
@@ -479,7 +362,7 @@ export default function GalleryPage({ onBookNow }) {
             >
               {/* Left Portrait */}
               <div className="md:col-span-7 bg-[#2F2C29] aspect-[4/4.3] md:aspect-auto max-h-[75vh]">
-                <img
+                <ImageWithFallback
                   src={activeLightboxItem.image}
                   alt={activeLightboxItem.title}
                   className="w-full h-full object-cover object-center"

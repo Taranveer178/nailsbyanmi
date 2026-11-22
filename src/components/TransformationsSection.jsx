@@ -1,40 +1,13 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MoveHorizontal } from "lucide-react";
+import { getAdminSectionItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
-const transformations = [
-  {
-    id: "01",
-    client: "Simran K.",
-    service: "Dimensional Balayage & Gloss",
-    duration: "3 hrs · Hair Transformation",
-    description:
-      "Lifted warm brassy tones into a soft, lived-in caramel blonde with seamless root blending and deep bond-repair shine.",
-    beforeImage: "/Balayage-Gloss-before.webp",
-    afterImage: "/Balayage-Gloss-after.webp",
-  },
-  {
-    id: "02",
-    client: "Harleen G.",
-    service: "Almond Gel Extensions & Chrome Art",
-    duration: "90 min · Nail Studio",
-    description:
-      "Transformed short natural nails into sculpted almond gel extensions finished with a sheer nude base and pearl chrome glaze.",
-    beforeImage: "/nail%20extension%20before.webp",
-    afterImage: "/nail%20extension%20after.webp",
-  },
-  {
-    id: "03",
-    client: "Mehak S.",
-    service: "Keratin Silk & Long Layer Reshape",
-    duration: "2 hrs · Hair Care",
-    description:
-      "Tamed frizz and dryness while adding weightless face-framing layers and mirror-like smoothness without losing length.",
-    beforeImage:
-      "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=85",
-    afterImage:
-      "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=900&q=85",
-  },
+const defaultTransformations = [
+  { id: "01", title: "Dimensional Balayage" },
+  { id: "02", title: "Nail Extension" },
+  { id: "03", title: "Balayage Gloss" },
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -87,9 +60,9 @@ function BeforeAfterCard({ item, index }) {
           className="relative w-full aspect-[4/4.6] overflow-hidden rounded-[2px] select-none touch-none cursor-ew-resize bg-[#2F2C29]"
         >
           {/* AFTER Image */}
-          <img
+          <ImageWithFallback
             src={item.afterImage}
-            alt={`${item.service} - After`}
+            alt={`${item.title} - After`}
             draggable="false"
             className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
@@ -99,9 +72,9 @@ function BeforeAfterCard({ item, index }) {
             style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
             className="absolute inset-0 w-full h-full"
           >
-            <img
+            <ImageWithFallback
               src={item.beforeImage}
-              alt={`${item.service} - Before`}
+              alt={`${item.title} - Before`}
               draggable="false"
               className="w-full h-full object-cover object-center filter saturate-[0.82] contrast-[0.95] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />
@@ -188,22 +161,12 @@ function BeforeAfterCard({ item, index }) {
 
         <div className="pt-4">
           <h3 className="text-[21px] md:text-[23px] font-medium text-[#2F2C29] tracking-[-0.015em] leading-snug group-hover:text-[#8A755F] transition-colors">
-            {item.service}
+            {item.title}
           </h3>
-          <p className="text-[14px] text-[#6E6961] leading-[1.6] mt-2">
-            {item.description}
-          </p>
         </div>
       </div>
 
-      <div className="pt-5 mt-5 border-t border-[#2F2C29]/10 flex items-center justify-between">
-        <span className="text-[12.5px] font-medium text-[#5C554C]">
-          Client:{" "}
-          <strong className="font-semibold text-[#2F2C29]">
-            {item.client}
-          </strong>
-        </span>
-
+      <div className="pt-5 mt-5 border-t border-[#2F2C29]/10 flex items-center justify-end">
         <a
           href="#book"
           className="group inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2F2C29] hover:text-[#8A755F] transition-colors"
@@ -217,6 +180,27 @@ function BeforeAfterCard({ item, index }) {
 }
 
 export default function TransformationsSection() {
+  const [transformations] = useState(() => {
+    const adminItems = getAdminSectionItems("transformations");
+    const itemsById = new Map(adminItems.map((item) => [item.id, item]));
+
+    return defaultTransformations.flatMap((item, index) => {
+      const cardId = String(index + 1).padStart(2, "0");
+      const before = itemsById.get(`tr-${cardId}-before`);
+      const after = itemsById.get(`tr-${cardId}-after`);
+      if (!before || !after || before.status === "hidden" || after.status === "hidden") {
+        return [];
+      }
+      return [{
+        ...item,
+        title: before.title || item.title,
+        duration: before.meta,
+        beforeImage: before.image,
+        afterImage: after.image,
+      }];
+    });
+  });
+
   return (
     <section
       id="transformations"

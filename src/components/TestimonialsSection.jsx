@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
-const testimonials = [
+const defaultTestimonials = [
   {
     id: 1,
     quote:
       "I had such an amazing experience at Glam By Anmi in Mohali! Anmi really listened to what I wanted for my hair colour and gel extensions. She took the time to understand my style and the finish was flawless—I will definitely be coming back!",
     name: "Komal Singla",
     service: "Balayage & Gel Extensions",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=85",
+    image: "/ANMI-%20Stylist.webp",
   },
   {
     id: 2,
@@ -18,8 +19,7 @@ const testimonials = [
       "My Russian manicure and custom nail art have never looked this clean or lasted this long without lifting. Anmi has such a calm, welcoming studio vibe and explains every step before starting so you feel completely relaxed.",
     name: "Arsh Gill",
     service: "Russian Manicure & Nail Art",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&q=85",
+    image: "/ANMI-%20Stylist.webp",
   },
   {
     id: 3,
@@ -27,8 +27,7 @@ const testimonials = [
       "Hands down the best hair spa and blowout in Mohali. My hair felt weightless, glossy, and stayed frizz-free for days. Truly a personal, unhurried studio experience from start to finish.",
     name: "Riya Sharma",
     service: "Keratin Spa & BlowOut",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
+    image: "/ANMI-%20Stylist.webp",
   },
 ];
 
@@ -44,6 +43,17 @@ const miniTickerReviews = [
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function TestimonialsSection() {
+  const [testimonials] = useState(() => {
+    const reviewItems = getVisibleAdminItems("reviews");
+    if (!reviewItems.length) return defaultTestimonials;
+    return reviewItems.map((item) => ({
+      id: item.id,
+      quote: item.quote || item.meta,
+      name: item.name || item.title,
+      service: item.service || item.tag,
+      image: item.image,
+    }));
+  });
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
@@ -206,7 +216,7 @@ export default function TestimonialsSection() {
                           : "opacity-55 hover:opacity-90 scale-95"
                       }`}
                     >
-                      <img
+                      <ImageWithFallback
                         src={item.image}
                         alt={item.name}
                         className="w-full h-full object-cover object-center"
@@ -241,7 +251,8 @@ export default function TestimonialsSection() {
           <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[460px] aspect-[4/4.4] overflow-hidden rounded-[3px] bg-[#2F2C29] shadow-[0_20px_44px_-16px_rgba(47,44,41,0.18)]">
               <AnimatePresence mode="wait">
-                <motion.img
+                <ImageWithFallback
+                  component={motion.img}
                   key={current.id}
                   src={current.image}
                   alt={current.name}

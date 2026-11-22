@@ -1,18 +1,42 @@
 import { useState } from "react";
 import { Plus, ImageOff } from "lucide-react";
-import { adminSections as initialSections } from "./adminData";
+import {
+  getDeletedItemKey,
+  loadAdminState,
+  saveAdminState,
+} from "./galleryStorage";
 import AdminHeader from "./AdminHeader";
 import SectionList from "./SectionList";
 import ImageCard from "./ImageCard";
 import ImageEditModal from "./ImageEditModal";
 
 export default function AdminDashboard({ onBackToSite }) {
-  const [sections, setSections] = useState(initialSections);
-  const [activeSectionId, setActiveSectionId] = useState(
-    initialSections[0].id
-  );
+  const [adminState, setAdminState] = useState(loadAdminState);
+  const { sections, deletedItemIds } = adminState;
+  const [activeSectionId, setActiveSectionId] = useState("hero");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+  const [storageError, setStorageError] = useState("");
+
+  const updateSections = (update, deletedItemId) => {
+    const updatedSections = update(sections);
+    const updatedDeletedItemIds = deletedItemId
+      ? [...deletedItemIds, deletedItemId]
+      : deletedItemIds;
+    setAdminState({
+      sections: updatedSections,
+      deletedItemIds: updatedDeletedItemIds,
+    });
+    try {
+      saveAdminState(updatedSections, updatedDeletedItemIds);
+      setStorageError("");
+    } catch (error) {
+      console.error("Could not save admin gallery changes.", error);
+      setStorageError(
+        "Gallery changes could not be saved in this browser. Check available local storage."
+      );
+    }
+  };
 
   const activeSection =
     sections.find((sec) => sec.id === activeSectionId) || sections[0];
@@ -29,9 +53,9 @@ export default function AdminDashboard({ onBackToSite }) {
     setModalOpen(true);
   };
 
-  // Save added or edited image (static state preview)
+  // Save an item; gallery content is persisted in browser storage below.
   const handleSaveItem = (savedItem) => {
-    setSections((prev) =>
+    updateSections((prev) =>
       prev.map((sec) => {
         if (sec.id !== activeSection.id) return sec;
         const exists = sec.items.some((i) => i.id === savedItem.id);
@@ -47,7 +71,7 @@ export default function AdminDashboard({ onBackToSite }) {
 
   // Toggle "Remove" (hide from live site without deleting)
   const handleToggleRemove = (itemId) => {
-    setSections((prev) =>
+    updateSections((prev) =>
       prev.map((sec) => {
         if (sec.id !== activeSection.id) return sec;
         return {
@@ -64,14 +88,15 @@ export default function AdminDashboard({ onBackToSite }) {
 
   // Permanently delete image from section
   const handleDelete = (itemId) => {
-    setSections((prev) =>
+    updateSections((prev) =>
       prev.map((sec) => {
         if (sec.id !== activeSection.id) return sec;
         return {
           ...sec,
           items: sec.items.filter((i) => i.id !== itemId),
         };
-      })
+      }),
+      getDeletedItemKey(activeSection.id, itemId)
     );
   };
 
@@ -94,6 +119,14 @@ export default function AdminDashboard({ onBackToSite }) {
 
         {/* Active Section Images Area */}
         <main className="flex-1 px-4 sm:px-8 lg:px-0 py-6 lg:py-0">
+          {storageError && (
+            <p
+              role="alert"
+              className="mb-5 rounded-[3px] border border-red-300 bg-red-50 px-4 py-3 text-[13px] text-red-800"
+            >
+              {storageError}
+            </p>
+          )}
           {/* Active Section Banner */}
           <div className="bg-white border border-[#2F2C29]/12 rounded-[3px] p-5 sm:p-6 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
@@ -161,13 +194,17 @@ export default function AdminDashboard({ onBackToSite }) {
       </div>
 
       {/* Add / Edit Bottom-Sheet Modal */}
-      <ImageEditModal
-        isOpen={modalOpen}
-        item={editingItem}
-        sectionName={activeSection.name}
-        onClose={() => setModalOpen(false)}
-        onSave={handleSaveItem}
-      />
+      {modalOpen && (
+        <ImageEditModal
+          key={editingItem?.id || `new-${activeSection.id}`}
+          isOpen={modalOpen}
+          item={editingItem}
+          sectionId={activeSection.id}
+          sectionName={activeSection.name}
+          onClose={() => setModalOpen(false)}
+          onSave={handleSaveItem}
+        />
+      )}
     </div>
   );
 }

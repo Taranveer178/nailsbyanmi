@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { getVisibleAdminItems } from "../admin/galleryStorage";
+import ImageWithFallback from "./ImageWithFallback";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -12,6 +14,9 @@ const navLinks = [
 ];
 
 export default function Header({ onNavigate }) {
+  const [logoImage] = useState(
+    () => getVisibleAdminItems("branding")[0]?.image || "/logo.png"
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -63,8 +68,8 @@ export default function Header({ onNavigate }) {
             className="shrink-0"
             aria-label="Glam by Anmi home"
           >
-            <img
-              src="/logo.png"
+            <ImageWithFallback
+              src={logoImage}
               alt="Glam by Anmi - Nail and Hair Studio"
               className="h-12 sm:h-14 md:h-16 w-auto object-contain"
             />

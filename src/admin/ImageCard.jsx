@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Pencil, EyeOff, Eye, Trash2, Check, X } from "lucide-react";
+import ImageWithFallback from "../components/ImageWithFallback";
 
 export default function ImageCard({ item, onEdit, onToggleRemove, onDelete }) {
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -15,7 +16,7 @@ export default function ImageCard({ item, onEdit, onToggleRemove, onDelete }) {
     >
       {/* Image Thumbnail Preview */}
       <div className="relative w-full aspect-[4/3] bg-[#2F2C29] overflow-hidden">
-        <img
+        <ImageWithFallback
           src={item.image}
           alt={item.title}
           className={`w-full h-full object-cover object-center transition-all duration-300 ${
