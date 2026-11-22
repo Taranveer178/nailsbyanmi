@@ -278,7 +278,7 @@ export const adminSections = [
         tag: "Before",
         meta: "Look 03",
         status: "visible",
-        image: "/Balayage-Gloss-before.webp",
+        image: "/before.webp",
       },
       {
         id: "tr-03-after",
@@ -286,7 +286,7 @@ export const adminSections = [
         tag: "After",
         meta: "Look 03",
         status: "visible",
-        image: "/Balayage-Gloss-before.webp",
+        image: "/after.webp",
       },
     ],
   },

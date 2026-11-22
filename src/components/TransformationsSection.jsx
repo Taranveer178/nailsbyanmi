@@ -7,7 +7,12 @@ import ImageWithFallback from "./ImageWithFallback";
 const defaultTransformations = [
   { id: "01", title: "Dimensional Balayage" },
   { id: "02", title: "Nail Extension" },
-  { id: "03", title: "Balayage Gloss" },
+  {
+    id: "03",
+    title: "Balayage Gloss",
+    beforeImage: "/before.webp",
+    afterImage: "/after.webp",
+  },
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -195,8 +200,10 @@ export default function TransformationsSection() {
         ...item,
         title: before.title || item.title,
         duration: before.meta,
-        beforeImage: before.image,
-        afterImage: after.image,
+        beforeImage:
+          item.id === "03" ? item.beforeImage : before.image,
+        afterImage:
+          item.id === "03" ? item.afterImage : after.image,
       }];
     });
   });
