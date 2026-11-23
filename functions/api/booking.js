@@ -61,7 +61,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Glam by Anmi <onboarding@resend.dev>",
-        to: ["staranveer178@gmail.com"],
+        to: ["sushantmonga87@gmail.com"],
         reply_to: email,
         subject: `New appointment request — ${name} — ${service}`,
         html: `
