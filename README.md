@@ -32,6 +32,12 @@ Do not put a Cloudinary API secret in frontend environment variables. Uploads us
 
 The admin page keeps a local cache for offline recovery, but changes only become live for other visitors after the Firestore save succeeds. Existing local edits on the first administrator's browser are used as the starting data for the first cloud save.
 
-## Appointment requests
+## Appointment email delivery
 
-The booking form submits directly to FormSubmit and sends requests to `staranveer178@gmail.com`. No API key or server endpoint is required. On the first submission, FormSubmit sends an activation email to that inbox; confirm it before relying on booking submissions.
+Booking requests are sent to `staranveer178@gmail.com` by the Cloudflare Worker in `worker.js`, which calls `functions/api/booking.js` and serves the Vite build from `dist`.
+
+For local development, add `RESEND_API_KEY` to `.env.local`. Do not prefix it with `VITE_`; the key must stay server-side.
+
+For production, add `RESEND_API_KEY` as a **Secret** in the Cloudflare Worker `nailsbyanmi` settings, then deploy the latest commit. The Worker Build should use `npm run build` and `npx wrangler deploy`.
+
+Never put the Resend API key in frontend code or commit it. The configured test sender is `onboarding@resend.dev`; Resend may restrict it to the account owner's verified recipient address.
