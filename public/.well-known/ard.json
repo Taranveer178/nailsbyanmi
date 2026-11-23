@@ -1,52 +1,99 @@
+
 {
   "entries": [
     {
-      "name": "Glam By Anmi",
-      "description": "Hair, nail and eyelash salon in Sirsa, Haryana",
+      "identifier": "urn:air:glambyanmi.in:website:main",
+      "displayName": "Glam By Anmi - Hair and Nail Studio",
+      "description": "Official website of Glam By Anmi, a hair, nail and eyelash studio in Sirsa, Haryana.",
       "url": "https://glambyanmi.in/",
-      "type": "website"
+      "type": "text/html",
+      "representativeQueries": [
+        "Glam By Anmi official website",
+        "Hair and nail studio in Sirsa",
+        "Find Glam By Anmi salon services"
+      ]
     },
     {
-      "name": "Hair Services",
-      "description": "Haircuts, hair colour, keratin and hair spa services in Sirsa",
+      "identifier": "urn:air:glambyanmi.in:service:hair",
+      "displayName": "Hair Services",
+      "description": "Haircuts, hair colour, keratin and hair spa services in Sirsa.",
       "url": "https://glambyanmi.in/#services",
-      "type": "service"
+      "type": "text/html",
+      "representativeQueries": [
+        "Haircut and hair styling in Sirsa",
+        "Hair colour and keratin treatment",
+        "Hair spa services in Sirsa"
+      ]
     },
     {
-      "name": "Nail Services",
-      "description": "Gel nails, nail extensions, manicure and nail art in Sirsa",
+      "identifier": "urn:air:glambyanmi.in:service:nails",
+      "displayName": "Nail Services",
+      "description": "Gel nails, nail extensions, manicure and nail art in Sirsa.",
       "url": "https://glambyanmi.in/#nails",
-      "type": "service"
+      "type": "text/html",
+      "representativeQueries": [
+        "Nail extensions in Sirsa",
+        "Gel nails and nail art",
+        "Professional manicure services"
+      ]
     },
     {
-      "name": "Studio Gallery",
-      "description": "Hair and nail artwork from Glam By Anmi",
+      "identifier": "urn:air:glambyanmi.in:gallery:studio",
+      "displayName": "Studio Gallery",
+      "description": "Hair and nail artwork from Glam By Anmi.",
       "url": "https://glambyanmi.in/#gallery",
-      "type": "gallery"
+      "type": "text/html",
+      "representativeQueries": [
+        "Glam By Anmi nail art photos",
+        "Hair styling portfolio",
+        "Salon work and nail designs"
+      ]
     },
     {
-      "name": "Client Reviews",
-      "description": "Client reviews for Glam By Anmi in Sirsa",
+      "identifier": "urn:air:glambyanmi.in:reviews:clients",
+      "displayName": "Client Reviews",
+      "description": "Client reviews and experiences at Glam By Anmi in Sirsa.",
       "url": "https://glambyanmi.in/#reviews",
-      "type": "reviews"
+      "type": "text/html",
+      "representativeQueries": [
+        "Glam By Anmi customer reviews",
+        "Reviews of hair and nail salon in Sirsa",
+        "Client experiences at Glam By Anmi"
+      ]
     },
     {
-      "name": "Appointments",
-      "description": "Book a Glam By Anmi salon appointment",
+      "identifier": "urn:air:glambyanmi.in:booking:appointments",
+      "displayName": "Appointments",
+      "description": "Appointment booking information for Glam By Anmi salon.",
       "url": "https://glambyanmi.in/#book",
-      "type": "booking"
+      "type": "text/html",
+      "representativeQueries": [
+        "Book Glam By Anmi appointment",
+        "Book nail extension appointment in Sirsa",
+        "Schedule a hair treatment"
+      ]
     },
     {
-      "name": "Privacy Policy",
-      "description": "Glam By Anmi privacy policy",
+      "identifier": "urn:air:glambyanmi.in:document:privacy",
+      "displayName": "Privacy Policy",
+      "description": "Glam By Anmi privacy policy.",
       "url": "https://glambyanmi.in/privacy",
-      "type": "document"
+      "type": "text/html",
+      "representativeQueries": [
+        "Glam By Anmi privacy policy",
+        "How Glam By Anmi handles customer information"
+      ]
     },
     {
-      "name": "Terms and Conditions",
-      "description": "Glam By Anmi booking and salon terms",
+      "identifier": "urn:air:glambyanmi.in:document:terms",
+      "displayName": "Terms and Conditions",
+      "description": "Glam By Anmi booking and salon terms.",
       "url": "https://glambyanmi.in/terms",
-      "type": "document"
+      "type": "text/html",
+      "representativeQueries": [
+        "Glam By Anmi terms and conditions",
+        "Salon appointment booking terms"
+      ]
     }
   ]
 }
