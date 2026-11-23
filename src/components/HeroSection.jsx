@@ -181,6 +181,8 @@ export default function HeroSection() {
 							<ImageWithFallback
 								src={featuredImage}
 								alt="Gel Extensions & Hair Spa"
+								width="74"
+								height="84"
 								className="w-[74px] h-[84px] object-cover rounded-[3px] shrink-0"
 							/>
 							<div>

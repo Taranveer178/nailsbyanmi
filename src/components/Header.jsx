@@ -70,7 +70,9 @@ export default function Header({ onNavigate }) {
             <ImageWithFallback
               src={logoImage}
               alt="Glam by Anmi - Nail and Hair Studio"
-              className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+              width="191"
+              height="64"
+              className="h-12 sm:h-14 md:h-16 w-[191px] object-contain"
             />
           </a>
         </div>

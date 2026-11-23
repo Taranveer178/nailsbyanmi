@@ -1,0 +1,15 @@
+{
+  "name": "Glam By Anmi",
+  "description": "Hair, nail and eyelash salon in Sirsa, Haryana",
+  "url": "https://glambyanmi.in/",
+  "type": "LocalBusiness",
+  "resources": {
+    "services": "https://glambyanmi.in/#services",
+    "nails": "https://glambyanmi.in/#nails",
+    "gallery": "https://glambyanmi.in/#gallery",
+    "reviews": "https://glambyanmi.in/#reviews",
+    "appointments": "https://glambyanmi.in/#book",
+    "privacy": "https://glambyanmi.in/privacy",
+    "terms": "https://glambyanmi.in/terms"
+  }
+}

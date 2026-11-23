@@ -82,7 +82,9 @@ export default function Footer({ onNavigate }) {
               <ImageWithFallback
                 src={logoImage}
                 alt="Glam by Anmi - Nail and Hair Studio"
-                className="h-16 md:h-20 w-auto object-contain"
+                width="191"
+                height="64"
+                className="h-16 md:h-20 w-[191px] object-contain"
               />
             </a>
 
