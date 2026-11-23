@@ -18,13 +18,13 @@ const privacySections = [
     number: "03",
     title: "Client Consultation & Photo Consent",
     content:
-      "Before photographing any hair transformation or nail artistry for our studio portfolio or Instagram (@nails_hairs_by_anmi), Amni will always ask for your explicit verbal or written permission. You may decline or request removal at any time.",
+      "Before photographing any hair transformation or nail artistry for our studio portfolio or Instagram (@nails_hairs_by_anmi), Anmi will always ask for your explicit verbal or written permission. You may decline or request removal at any time.",
   },
   {
     number: "04",
     title: "Data Storage & Security",
     content:
-      "Appointment records and consultation notes are stored securely and accessed solely by Glam By Amni for service continuity. You may request a copy of your records or ask for your contact information to be deleted by contacting us directly.",
+      "Appointment records and consultation notes are stored securely and accessed solely by Glam By Anmi for service continuity. You may request a copy of your records or ask for your contact information to be deleted by contacting us directly.",
   },
   {
     number: "05",
@@ -62,7 +62,7 @@ export default function PrivacyPage({ onBack }) {
             </h1>
 
             <p className="text-[15.5px] md:text-[17px] text-[#C8C3BA] leading-[1.65] max-w-[600px]">
-              How Glam By Amni collects, protects, and respects your personal
+              How Glam By Anmi collects, protects, and respects your personal
               information when you visit our Mohali studio or book online.
             </p>
           </motion.div>
@@ -107,7 +107,7 @@ export default function PrivacyPage({ onBack }) {
             <ShieldCheck className="w-5 h-5 text-[#8A755F] shrink-0 mt-0.5" />
             <p className="text-[14px] text-[#2F2C29] leading-relaxed">
               Your trust matters to us. Every consultation and booking at{" "}
-              <strong>Glam By Amni, Mohali</strong> is handled with complete
+              <strong>Glam By Anmi, Mohali</strong> is handled with complete
               discretion.
             </p>
           </div>

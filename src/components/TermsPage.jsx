@@ -6,7 +6,7 @@ const termsSections = [
     number: "01",
     title: "Appointments & Consultations",
     content:
-      "All hair and nail services at Glam By Amni are provided by appointment to ensure dedicated, one-on-one attention. Every service begins with a brief consultation to confirm your desired look, estimated duration, and final pricing before we begin.",
+      "All hair and nail services at Glam By Anmi are provided by appointment to ensure dedicated, one-on-one attention. Every service begins with a brief consultation to confirm your desired look, estimated duration, and final pricing before we begin.",
   },
   {
     number: "02",
@@ -24,7 +24,7 @@ const termsSections = [
     number: "04",
     title: "Allergies, Patch Tests & Aftercare",
     content:
-      "Please inform Amni prior to your appointment of any scalp sensitivities, product allergies, or previous chemical treatments. Following the recommended home aftercare routine helps maintain colour longevity and gel nail retention.",
+      "Please inform Anmi prior to your appointment of any scalp sensitivities, product allergies, or previous chemical treatments. Following the recommended home aftercare routine helps maintain colour longevity and gel nail retention.",
   },
   {
     number: "05",
@@ -63,7 +63,7 @@ export default function TermsPage({ onBack }) {
 
             <p className="text-[15.5px] md:text-[17px] text-[#C8C3BA] leading-[1.65] max-w-[600px]">
               Simple, transparent studio policies designed to keep every visit
-              to Glam By Amni in Mohali calm, punctual, and seamless.
+              to Glam By Anmi in Mohali calm, punctual, and seamless.
             </p>
           </motion.div>
         </div>
