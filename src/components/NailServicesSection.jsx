@@ -78,7 +78,7 @@ export default function NailServicesSection() {
             transition={{ duration: 0.75, delay: 0.12, ease: framerEase }}
             className="w-full lg:max-w-[380px] flex flex-col items-start shrink-0"
           >
-            <p className="text-[15.5px] md:text-[16.5px] text-[#6E6961] leading-[1.65] mb-6">
+            <p className="text-[15.5px] md:text-[16.5px] text-[#4F4A43] leading-[1.65] mb-6">
               From clean architectural manicures to custom gel artistry, every
               treatment uses non-toxic, salon-grade formulas in a calm space.
             </p>
@@ -135,7 +135,7 @@ export default function NailServicesSection() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[13.5px] md:text-[14px] text-[#6E6961] leading-[1.6] max-w-[270px] mx-auto mb-6">
+                  <p className="text-[13.5px] md:text-[14px] text-[#4F4A43] leading-[1.6] max-w-[270px] mx-auto mb-6">
                     {service.description}
                   </p>
                 </div>

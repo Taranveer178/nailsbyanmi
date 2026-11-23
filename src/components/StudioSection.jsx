@@ -70,7 +70,7 @@ export default function StudioSection() {
               </span>
             </div>
 
-            <p className="text-[15.5px] md:text-[16.5px] text-[#6E6961] leading-[1.65] mb-8">
+            <p className="text-[15.5px] md:text-[16.5px] text-[#4F4A43] leading-[1.65] mb-8">
              Every visit starts with a personal consultation to create hair and nail looks that match your style.
             </p>
 

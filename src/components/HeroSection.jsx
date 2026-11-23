@@ -187,10 +187,10 @@ export default function HeroSection() {
 								<p className="text-[11px] text-[#D1CFC9] font-normal mb-1">
 									Most booked this week
 								</p>
-								<h3 className="text-[17.5px] font-semibold text-white leading-snug">
+								<h2 className="text-[17.5px] font-semibold text-white leading-snug">
 									Gel Extensions &amp; <br />
 									Hair Spa
-								</h3>
+								</h2>
 								<p className="text-[11.5px] text-white/75 font-medium mt-1.5">
 									60 min, from ₹1,200
 								</p>
@@ -214,25 +214,29 @@ export default function HeroSection() {
 							type="button"
 							onClick={() => setActiveSlide(idx)}
 							aria-label={`Slide ${idx + 1}`}
-							className={`relative h-2 rounded-[1px] overflow-hidden transition-all duration-300 ${
-								isActive
-									? "w-8 bg-white/30"
-									: "w-2 bg-white/35 hover:bg-white/60"
-							}`}
+							className="relative w-11 h-11 inline-flex items-center justify-center rounded-[3px]"
 						>
-							{isActive && (
-								<motion.span
-									key={`timer-${activeSlide}`}
-									initial={{ scaleX: 0 }}
-									animate={{ scaleX: 1 }}
-									transition={{
-										duration: SLIDE_DURATION / 1000,
-										ease: "linear",
-									}}
-									style={{ transformOrigin: "left" }}
-									className="absolute inset-0 bg-white"
-								/>
-							)}
+							<span
+								className={`relative h-2 rounded-[1px] overflow-hidden transition-all duration-300 ${
+									isActive
+										? "w-8 bg-white/30"
+										: "w-2 bg-white/35 hover:bg-white/60"
+								}`}
+							>
+								{isActive && (
+									<motion.span
+										key={`timer-${activeSlide}`}
+										initial={{ scaleX: 0 }}
+										animate={{ scaleX: 1 }}
+										transition={{
+											duration: SLIDE_DURATION / 1000,
+											ease: "linear",
+										}}
+										style={{ transformOrigin: "left" }}
+										className="absolute inset-0 bg-white"
+									/>
+								)}
+							</span>
 						</button>
 					);
 				})}

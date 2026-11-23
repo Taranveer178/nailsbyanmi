@@ -190,7 +190,7 @@ export default function App() {
         target="_blank"
         rel="noreferrer"
         aria-label="Book an appointment on WhatsApp"
-        className="fixed z-50 bottom-5 right-5 sm:bottom-7 sm:right-7 flex items-center gap-2 rounded-full bg-[#25D366] text-white pl-2 pr-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-transform duration-200 hover:-translate-y-1"
+        className="fixed z-50 bottom-5 right-5 sm:bottom-7 sm:right-7 flex items-center gap-2 rounded-full bg-[#075E54] text-white pl-2 pr-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-transform duration-200 hover:-translate-y-1"
       >
         <svg
           aria-hidden="true"

@@ -17,7 +17,7 @@ export default function ServiceTicker() {
   const repeatedItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="w-full bg-[#8A755F] text-[#F6F5F1] py-5 md:py-6 overflow-hidden border-y border-white/10 select-none">
+    <div className="w-full bg-[#2F2C29] text-white py-5 md:py-6 overflow-hidden border-y border-white/10 select-none">
       <div className="animate-marquee flex items-center">
         {repeatedItems.map((item, idx) => (
           <div key={idx} className="flex items-center shrink-0">

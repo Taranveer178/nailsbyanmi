@@ -163,9 +163,9 @@ export default function ServiceMenuSection() {
                   >
                     <div className="transition-transform duration-300 ease-out group-hover:translate-x-2">
                       <div className="flex items-center gap-2">
-                        <h4 className="text-[19px] md:text-[21px] font-medium text-[#2F2C29] group-hover:text-[#8A755F] transition-colors">
+                        <h3 className="text-[19px] md:text-[21px] font-medium text-[#2F2C29] group-hover:text-[#8A755F] transition-colors">
                           {item.name}
-                        </h4>
+                        </h3>
                         <ArrowUpRight className="w-4 h-4 text-[#8A755F] opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                       </div>
                       <p className="text-[13.5px] md:text-[14px] text-[#6E675E] mt-1 leading-relaxed">
@@ -177,7 +177,7 @@ export default function ServiceMenuSection() {
                       <span className="block text-[17px] md:text-[18.5px] font-medium text-[#2F2C29]">
                         {item.price}
                       </span>
-                      <span className="block text-[12px] text-[#7A7165] mt-0.5">
+                      <span className="block text-[12px] text-[#4F4A43] mt-0.5">
                         {item.duration}
                       </span>
                     </div>

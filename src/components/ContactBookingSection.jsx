@@ -199,7 +199,7 @@ export default function ContactBookingSection() {
                 <h3 className="text-2xl sm:text-[28px] font-medium text-[#2F2C29] tracking-[-0.02em] leading-tight">
                   Request an appointment
                 </h3>
-                <p className="text-[13px] text-[#7A7165] mt-1.5">
+                <p className="text-[13px] text-[#4F4A43] mt-1.5">
                   Fields marked with a star are required.
                 </p>
               </div>

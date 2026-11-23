@@ -54,7 +54,7 @@ export default function StylistSection() {
             </div>
 
             {/* Personal Bio */}
-            <p className="text-[15.5px] md:text-[17px] text-[#6E6961] leading-[1.75] max-w-[540px] mb-10">
+            <p className="text-[15.5px] md:text-[17px] text-[#4F4A43] leading-[1.75] max-w-[540px] mb-10">
               At Glam By Anmi in Sirsa, every appointment is an unhurried,
               one-on-one experience. From dimensional hair colour and precision
               cuts to sculpted nail extensions and custom nail art, every detail

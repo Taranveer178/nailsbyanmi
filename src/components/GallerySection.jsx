@@ -126,7 +126,7 @@ export default function GallerySection({ onSeeAll }) {
             </motion.div>
 
             <div className="flex items-center justify-between lg:justify-end gap-4">
-              <span className="text-[12.5px] font-medium text-[#7A7165] tracking-wide">
+              <span className="text-[12.5px] font-medium text-[#3F3A34] tracking-wide">
                 Scroll page to explore ({String(activeIndex + 1).padStart(2, "0")} /{" "}
                 {String(total).padStart(2, "0")})
               </span>
@@ -219,24 +219,8 @@ export default function GallerySection({ onSeeAll }) {
           </div>
         </div>
 
-        {/* Bottom Progress Dots + "See all" Button */}
+        {/* Bottom "See all" Button */}
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mt-6 md:mt-10 flex flex-col items-center text-center">
-          <div className="flex items-center gap-2 mb-6">
-            {galleryItems.map((item, idx) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => scrollToCardIndex(idx)}
-                aria-label={`View ${item.title}`}
-                className={`h-1.5 rounded-[1px] transition-all duration-300 ${
-                  activeIndex === idx
-                    ? "w-7 bg-[#2F2C29]"
-                    : "w-2 bg-[#2F2C29]/25 hover:bg-[#2F2C29]/50"
-                }`}
-              />
-            ))}
-          </div>
-
           <motion.button
             type="button"
             onClick={onSeeAll}
