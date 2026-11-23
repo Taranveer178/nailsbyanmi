@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MoveHorizontal } from "lucide-react";
-import { getAdminSectionItems } from "../admin/galleryStorage";
+import { getAdminSectionItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const defaultTransformations = [
@@ -185,11 +185,11 @@ function BeforeAfterCard({ item, index }) {
 }
 
 export default function TransformationsSection() {
-  const [transformations] = useState(() => {
-    const adminItems = getAdminSectionItems("transformations");
-    const itemsById = new Map(adminItems.map((item) => [item.id, item]));
+  useAdminState();
+  const adminItems = getAdminSectionItems("transformations");
+  const itemsById = new Map(adminItems.map((item) => [item.id, item]));
 
-    return defaultTransformations.flatMap((item, index) => {
+  const transformations = defaultTransformations.flatMap((item, index) => {
       const cardId = String(index + 1).padStart(2, "0");
       const before = itemsById.get(`tr-${cardId}-before`);
       const after = itemsById.get(`tr-${cardId}-after`);
@@ -205,7 +205,6 @@ export default function TransformationsSection() {
         afterImage:
           item.id === "03" ? item.afterImage : after.image,
       }];
-    });
   });
 
   return (

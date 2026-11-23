@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from "./components/TermsPage";
 import GalleryPage from "./components/GalleryPage";
+import { startAdminStateSync } from "./admin/galleryStorage";
 
 const AdminDashboard = lazy(() => import("./admin/AdminDashboard"));
 
@@ -44,6 +45,8 @@ export default function App() {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => startAdminStateSync(), []);
 
   useEffect(() => {
     const seoByPage = {

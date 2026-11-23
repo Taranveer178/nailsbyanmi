@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -27,27 +27,35 @@ const rowItemVariants = {
 };
 
 export default function ServiceMenuSection() {
-  const [menuServices] = useState(() =>
-    getVisibleAdminItems("hair-services").map((item) => ({
-      name: item.title,
-      description: item.meta,
-      price: item.tag,
-      duration: item.duration,
-      image: item.image,
-    }))
-  );
+  useAdminState();
+  const menuServices = getVisibleAdminItems("hair-services").map((item) => ({
+    name: item.title,
+    description: item.meta,
+    price: item.tag,
+    duration: item.duration,
+    image: item.image,
+  }));
   const defaultImage =
     getVisibleAdminItems("hair-menu")[0]?.image || "/logo.png";
-  const [activeImage, setActiveImage] = useState(
-    () => defaultImage
-  );
+  const [imageSelection, setImageSelection] = useState({
+    defaultImage,
+    selectedImage: null,
+  });
+  const activeImage =
+    imageSelection.defaultImage === defaultImage
+      ? imageSelection.selectedImage || defaultImage
+      : defaultImage;
+  const selectImage = (image) =>
+    setImageSelection({ defaultImage, selectedImage: image });
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 1023px)");
     const syncViewport = () => {
       setIsMobile(mediaQuery.matches);
-      if (mediaQuery.matches) setActiveImage(defaultImage);
+      if (mediaQuery.matches) {
+        setImageSelection({ defaultImage, selectedImage: null });
+      }
     };
 
     syncViewport();
@@ -147,9 +155,9 @@ export default function ServiceMenuSection() {
                   <motion.div
                     key={item.name}
                     variants={rowItemVariants}
-                    onMouseEnter={() => !isMobile && setActiveImage(item.image)}
-                    onPointerEnter={() => !isMobile && setActiveImage(item.image)}
-                    onFocus={() => !isMobile && setActiveImage(item.image)}
+                    onMouseEnter={() => !isMobile && selectImage(item.image)}
+                    onPointerEnter={() => !isMobile && selectImage(item.image)}
+                    onFocus={() => !isMobile && selectImage(item.image)}
                     tabIndex={0}
                     className="py-5 md:py-6 border-b border-[#2F2C29]/15 flex items-start justify-between gap-6 group relative transition-colors hover:bg-[#2F2C29]/[0.03] px-2 -mx-2 rounded-[2px] cursor-default"
                   >

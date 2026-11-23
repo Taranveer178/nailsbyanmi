@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const exploreLinks = [
@@ -13,6 +13,7 @@ const exploreLinks = [
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function Footer({ onNavigate }) {
+  useAdminState();
   const logoImage =
     getVisibleAdminItems("branding")[0]?.image || "/logo.png";
 

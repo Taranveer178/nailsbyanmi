@@ -1,4 +1,6 @@
+import { useSyncExternalStore } from "react";
 import { adminSections } from "./adminData";
+import { getFirebaseDatabase } from "../firebase";
 import {
   eyelashesGallery,
   hairGallery,
@@ -6,6 +8,7 @@ import {
 } from "../data/galleryData";
 
 export const ADMIN_SECTIONS_STORAGE_KEY = "glam-by-anmi-admin-sections";
+const ADMIN_SETTINGS_DOCUMENT = ["siteSettings", "admin"];
 const STORAGE_VERSION = 2;
 
 const LEGACY_ITEMS_TO_REMOVE = {
@@ -231,23 +234,170 @@ export function loadAdminState() {
   }
 }
 
-export function loadAdminSections() {
-  return loadAdminState().sections;
+let currentAdminState = loadAdminState();
+let stopAdminStateSync;
+let adminSyncStatus = { state: "idle", error: "" };
+const adminStateListeners = new Set();
+const adminSyncListeners = new Set();
+
+const notifyListeners = (listeners) => {
+  listeners.forEach((listener) => listener());
+};
+
+export function subscribeAdminState(listener) {
+  adminStateListeners.add(listener);
+  return () => adminStateListeners.delete(listener);
 }
 
-export function saveAdminState(sections, deletedItemIds) {
-  localStorage.setItem(
-    ADMIN_SECTIONS_STORAGE_KEY,
-    JSON.stringify({
-      version: STORAGE_VERSION,
-      sections,
-      deletedItemIds,
-    })
+export function getAdminState() {
+  return currentAdminState;
+}
+
+export function useAdminState() {
+  return useSyncExternalStore(
+    subscribeAdminState,
+    getAdminState,
+    getAdminState
   );
 }
 
+export function subscribeAdminSyncStatus(listener) {
+  adminSyncListeners.add(listener);
+  return () => adminSyncListeners.delete(listener);
+}
+
+export function getAdminSyncStatus() {
+  return adminSyncStatus;
+}
+
+export function useAdminSyncStatus() {
+  return useSyncExternalStore(
+    subscribeAdminSyncStatus,
+    getAdminSyncStatus,
+    getAdminSyncStatus
+  );
+}
+
+export function startAdminStateSync() {
+  if (stopAdminStateSync) return () => {};
+
+  let cancelled = false;
+  let unsubscribe;
+  const stop = () => {
+    cancelled = true;
+    unsubscribe?.();
+    if (stopAdminStateSync === stop) stopAdminStateSync = undefined;
+  };
+  stopAdminStateSync = stop;
+  adminSyncStatus = { state: "connecting", error: "" };
+  notifyListeners(adminSyncListeners);
+
+  Promise.all([import("firebase/firestore"), getFirebaseDatabase()])
+    .then(([firestore, database]) => {
+      if (cancelled) return;
+      unsubscribe = firestore.onSnapshot(
+        firestore.doc(database, ...ADMIN_SETTINGS_DOCUMENT),
+        (snapshot) => {
+      if (snapshot.exists()) {
+        const remoteState = snapshot.data();
+        if (
+          remoteState.version !== STORAGE_VERSION ||
+          !Array.isArray(remoteState.sections) ||
+          !remoteState.sections.every(
+            (section) =>
+              typeof section?.id === "string" &&
+              Array.isArray(section.items) &&
+              section.items.every(
+                (item) =>
+                  typeof item?.id === "string" &&
+                  typeof item.title === "string" &&
+                  typeof item.image === "string"
+              )
+          ) ||
+          !Array.isArray(remoteState.deletedItemIds) ||
+          !remoteState.deletedItemIds.every(
+            (itemId) => typeof itemId === "string"
+          )
+        ) {
+          adminSyncStatus = {
+            state: "error",
+            error: "The shared settings document has an unsupported format.",
+          };
+          notifyListeners(adminSyncListeners);
+          return;
+        }
+
+        const deletedItemIds = migrateDeletedItemIds(
+          remoteState.sections,
+          remoteState.deletedItemIds
+        );
+        currentAdminState = {
+          sections: mergeSavedSections(remoteState.sections, deletedItemIds),
+          deletedItemIds,
+        };
+        try {
+          localStorage.setItem(
+            ADMIN_SECTIONS_STORAGE_KEY,
+            JSON.stringify({ version: STORAGE_VERSION, ...currentAdminState })
+          );
+        } catch (error) {
+          console.warn("Could not cache shared admin settings locally.", error);
+        }
+        notifyListeners(adminStateListeners);
+      }
+
+      adminSyncStatus = { state: "connected", error: "" };
+      notifyListeners(adminSyncListeners);
+        },
+        (error) => {
+          console.error("Could not sync shared admin settings.", error);
+          adminSyncStatus = { state: "error", error: error.message };
+          notifyListeners(adminSyncListeners);
+        }
+      );
+    })
+    .catch((error) => {
+      if (cancelled) return;
+      console.error("Could not start shared admin settings sync.", error);
+      adminSyncStatus = { state: "error", error: error.message };
+      notifyListeners(adminSyncListeners);
+    });
+
+  return stop;
+}
+
+export function loadAdminSections() {
+  return currentAdminState.sections;
+}
+
+export async function saveAdminState(sections, deletedItemIds) {
+  currentAdminState = { sections, deletedItemIds };
+  try {
+    localStorage.setItem(
+      ADMIN_SECTIONS_STORAGE_KEY,
+      JSON.stringify({ version: STORAGE_VERSION, ...currentAdminState })
+    );
+  } catch (error) {
+    console.warn("Could not cache admin settings locally.", error);
+  }
+  notifyListeners(adminStateListeners);
+
+  const [firestore, database] = await Promise.all([
+    import("firebase/firestore"),
+    getFirebaseDatabase(),
+  ]);
+  await firestore.setDoc(firestore.doc(database, ...ADMIN_SETTINGS_DOCUMENT), {
+    version: STORAGE_VERSION,
+    sections,
+    deletedItemIds,
+    updatedAt: firestore.serverTimestamp(),
+  });
+}
+
 export function getAdminSectionItems(sectionId) {
-  const section = loadAdminSections().find((entry) => entry.id === sectionId);
+  const section = currentAdminState.sections.find(
+    (entry) => entry.id === sectionId
+  );
   return section?.items || [];
 }
 

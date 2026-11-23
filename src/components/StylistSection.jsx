@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Sparkles } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function StylistSection() {
+  useAdminState();
   const portrait =
     getVisibleAdminItems("stylist")[0]?.image || "/ANMI-%20Stylist.webp";
 

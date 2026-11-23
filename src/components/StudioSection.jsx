@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function StudioSection() {
-  const [studioServices] = useState(() =>
-    getVisibleAdminItems("studio").map((item) => ({
+  useAdminState();
+  const studioServices = getVisibleAdminItems("studio").map((item) => ({
       id: item.id,
       title: item.title,
       description: item.meta,
       image: item.image,
-    }))
-  );
+    }));
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (

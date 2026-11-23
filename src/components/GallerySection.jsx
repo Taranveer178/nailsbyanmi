@@ -5,13 +5,14 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { ArrowRight, ChevronUp, ChevronDown } from "lucide-react";
-import { getHomeGalleryItems } from "../admin/galleryStorage";
+import { getHomeGalleryItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function GallerySection({ onSeeAll }) {
-  const [galleryItems] = useState(getHomeGalleryItems);
+  useAdminState();
+  const galleryItems = getHomeGalleryItems();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 

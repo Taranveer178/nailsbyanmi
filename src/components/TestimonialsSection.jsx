@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const defaultTestimonials = [
@@ -43,24 +43,24 @@ const miniTickerReviews = [
 const framerEase = [0.22, 1, 0.36, 1];
 
 export default function TestimonialsSection() {
-  const [testimonials] = useState(() => {
-    const reviewItems = getVisibleAdminItems("reviews");
-    if (!reviewItems.length) return defaultTestimonials;
-    return reviewItems.map((item) => ({
+  useAdminState();
+  const reviewItems = getVisibleAdminItems("reviews");
+  const testimonials = reviewItems.length
+    ? reviewItems.map((item) => ({
       id: item.id,
       quote: item.quote || item.meta,
       name: item.name || item.title,
       service: item.service || item.tag,
       image: item.image,
-    }));
-  });
+    }))
+    : defaultTestimonials;
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
   const total = testimonials.length;
-  const current = testimonials[activeIndex];
+  const current = testimonials[activeIndex % total];
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % total);

@@ -1,42 +1,129 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { Plus, ImageOff } from "lucide-react";
 import {
   getDeletedItemKey,
-  loadAdminState,
   saveAdminState,
+  useAdminState,
+  useAdminSyncStatus,
 } from "./galleryStorage";
+import { getFirebaseAuth, getFirebaseDatabase } from "../firebase";
 import AdminHeader from "./AdminHeader";
+import AdminLogin from "./AdminLogin";
 import SectionList from "./SectionList";
 import ImageCard from "./ImageCard";
 import ImageEditModal from "./ImageEditModal";
 
 export default function AdminDashboard({ onBackToSite }) {
-  const [adminState, setAdminState] = useState(loadAdminState);
-  const { sections, deletedItemIds } = adminState;
+  const { sections, deletedItemIds } = useAdminState();
+  const syncStatus = useAdminSyncStatus();
+  const [accessState, setAccessState] = useState("checking");
+  const [authNotice, setAuthNotice] = useState("");
   const [activeSectionId, setActiveSectionId] = useState("hero");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [storageError, setStorageError] = useState("");
 
-  const updateSections = (update, deletedItemId) => {
+  useEffect(() => {
+    let active = true;
+    let unsubscribe;
+
+    const initializeAuth = async () => {
+      try {
+        const [auth, database] = await Promise.all([
+          getFirebaseAuth(),
+          getFirebaseDatabase(),
+        ]);
+        if (!active) return;
+
+        unsubscribe = onAuthStateChanged(auth, async (user) => {
+          if (!active) return;
+          if (!user) {
+            setAccessState("signed-out");
+            return;
+          }
+
+          setAccessState("checking");
+          try {
+            const adminRecord = await getDoc(
+              doc(database, "admins", user.uid)
+            );
+            if (!active) return;
+            if (!adminRecord.exists()) {
+              await signOut(auth);
+              if (active) {
+                setAuthNotice("This account does not have admin access.");
+                setAccessState("signed-out");
+              }
+              return;
+            }
+
+            setAuthNotice("");
+            setAccessState("authorized");
+          } catch (error) {
+            console.error("Could not verify admin access.", error);
+            await signOut(auth).catch(() => {});
+            if (active) {
+              setAuthNotice(
+                "Admin access could not be verified. Check Firebase Authentication, Firestore, and the deployed security rules."
+              );
+              setAccessState("signed-out");
+            }
+          }
+        });
+      } catch (error) {
+        console.error("Could not initialize admin authentication.", error);
+        if (active) {
+          setAuthNotice("Firebase authentication could not be initialized.");
+          setAccessState("signed-out");
+        }
+      }
+    };
+
+    initializeAuth();
+    return () => {
+      active = false;
+      unsubscribe?.();
+    };
+  }, []);
+
+  const updateSections = async (update, deletedItemId) => {
     const updatedSections = update(sections);
     const updatedDeletedItemIds = deletedItemId
       ? [...deletedItemIds, deletedItemId]
       : deletedItemIds;
-    setAdminState({
-      sections: updatedSections,
-      deletedItemIds: updatedDeletedItemIds,
-    });
     try {
-      saveAdminState(updatedSections, updatedDeletedItemIds);
+      await saveAdminState(updatedSections, updatedDeletedItemIds);
       setStorageError("");
     } catch (error) {
       console.error("Could not save admin gallery changes.", error);
       setStorageError(
-        "Gallery changes could not be saved in this browser. Check available local storage."
+        "Cloud save failed. This browser has a local copy, but other visitors will not see this change until Firebase sync is restored."
       );
     }
   };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(await getFirebaseAuth());
+    } catch (error) {
+      console.error("Could not sign out of the admin panel.", error);
+      setStorageError("Could not sign out. Please try again.");
+    }
+  };
+
+  if (accessState === "checking") {
+    return (
+      <div className="min-h-screen bg-[#F6F5F1] p-8 text-[#2F2C29] grid place-items-center">
+        <p role="status" className="text-[14px]">Checking admin access…</p>
+      </div>
+    );
+  }
+
+  if (accessState !== "authorized") {
+    return <AdminLogin onBackToSite={onBackToSite} notice={authNotice} />;
+  }
 
   const activeSection =
     sections.find((sec) => sec.id === activeSectionId) || sections[0];
@@ -106,6 +193,8 @@ export default function AdminDashboard({ onBackToSite }) {
       <AdminHeader
         onBackToSite={onBackToSite}
         onOpenAddModal={handleOpenAdd}
+        onSignOut={handleSignOut}
+        syncStatus={syncStatus.state}
       />
 
       {/* Main Content Layout: Mobile Stacked / Desktop Sidebar + Grid */}
@@ -125,6 +214,14 @@ export default function AdminDashboard({ onBackToSite }) {
               className="mb-5 rounded-[3px] border border-red-300 bg-red-50 px-4 py-3 text-[13px] text-red-800"
             >
               {storageError}
+            </p>
+          )}
+          {syncStatus.state === "error" && !storageError && (
+            <p
+              role="alert"
+              className="mb-5 rounded-[3px] border border-red-300 bg-red-50 px-4 py-3 text-[13px] text-red-800"
+            >
+              Live settings sync is unavailable. Changes may remain local until Firestore is reachable.
             </p>
           )}
           {/* Active Section Banner */}

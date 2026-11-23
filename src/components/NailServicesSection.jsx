@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const framerEase = [0.22, 1, 0.36, 1];
@@ -27,16 +26,15 @@ const cardVariants = {
 };
 
 export default function NailServicesSection() {
-  const [nailServices] = useState(() =>
-    getVisibleAdminItems("nails").map((item, index) => ({
+  useAdminState();
+  const nailServices = getVisibleAdminItems("nails").map((item, index) => ({
       id: String(index + 1).padStart(2, "0"),
       itemId: item.id,
       title: item.title,
       description: item.meta,
       price: item.tag,
       image: item.image,
-    }))
-  );
+    }));
 
   return (
     <section

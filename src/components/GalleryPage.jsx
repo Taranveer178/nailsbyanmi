@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import {
   getGalleryCollections,
   getVisibleAdminItems,
+  useAdminState,
 } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
@@ -36,16 +37,15 @@ function LookbookCard({ item, idx, onSelect }) {
 }
 
 export default function GalleryPage() {
+  useAdminState();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeLightboxItem, setActiveLightboxItem] = useState(null);
   const [activeHeroImage, setActiveHeroImage] = useState(0);
-  const [galleryHeroImages] = useState(() => {
-    const heroItems = getVisibleAdminItems("hero");
-    return heroItems.length
-      ? heroItems.map((item) => item.image)
-      : defaultGalleryHeroImages;
-  });
-  const [galleryCollections] = useState(getGalleryCollections);
+  const heroItems = getVisibleAdminItems("hero");
+  const galleryHeroImages = heroItems.length
+    ? heroItems.map((item) => item.image)
+    : defaultGalleryHeroImages;
+  const galleryCollections = getGalleryCollections();
   const { nails: nailsGallery, hair: hairGallery, eyelashes: eyelashesGallery } =
     galleryCollections;
   const allGalleryItems = useMemo(

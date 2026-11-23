@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const navLinks = [
@@ -14,9 +14,8 @@ const navLinks = [
 ];
 
 export default function Header({ onNavigate }) {
-  const [logoImage] = useState(
-    () => getVisibleAdminItems("branding")[0]?.image || "/logo.png"
-  );
+  useAdminState();
+  const logoImage = getVisibleAdminItems("branding")[0]?.image || "/logo.png";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { getVisibleAdminItems } from "../admin/galleryStorage";
+import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
 const defaultSlides = [
@@ -53,23 +53,21 @@ const itemVariants = {
 };
 
 export default function HeroSection() {
-  const [slides] = useState(() => {
-    const heroItems = getVisibleAdminItems("hero");
-    if (!heroItems.length) return defaultSlides;
-    return heroItems.map((item, index) => ({
+  useAdminState();
+  const heroItems = getVisibleAdminItems("hero");
+  const slides = heroItems.length
+    ? heroItems.map((item, index) => ({
       ...defaultSlides[index % defaultSlides.length],
       id: item.id,
       image: item.image,
       imageAlt: item.title,
-    }));
-  });
-  const [featuredImage] = useState(
-    () =>
-      getVisibleAdminItems("hero-feature")[0]?.image ||
-      "/Gel%20%26%20Acrylic%20Nails.webp"
-  );
+    }))
+    : defaultSlides;
+  const featuredImage =
+    getVisibleAdminItems("hero-feature")[0]?.image ||
+    "/Gel%20%26%20Acrylic%20Nails.webp";
   const [activeSlide, setActiveSlide] = useState(0);
-  const current = slides[activeSlide];
+  const current = slides[activeSlide % slides.length];
 
   useEffect(() => {
     const timer = setTimeout(() => {
