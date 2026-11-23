@@ -374,7 +374,7 @@ export const adminSections = [
         tag: "Branding",
         meta: "Site logo",
         status: "visible",
-        image: "/logo.png",
+        image: "/logo.webp",
       },
     ],
   },

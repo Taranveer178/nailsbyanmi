@@ -15,7 +15,7 @@ const framerEase = [0.22, 1, 0.36, 1];
 export default function Footer({ onNavigate }) {
   useAdminState();
   const logoImage =
-    getVisibleAdminItems("branding")[0]?.image || "/logo.png";
+    getVisibleAdminItems("branding")[0]?.image || "/logo.webp";
 
   const handleAnchorClick = (e, href) => {
     if (onNavigate) {

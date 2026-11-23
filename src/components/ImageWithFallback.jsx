@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-const LOGO_IMAGE = "/logo.png";
+const LOGO_IMAGE = "/logo.webp";
 
 export default function ImageWithFallback({
   src,
   component: ImageComponent = "img",
   style,
   onError,
+  loading = "lazy",
+  decoding = "async",
   ...props
 }) {
   const [failedSource, setFailedSource] = useState(null);
@@ -22,6 +24,8 @@ export default function ImageWithFallback({
     <ImageComponent
       {...props}
       src={imageSource}
+      loading={loading}
+      decoding={decoding}
       onError={handleError}
       style={
         isUsingFallback

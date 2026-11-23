@@ -36,7 +36,7 @@ export default function ServiceMenuSection() {
     image: item.image,
   }));
   const defaultImage =
-    getVisibleAdminItems("hair-menu")[0]?.image || "/logo.png";
+    getVisibleAdminItems("hair-menu")[0]?.image || "/logo.webp";
   const [imageSelection, setImageSelection] = useState({
     defaultImage,
     selectedImage: null,

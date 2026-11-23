@@ -46,7 +46,26 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  useEffect(() => startAdminStateSync(), []);
+  useEffect(() => {
+    let stopSync = () => {};
+    const startSync = () => {
+      stopSync = startAdminStateSync();
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(startSync, { timeout: 2500 });
+      return () => {
+        window.cancelIdleCallback(idleId);
+        stopSync();
+      };
+    }
+
+    const timeoutId = window.setTimeout(startSync, 1500);
+    return () => {
+      window.clearTimeout(timeoutId);
+      stopSync();
+    };
+  }, []);
 
   useEffect(() => {
     const seoByPage = {

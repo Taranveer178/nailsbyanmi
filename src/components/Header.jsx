@@ -15,7 +15,7 @@ const navLinks = [
 
 export default function Header({ onNavigate }) {
   useAdminState();
-  const logoImage = getVisibleAdminItems("branding")[0]?.image || "/logo.png";
+  const logoImage = getVisibleAdminItems("branding")[0]?.image || "/logo.webp";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
