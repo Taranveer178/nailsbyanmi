@@ -31,3 +31,14 @@ Do not put a Cloudinary API secret in frontend environment variables. Uploads us
 4. Open `/admin` and sign in with that account. The first successful admin save creates `siteSettings/admin`; its public read updates the live site, while writes are restricted by the deployed rules.
 
 The admin page keeps a local cache for offline recovery, but changes only become live for other visitors after the Firestore save succeeds. Existing local edits on the first administrator's browser are used as the starting data for the first cloud save.
+
+## Appointment email delivery
+
+Booking requests are sent to `staranveer178@gmail.com` by the Cloudflare Pages Function at `functions/api/booking.js`.
+
+1. In Cloudflare Dashboard, open the project's Pages deployment settings.
+2. Add an environment variable named `RESEND_API_KEY` as a **secret** in both Preview and Production environments.
+3. Set it to the Resend API key supplied for this project.
+4. Deploy the site so Cloudflare includes the `functions/` directory. The browser calls `/api/booking`; the key remains server-side.
+
+Before production delivery, verify a sending domain in Resend and change the endpoint's `from` address from `Glam by Anmi <onboarding@resend.dev>` to an address such as `Glam by Anmi <bookings@glambyanmi.in>`. Resend's test sender may be restricted to the account owner's verified address.

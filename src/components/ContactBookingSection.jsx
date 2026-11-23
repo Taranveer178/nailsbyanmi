@@ -34,6 +34,8 @@ export default function ContactBookingSection() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const isFormValid =
     formData.name.trim() !== "" &&
@@ -45,12 +47,47 @@ export default function ContactBookingSection() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (submitted) setSubmitted(false);
+    if (submitError) setSubmitError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
-    setSubmitted(true);
+    if (!isFormValid || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitted(false);
+
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "We could not send the request.");
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        date: "",
+        service: "",
+        category: "Nail & Hair Combo",
+        notes: "",
+      });
+    } catch (error) {
+      setSubmitError(
+        error.message ||
+          "We could not send the request. Please try again or call the studio."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -339,23 +376,34 @@ export default function ContactBookingSection() {
               ) : (
                 <motion.button
                   type="submit"
-                  disabled={!isFormValid}
-                  whileTap={isFormValid ? { scale: 0.99 } : {}}
+                  disabled={!isFormValid || isSubmitting}
+                  whileTap={isFormValid && !isSubmitting ? { scale: 0.99 } : {}}
                   className={`w-full text-[14px] font-medium py-4 px-6 rounded-[3px] transition-all duration-300 flex items-center justify-center gap-2.5 ${
-                    isFormValid
+                    isFormValid && !isSubmitting
                       ? "cta-fill cta-fill--dark group bg-[#2F2C29] text-[#F6F5F1] cursor-pointer shadow-sm"
                       : "bg-[#6A6055] text-[#F6F5F1]/90 cursor-not-allowed"
                   }`}
                 >
                   <span>
-                    {isFormValid
-                      ? "Request appointment"
-                      : "Please fill in the required fields"}
+                    {isSubmitting
+                      ? "Sending request…"
+                      : isFormValid
+                        ? "Request appointment"
+                        : "Please fill in the required fields"}
                   </span>
-                  {isFormValid && (
+                  {isFormValid && !isSubmitting && (
                     <ArrowRight className="w-4 h-4 stroke-[1.75] transition-transform duration-300 group-hover:-rotate-45" />
                   )}
                 </motion.button>
+              )}
+
+              {submitError && (
+                <p
+                  role="alert"
+                  className="mt-3 rounded-[2px] border border-red-300 bg-red-50 px-4 py-3 text-[13px] text-red-800"
+                >
+                  {submitError}
+                </p>
               )}
             </form>
           </motion.div>

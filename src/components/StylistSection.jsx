@@ -74,7 +74,7 @@ export default function StylistSection() {
               </motion.a>
 
               <motion.a
-                href="https://www.instagram.com/nails_hairs_by_anmi/"
+                href="https://www.instagram.com/glam_by_anmi/"
                 target="_blank"
                 rel="noreferrer"
                 whileTap={{ scale: 0.98 }}
