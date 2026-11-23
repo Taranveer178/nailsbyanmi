@@ -141,9 +141,32 @@ export default function AdminDashboard({ onBackToSite }) {
   };
 
   // Save an item; gallery content is persisted in browser storage below.
-  const handleSaveItem = (savedItem) => {
-    updateSections((prev) =>
-      prev.map((sec) => {
+  const handleSaveItem = (savedItem, targetGallerySectionId) => {
+    if (targetGallerySectionId) {
+      setActiveSectionId(targetGallerySectionId);
+    }
+    updateSections((prev) => {
+      if (targetGallerySectionId) {
+        return prev.map((sec) => {
+          if (["lookbook-nails", "lookbook-hair", "lookbook-lashes"].includes(sec.id)) {
+            const itemExists = sec.items.some((item) => item.id === savedItem.id);
+            return {
+              ...sec,
+              items:
+                sec.id === targetGallerySectionId
+                  ? itemExists
+                    ? sec.items.map((item) =>
+                        item.id === savedItem.id ? savedItem : item
+                      )
+                    : [savedItem, ...sec.items]
+                  : sec.items.filter((item) => item.id !== savedItem.id),
+            };
+          }
+          return sec;
+        });
+      }
+
+      return prev.map((sec) => {
         if (sec.id !== activeSection.id) return sec;
         const exists = sec.items.some((i) => i.id === savedItem.id);
         return {
@@ -152,8 +175,8 @@ export default function AdminDashboard({ onBackToSite }) {
             ? sec.items.map((i) => (i.id === savedItem.id ? savedItem : i))
             : [savedItem, ...sec.items],
         };
-      })
-    );
+      });
+    });
   };
 
   // Toggle "Remove" (hide from live site without deleting)

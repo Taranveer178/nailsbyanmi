@@ -14,6 +14,13 @@ export default function ImageEditModal({
   const isReview = sectionId === "reviews";
   const isService = sectionId === "nails" || sectionId === "hair-services";
   const isHairService = sectionId === "hair-services";
+  const isLookbook = ["lookbook-nails", "lookbook-hair", "lookbook-lashes"].includes(sectionId);
+  const galleryCategories = [
+    { id: "lookbook-nails", label: "Nails" },
+    { id: "lookbook-hair", label: "Hair" },
+    { id: "lookbook-lashes", label: "Eyelashes" },
+  ];
+  const [galleryCategory, setGalleryCategory] = useState(() => sectionId);
   const [title, setTitle] = useState(() => item?.title || "");
   const [tag, setTag] = useState(
     () => item?.tag || (isService || isReview ? "" : sectionName || "Studio Work")
@@ -114,7 +121,8 @@ export default function ImageEditModal({
     }
     if (isService) savedItem.price = tag.trim();
     if (isHairService) savedItem.duration = duration.trim();
-    onSave(savedItem);
+    if (isLookbook) savedItem.galleryCategory = galleryCategory;
+    onSave(savedItem, isLookbook ? galleryCategory : null);
     onClose();
   };
 
@@ -294,6 +302,30 @@ export default function ImageEditModal({
                 placeholder="e.g. 45 min"
                 className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-white focus:outline-none transition-colors"
               />
+            </div>
+          )}
+
+          {/* Gallery Category (Lookbook) - New Section */}
+          {isLookbook && (
+            <div>
+              <label
+                htmlFor="gallery-category"
+                className="block text-[12px] font-medium text-[#2F2C29] mb-1.5"
+              >
+                Gallery Category *
+              </label>
+              <select
+                id="gallery-category"
+                value={galleryCategory}
+                onChange={(event) => setGalleryCategory(event.target.value)}
+                className="w-full bg-[#E6DDD0] text-[#2F2C29] text-[14px] px-3.5 py-3 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-white focus:outline-none transition-colors cursor-pointer"
+              >
+                {galleryCategories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
             </div>
           )}
 
