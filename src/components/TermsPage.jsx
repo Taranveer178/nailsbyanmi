@@ -108,7 +108,7 @@ export default function TermsPage({ onBack }) {
             <p className="text-[14px] text-[#2F2C29] leading-relaxed">
               Questions before booking? Reach out to{" "}
               <strong>sehdevra30009@gmail.com</strong> or message{" "}
-              <strong>@nails_hairs_by_anmi</strong> on Instagram.
+              <strong>@glam_by_anmi</strong> on Instagram.
             </p>
           </div>
 

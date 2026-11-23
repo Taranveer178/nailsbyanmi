@@ -133,18 +133,28 @@ export default function TestimonialsSection() {
 						</span>
 					</div>
 
-					<div className="flex items-center gap-2.5">
-						<div className="flex items-center gap-1 text-[#8A755F]">
-							{[...Array(5)].map((_, i) => (
-								<Star
-									key={i}
-									className="w-4 h-4 stroke-[1.6] fill-transparent"
-								/>
-							))}
+					<div className="flex flex-wrap items-center gap-4">
+						<div className="flex items-center gap-2.5">
+							<div className="flex items-center gap-1 text-[#8A755F]">
+								{[...Array(5)].map((_, i) => (
+									<Star
+										key={i}
+										className="w-4 h-4 stroke-[1.6] fill-transparent"
+									/>
+								))}
+							</div>
+							<span className="text-[13px] font-medium text-[#5C554C]">
+								4.9 rated by clients in Sirsa
+							</span>
 						</div>
-						<span className="text-[13px] font-medium text-[#5C554C]">
-							4.9 rated by clients in Sirsa
-						</span>
+						<a
+							href="https://share.google/8lQRAsmnWC6olbn6O"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center rounded-[3px] bg-[#2F2C29] px-4 py-2.5 text-[13px] font-medium text-[#F6F5F1] transition-colors hover:bg-[#5C554C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2F2C29]"
+						>
+							Post a review
+						</a>
 					</div>
 				</motion.div>
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
@@ -121,7 +121,7 @@ export default function Footer({ onNavigate }) {
             </h3>
             <div className="space-y-2.5 text-[14px] text-[#F6F5F1] leading-relaxed">
               <p>Glam by Anmi, Sirsa</p>
-              <p className="text-[#C8C3BA]">Tue to Sun, 9 am to 8 pm</p>
+              <p className="text-[#C8C3BA]">Mon to Sat, 10 am to 8 pm</p>
             </div>
           </div>
 
@@ -134,16 +134,18 @@ export default function Footer({ onNavigate }) {
               <li>
                 <a
                   href="tel:+918571952209"
-                  className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
+                  className="inline-flex items-center gap-2 text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
                 >
+                  <Phone aria-hidden="true" className="h-4 w-4 shrink-0" />
                   +91 85719 52209
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:sehdevra30009@gmail.com"
-                  className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors whitespace-nowrap"
+                  className="inline-flex items-center gap-2 text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors whitespace-nowrap"
                 >
+                  <Mail aria-hidden="true" className="h-4 w-4 shrink-0" />
                   sehdevra30009@gmail.com
                 </a>
               </li>
@@ -152,9 +154,27 @@ export default function Footer({ onNavigate }) {
                   href="https://www.instagram.com/glam_by_anmi/"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
+                  className="inline-flex items-center gap-2 text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
                 >
-                  Instagram
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4 shrink-0 fill-none stroke-current"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="18"
+                      cy="6"
+                      r="0.75"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                  @glam_by_anmi
                 </a>
               </li>
             </ul>
