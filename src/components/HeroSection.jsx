@@ -9,8 +9,8 @@ const defaultSlides = [
 		id: 1,
 		badgeNumber: "01",
 		badgeText: "Glam By Anmi · Best Salon in Sirsa",
-		titleLine1: "Glam By Anmi Hair &",
-		titleLine2: "Nail Salon in Sirsa",
+		titleLine1: "Luxury hair &",
+		titleLine2: "Bespoke Nail Artistry",
 		subtitle:
 			"Expert hair services, sculpted nail services and elegant eyelash artistry – all in one Sirsa salon.",
 		image: "/Hero%20image%20Nail%20-Glam%20by%20ANMI.webp",
@@ -20,8 +20,8 @@ const defaultSlides = [
 		id: 2,
 		badgeNumber: "02",
 		badgeText: "Glam By Anmi · Best Salon in Sirsa",
-		titleLine1: "Glam By Anmi Hair &",
-		titleLine2: "Nail Salon in Sirsa",
+		titleLine1: "Luxury hair &",
+		titleLine2: "Bespoke Nail Artistry",
 		subtitle:
 			"Expert hair services, sculpted nail services and elegant eyelash artistry – all in one Sirsa salon.",
 		image: "/hero%20image%20hair%20Glam%20By%20ANMI.webp",

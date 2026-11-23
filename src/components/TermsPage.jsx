@@ -107,8 +107,22 @@ export default function TermsPage({ onBack }) {
             <FileText className="w-5 h-5 text-[#8A755F] shrink-0 mt-0.5" />
             <p className="text-[14px] text-[#2F2C29] leading-relaxed">
               Questions before booking? Reach out to{" "}
-              <strong>sehdevra30009@gmail.com</strong> or message{" "}
-              <strong>@glam_by_anmi</strong> on Instagram.
+              <a
+                href="mailto:sehdevra30009@gmail.com"
+                className="font-semibold underline underline-offset-2 hover:text-[#8A755F] transition-colors"
+              >
+                sehdevra30009@gmail.com
+              </a>{" "}
+              or message{" "}
+              <a
+                href="https://www.instagram.com/glam_by_anmi/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold underline underline-offset-2 hover:text-[#8A755F] transition-colors"
+              >
+                @glam_by_anmi
+              </a>{" "}
+              on Instagram.
             </p>
           </div>
 

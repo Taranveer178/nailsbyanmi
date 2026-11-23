@@ -262,7 +262,7 @@ export default function ContactBookingSection() {
                   />
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <label
                     htmlFor="date"
                     className="block text-[12px] font-medium text-[#2F2C29] mb-2"
@@ -275,7 +275,7 @@ export default function ContactBookingSection() {
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="date-field bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] px-4 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
+                    className="date-field w-full min-w-0 max-w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] px-4 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>
 
