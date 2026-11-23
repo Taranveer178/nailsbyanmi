@@ -34,15 +34,15 @@ The admin page keeps a local cache for offline recovery, but changes only become
 
 ## Appointment email delivery
 
-Booking requests are sent to `staranveer178@gmail.com` by the Cloudflare Worker in `worker.js`, which calls the shared handler at `functions/api/booking.js` and serves the Vite build from `dist`.
+Booking requests are sent to `staranveer178@gmail.com` by the Cloudflare Pages Function at `functions/api/booking.js`.
 
-The Vite development server also routes `/api/booking` through the same handler. Add `RESEND_API_KEY` to `.env.local` for local submissions; it must not use a `VITE_` prefix, so it stays server-side. Never put this key in frontend code or commit it.
+The Vite development server also routes `/api/booking` through this function. Add `RESEND_API_KEY` to `.env.local` for local submissions; it must not use a `VITE_` prefix, so it stays server-side. The key is not included in the repository.
 
-1. In Cloudflare Dashboard, open Workers & Pages > `nailsbyanmi` > Settings > Variables and secrets.
-2. Add `RESEND_API_KEY` as a **secret** and set it to a newly rotated Resend API key.
-3. Keep the Worker Build settings at repository root `/`, build command `npm run build`, and deploy command `npx wrangler deploy`. `wrangler.jsonc` configures the Worker entry point and `dist` assets.
-4. Deploy the latest `main` commit. The browser calls `/api/booking`; the key remains server-side.
+1. In Cloudflare Dashboard, open the project's Pages deployment settings.
+2. Add an environment variable named `RESEND_API_KEY` as a **secret** in both Preview and Production environments.
+3. Set it to the Resend API key supplied for this project.
+4. Deploy the site so Cloudflare includes the `functions/` directory. The browser calls `/api/booking`; the key remains server-side.
 
-An empty `POST /api/booking` should return a JSON validation/configuration error, not an empty 405. An empty 405 means the Worker deployment is not using this repository's `wrangler.jsonc` and `worker.js`.
+Cloudflare Pages Functions are not supported by Dashboard Direct Upload. Deploy through Git integration or Wrangler with the repository-root `functions/` directory included. If `POST /api/booking` returns 404 or 405 on the live site, the function was not included in that deployment.
 
 Before production delivery, verify a sending domain in Resend and change the endpoint's `from` address from `Glam by Anmi <onboarding@resend.dev>` to an address such as `Glam by Anmi <bookings@glambyanmi.in>`. Resend's test sender may be restricted to the account owner's verified address.
