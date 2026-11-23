@@ -43,4 +43,6 @@ The Vite development server also routes `/api/booking` through this function. Ad
 3. Set it to the Resend API key supplied for this project.
 4. Deploy the site so Cloudflare includes the `functions/` directory. The browser calls `/api/booking`; the key remains server-side.
 
+Cloudflare Pages Functions are not supported by Dashboard Direct Upload. Deploy through Git integration or Wrangler with the repository-root `functions/` directory included. If `POST /api/booking` returns 404 or 405 on the live site, the function was not included in that deployment.
+
 Before production delivery, verify a sending domain in Resend and change the endpoint's `from` address from `Glam by Anmi <onboarding@resend.dev>` to an address such as `Glam by Anmi <bookings@glambyanmi.in>`. Resend's test sender may be restricted to the account owner's verified address.

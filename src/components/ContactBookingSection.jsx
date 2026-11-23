@@ -64,6 +64,11 @@ export default function ContactBookingSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      if (response.status === 404 || response.status === 405) {
+        throw new Error(
+          "Online booking is temporarily unavailable. Please call +91 85719 52209."
+        );
+      }
       if (!response.headers.get("content-type")?.includes("application/json")) {
         throw new Error(
           "The booking service is unavailable. Please try again or call the studio."
