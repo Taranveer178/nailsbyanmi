@@ -59,25 +59,32 @@ export default function ContactBookingSection() {
     setSubmitted(false);
 
     try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (response.status === 404 || response.status === 405) {
-        throw new Error(
-          "Online booking is temporarily unavailable. Please call +91 85719 52209."
-        );
-      }
-      if (!response.headers.get("content-type")?.includes("application/json")) {
-        throw new Error(
-          "The booking service is unavailable. Please try again or call the studio."
-        );
-      }
-      const result = await response.json();
+      const response = await fetch(
+        "https://formsubmit.co/ajax/staranveer178@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            _replyto: formData.email,
+            _subject: `New appointment request — ${formData.name} — ${formData.service}`,
+            _template: "table",
+          }),
+        }
+      );
+      const result = await response.json().catch(() => null);
 
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "We could not send the request.");
+      if (
+        !response.ok ||
+        !result ||
+        (result.success !== true && result.success !== "true")
+      ) {
+        throw new Error(
+          result?.message || "We could not send the request. Please try again."
+        );
       }
 
       setSubmitted(true);
