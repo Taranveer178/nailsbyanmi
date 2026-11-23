@@ -30,7 +30,7 @@ const termsSections = [
     number: "05",
     title: "Studio Hygiene & Satisfaction",
     content:
-      "We maintain strict hospital-grade sterilization for all nail tools and use salon-authentic hair care formulations. If you have any concern with your nail or hair service within 48 hours of your visit, please contact our Mohali studio so we can make it right.",
+      "We maintain strict hospital-grade sterilization for all nail tools and use salon-authentic hair care formulations. If you have any concern with your nail or hair service within 48 hours of your visit, please contact our Sirsa studio so we can make it right.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function TermsPage({ onBack }) {
 
             <p className="text-[15.5px] md:text-[17px] text-[#C8C3BA] leading-[1.65] max-w-[600px]">
               Simple, transparent studio policies designed to keep every visit
-              to Glam By Anmi in Mohali calm, punctual, and seamless.
+              to Glam By Anmi in Sirsa calm, punctual, and seamless.
             </p>
           </motion.div>
         </div>

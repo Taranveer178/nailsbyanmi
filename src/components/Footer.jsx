@@ -87,7 +87,7 @@ export default function Footer({ onNavigate }) {
             </a>
 
             <p className="text-[13.5px] md:text-[14px] text-[#9E988E] leading-[1.65] max-w-[270px]">
-              A hair and nail studio in Mohali. Precision cuts, bespoke colour,
+              A hair and nail studio in Sirsa. Precision cuts, bespoke colour,
               and nail artistry tailored for you.
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function Footer({ onNavigate }) {
               Visit
             </h3>
             <div className="space-y-2.5 text-[14px] text-[#F6F5F1] leading-relaxed">
-              <p>Glam by Anmi, Mohali</p>
+              <p>Glam by Anmi, Sirsa</p>
               <p className="text-[#C8C3BA]">Tue to Sun, 9 am to 8 pm</p>
             </div>
           </div>

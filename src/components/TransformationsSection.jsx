@@ -244,7 +244,7 @@ export default function TransformationsSection() {
             className="w-full lg:max-w-[390px] flex flex-col items-start shrink-0"
           >
             <p className="text-[15.5px] md:text-[16.5px] text-[#5C554C] leading-[1.65] mb-6">
-              Unfiltered chair-side transformations from our Mohali studio.
+              Unfiltered chair-side transformations from our Sirsa studio.
               Slide across each client portrait to see the tone, texture, and
               nail finish before and after.
             </p>

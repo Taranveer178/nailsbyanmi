@@ -125,7 +125,7 @@ export default function ContactBookingSection() {
 
               <p className="text-[15.5px] md:text-[16.5px] text-[#C8C3BA] leading-[1.65] max-w-[430px] mb-12 md:mb-16">
                 Send a request and Anmi will confirm your slot within the hour.
-                Prefer to talk? Call our Mohali studio directly.
+                Prefer to talk? Call our Sirsa studio directly.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mb-12 md:mb-14">
@@ -134,7 +134,7 @@ export default function ContactBookingSection() {
                     Visit us
                   </span>
                   <p className="text-[16px] md:text-[17px] font-medium text-white">
-                    Glam By Anmi, Mohali, Punjab
+                    Glam By Anmi, Sirsa, Haryana
                   </p>
                 </div>
 

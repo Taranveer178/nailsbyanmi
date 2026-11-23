@@ -51,27 +51,27 @@ export default function App() {
   useEffect(() => {
     const seoByPage = {
       home: {
-        title: "Glam by Anmi | Hair & Nail Studio in Mohali, Punjab",
+        title: "Glam by Anmi | Best Beauty Parlour in Sirsa, Haryana",
         description:
-          "Visit Glam by Anmi in Mohali for precision haircuts, balayage, hair treatments, gel nails, nail art and bridal beauty services.",
+          "Visit Glam by Anmi in Sirsa for precision haircuts, balayage, hair treatments, gel nails, nail extensions, nail art and bridal beauty services.",
         path: "/",
       },
       gallery: {
-        title: "Hair & Nail Gallery | Glam by Anmi Mohali",
+        title: "Hair & Nail Gallery | Glam by Anmi Sirsa",
         description:
-          "Explore recent hair transformations, nail extensions, nail art and beauty looks from Glam by Anmi in Mohali.",
+          "Explore recent hair transformations, nail extensions, nail art and beauty looks from Glam by Anmi in Sirsa.",
         path: "/gallery",
       },
       privacy: {
         title: "Privacy Policy | Glam by Anmi",
         description:
-          "Read the privacy policy for Glam by Anmi, a hair and nail studio in Mohali.",
+          "Read the privacy policy for Glam by Anmi, a hair and beauty studio in Sirsa.",
         path: "/privacy",
       },
       terms: {
         title: "Terms & Conditions | Glam by Anmi",
         description:
-          "Review booking, cancellation and studio terms for Glam by Anmi in Mohali.",
+          "Review booking, cancellation and studio terms for Glam by Anmi in Sirsa.",
         path: "/terms",
       },
     };

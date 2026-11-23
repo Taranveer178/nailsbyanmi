@@ -32,7 +32,7 @@ const defaultTestimonials = [
 ];
 
 const miniTickerReviews = [
-  { text: "Best nail studio in Mohali", author: "Harleen G." },
+  { text: "Best nail studio in Sirsa", author: "Harleen G." },
   { text: "Calm, kind and so skilled", author: "Navneet G." },
   { text: "My balayage looks so natural", author: "Simran K." },
   { text: "Obsessed with my gel extensions", author: "Riya S." },
@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
               ))}
             </div>
             <span className="text-[13px] font-medium text-[#5C554C]">
-              4.9 rated by clients in Mohali
+              4.9 rated by clients in Sirsa
             </span>
           </div>
         </motion.div>

@@ -6,7 +6,7 @@ const privacySections = [
     number: "01",
     title: "Information We Collect",
     content:
-      "When you request an appointment, call our Mohali studio, or reach out via Instagram or WhatsApp, we collect basic contact details including your name, phone number, email address, preferred appointment date, and any hair or nail preferences you share with us.",
+      "When you request an appointment, call our Sirsa studio, or reach out via Instagram or WhatsApp, we collect basic contact details including your name, phone number, email address, preferred appointment date, and any hair or nail preferences you share with us.",
   },
   {
     number: "02",
@@ -63,7 +63,7 @@ export default function PrivacyPage({ onBack }) {
 
             <p className="text-[15.5px] md:text-[17px] text-[#C8C3BA] leading-[1.65] max-w-[600px]">
               How Glam By Anmi collects, protects, and respects your personal
-              information when you visit our Mohali studio or book online.
+              information when you visit our Sirsa studio or book online.
             </p>
           </motion.div>
         </div>
@@ -107,7 +107,7 @@ export default function PrivacyPage({ onBack }) {
             <ShieldCheck className="w-5 h-5 text-[#8A755F] shrink-0 mt-0.5" />
             <p className="text-[14px] text-[#2F2C29] leading-relaxed">
               Your trust matters to us. Every consultation and booking at{" "}
-              <strong>Glam By Anmi, Mohali</strong> is handled with complete
+              <strong>Glam By Anmi, Sirsa</strong> is handled with complete
               discretion.
             </p>
           </div>

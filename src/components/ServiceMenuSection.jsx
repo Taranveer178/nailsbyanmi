@@ -133,7 +133,7 @@ export default function ServiceMenuSection() {
                   >
                     <ImageWithFallback
                       src={activeImage}
-                      alt="Signature Hair Services at Glam By Anmi Mohali"
+                      alt="Signature Hair Services at Glam By Anmi Sirsa"
                       className="w-full h-full object-cover object-center transition-transform duration-300 ease-out lg:group-hover:scale-[1.04]"
                     />
                   </motion.div>

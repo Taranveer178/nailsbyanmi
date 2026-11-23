@@ -8,24 +8,24 @@ const defaultSlides = [
   {
     id: 1,
     badgeNumber: "01",
-    badgeText: "Nail & Hair Studio in Mohali",
+    badgeText: "Nail & Hair Studio in Sirsa",
     titleLine1: "Luxury Hair &",
     titleLine2: "Bespoke Nail Artistry",
     subtitle:
       "Precision cuts, luminous colour, and refined nail care – crafted just for you.",
     image: "/Hero%20image%20Nail%20-Glam%20by%20ANMI.webp",
-    imageAlt: "Nail artistry at Glam by Anmi in Mohali",
+    imageAlt: "Nail artistry at Glam by Anmi in Sirsa",
   },
   {
     id: 2,
     badgeNumber: "02",
-    badgeText: "Nail & Hair Studio in Mohali",
+    badgeText: "Nail & Hair Studio in Sirsa",
     titleLine1: "Luxury Hair &",
     titleLine2: "Bespoke Nail Artistry",
     subtitle:
       "Precision cuts, luminous colour, and refined nail care – crafted just for you.",
     image: "/hero%20image%20hair%20Glam%20By%20ANMI.webp",
-    imageAlt: "Hair styling at Glam by Anmi in Mohali",
+    imageAlt: "Hair styling at Glam by Anmi in Sirsa",
   },
 ];
 

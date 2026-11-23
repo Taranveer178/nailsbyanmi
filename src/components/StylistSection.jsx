@@ -49,13 +49,13 @@ export default function StylistSection() {
               </h3>
               <span className="w-1.5 h-1.5 rounded-full bg-[#8A755F]" />
               <span className="text-[13.5px] font-medium text-[#8A755F] uppercase tracking-wider">
-                Founder &amp; Lead Artist · Glam By Anmi, Mohali
+                Founder &amp; Lead Artist · Glam By Anmi, Sirsa
               </span>
             </div>
 
             {/* Personal Bio */}
             <p className="text-[15.5px] md:text-[17px] text-[#6E6961] leading-[1.75] max-w-[540px] mb-10">
-              At Glam By Anmi in Mohali, every appointment is an unhurried,
+              At Glam By Anmi in Sirsa, every appointment is an unhurried,
               one-on-one experience. From dimensional hair colour and precision
               cuts to sculpted nail extensions and custom nail art, every detail
               is personally crafted for your style—never rushed or handed off.
@@ -111,7 +111,7 @@ export default function StylistSection() {
               <ImageWithFallback
                 component={motion.img}
                 src={portrait}
-                alt="Anmi - Founder & Lead Artist at Glam By Anmi Mohali"
+                alt="Anmi - Founder & Lead Artist at Glam By Anmi Sirsa"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.85, ease: framerEase }}
                 className="w-full h-full object-cover object-top"

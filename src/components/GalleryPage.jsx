@@ -155,7 +155,7 @@ export default function GalleryPage() {
                 PORTFOLIO
               </span>
               <span className="text-white/90 text-[12.5px] font-medium tracking-wide ml-3">
-                Glam By Anmi · Mohali Lookbook
+                Glam By Anmi · Sirsa Lookbook
               </span>
             </div>
 
@@ -166,7 +166,7 @@ export default function GalleryPage() {
             </h1>
 
             <p className="text-[15.5px] md:text-[17px] text-[#C8C3BA] leading-[1.65] max-w-[580px] mb-10">
-              Explore recent client transformations from our Mohali studio—each
+              Explore recent client transformations from our Sirsa studio—each
               set, colour blend, and lash map custom-crafted by Anmi.
             </p>
           </motion.div>

@@ -66,7 +66,7 @@ export default function StudioSection() {
                 ))}
               </div>
               <span className="text-[13px] font-medium text-[#5A554E]">
-                4.9 client rating in Mohali
+                4.9 client rating in Sirsa
               </span>
             </div>
 
