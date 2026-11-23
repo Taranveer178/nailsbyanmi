@@ -1,15 +1,52 @@
 {
-  "name": "Glam By Anmi",
-  "description": "Hair, nail and eyelash salon in Sirsa, Haryana",
-  "url": "https://glambyanmi.in/",
-  "type": "LocalBusiness",
-  "resources": {
-    "services": "https://glambyanmi.in/#services",
-    "nails": "https://glambyanmi.in/#nails",
-    "gallery": "https://glambyanmi.in/#gallery",
-    "reviews": "https://glambyanmi.in/#reviews",
-    "appointments": "https://glambyanmi.in/#book",
-    "privacy": "https://glambyanmi.in/privacy",
-    "terms": "https://glambyanmi.in/terms"
-  }
+  "entries": [
+    {
+      "name": "Glam By Anmi",
+      "description": "Hair, nail and eyelash salon in Sirsa, Haryana",
+      "url": "https://glambyanmi.in/",
+      "type": "website"
+    },
+    {
+      "name": "Hair Services",
+      "description": "Haircuts, hair colour, keratin and hair spa services in Sirsa",
+      "url": "https://glambyanmi.in/#services",
+      "type": "service"
+    },
+    {
+      "name": "Nail Services",
+      "description": "Gel nails, nail extensions, manicure and nail art in Sirsa",
+      "url": "https://glambyanmi.in/#nails",
+      "type": "service"
+    },
+    {
+      "name": "Studio Gallery",
+      "description": "Hair and nail artwork from Glam By Anmi",
+      "url": "https://glambyanmi.in/#gallery",
+      "type": "gallery"
+    },
+    {
+      "name": "Client Reviews",
+      "description": "Client reviews for Glam By Anmi in Sirsa",
+      "url": "https://glambyanmi.in/#reviews",
+      "type": "reviews"
+    },
+    {
+      "name": "Appointments",
+      "description": "Book a Glam By Anmi salon appointment",
+      "url": "https://glambyanmi.in/#book",
+      "type": "booking"
+    },
+    {
+      "name": "Privacy Policy",
+      "description": "Glam By Anmi privacy policy",
+      "url": "https://glambyanmi.in/privacy",
+      "type": "document"
+    },
+    {
+      "name": "Terms and Conditions",
+      "description": "Glam By Anmi booking and salon terms",
+      "url": "https://glambyanmi.in/terms",
+      "type": "document"
+    }
+  ]
 }
