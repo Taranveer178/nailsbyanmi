@@ -51,27 +51,27 @@ export default function App() {
   useEffect(() => {
     const seoByPage = {
       home: {
-        title: "Glam by Anmi | Best Beauty Parlour in Sirsa, Haryana",
+        title: "Glam By Anmi | Best Salon in Sirsa for Hair, Nails & Eyelashes",
         description:
-          "Visit Glam by Anmi in Sirsa for precision haircuts, balayage, hair treatments, gel nails, nail extensions, nail art and bridal beauty services.",
+          "Glam By Anmi in Sirsa offers expert hair services, nail services, eyelash services, precision haircuts, hair colour, nail extensions and nail art.",
         path: "/",
       },
       gallery: {
-        title: "Hair & Nail Gallery | Glam by Anmi Sirsa",
+        title: "Hair, Nail & Eyelash Gallery | Glam By Anmi Sirsa",
         description:
-          "Explore recent hair transformations, nail extensions, nail art and beauty looks from Glam by Anmi in Sirsa.",
+          "Explore hair transformations, nail extensions, nail art and eyelash looks from Glam By Anmi, the best salon in Sirsa.",
         path: "/gallery",
       },
       privacy: {
-        title: "Privacy Policy | Glam by Anmi",
+        title: "Privacy Policy | Glam By Anmi",
         description:
-          "Read the privacy policy for Glam by Anmi, a hair and beauty studio in Sirsa.",
+          "Read the privacy policy for Glam By Anmi, a hair, nail and eyelash salon in Sirsa.",
         path: "/privacy",
       },
       terms: {
-        title: "Terms & Conditions | Glam by Anmi",
+        title: "Terms & Conditions | Glam By Anmi",
         description:
-          "Review booking, cancellation and studio terms for Glam by Anmi in Sirsa.",
+          "Review booking, cancellation and salon terms for Glam By Anmi in Sirsa.",
         path: "/terms",
       },
     };

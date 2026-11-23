@@ -1,11 +1,15 @@
 const tickerItems = [
-  "Gel Nail Extensions",
+  "Glam By Anmi · Best Salon in Sirsa",
+  "Expert Hair Services",
   "Signature Haircuts",
   "Balayage & Global Colour",
-  "Luxury Nail Art",
   "Keratin & Hair Spa",
+  "Nail Services & Nail Art",
+  "Gel Nail Extensions",
+  "Eyelash Extensions",
+  "Eyebrow Styling",
   "Russian Manicure",
-  "BlowOut & Styling",
+  "Blowout & Styling",
   "Spa Pedicure",
 ];
 
