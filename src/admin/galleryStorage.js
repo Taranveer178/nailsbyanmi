@@ -282,10 +282,8 @@ export function startAdminStateSync() {
   if (stopAdminStateSync) return () => {};
 
   let cancelled = false;
-  let unsubscribe;
   const stop = () => {
     cancelled = true;
-    unsubscribe?.();
     if (stopAdminStateSync === stop) stopAdminStateSync = undefined;
   };
   stopAdminStateSync = stop;
@@ -293,11 +291,12 @@ export function startAdminStateSync() {
   notifyListeners(adminSyncListeners);
 
   Promise.all([import("firebase/firestore"), getFirebaseDatabase()])
-    .then(([firestore, database]) => {
+    .then(([firestore, database]) =>
+      firestore.getDoc(firestore.doc(database, ...ADMIN_SETTINGS_DOCUMENT))
+    )
+    .then((snapshot) => {
       if (cancelled) return;
-      unsubscribe = firestore.onSnapshot(
-        firestore.doc(database, ...ADMIN_SETTINGS_DOCUMENT),
-        (snapshot) => {
+
       if (snapshot.exists()) {
         const remoteState = snapshot.data();
         if (
@@ -348,17 +347,9 @@ export function startAdminStateSync() {
 
       adminSyncStatus = { state: "connected", error: "" };
       notifyListeners(adminSyncListeners);
-        },
-        (error) => {
-          console.error("Could not sync shared admin settings.", error);
-          adminSyncStatus = { state: "error", error: error.message };
-          notifyListeners(adminSyncListeners);
-        }
-      );
     })
     .catch((error) => {
       if (cancelled) return;
-      console.error("Could not start shared admin settings sync.", error);
       adminSyncStatus = { state: "error", error: error.message };
       notifyListeners(adminSyncListeners);
     });
