@@ -8,6 +8,7 @@ const firebaseConfig = {
 }
 
 let firebaseAppPromise
+let firebaseDatabasePromise
 
 export const getFirebaseApp = async () => {
   if (!firebaseAppPromise) {
@@ -23,10 +24,19 @@ export const getFirebaseAuth = async () => {
   return getAuth(app)
 }
 
-export const getFirebaseDatabase = async () => {
-  const [app, { getFirestore }] = await Promise.all([
-    getFirebaseApp(),
-    import('firebase/firestore'),
-  ])
-  return getFirestore(app)
+export const getFirebaseDatabase = () => {
+  if (!firebaseDatabasePromise) {
+    firebaseDatabasePromise = Promise.all([
+      getFirebaseApp(),
+      import('firebase/firestore'),
+    ])
+      .then(([app, { initializeFirestore }]) =>
+        initializeFirestore(app, { experimentalForceLongPolling: true })
+      )
+      .catch((error) => {
+        firebaseDatabasePromise = undefined
+        throw error
+      })
+  }
+  return firebaseDatabasePromise
 }
