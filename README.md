@@ -36,6 +36,8 @@ The admin page keeps a local cache for offline recovery, but changes only become
 
 Booking requests are sent to `staranveer178@gmail.com` by the Cloudflare Pages Function at `functions/api/booking.js`.
 
+The Vite development server also routes `/api/booking` through this function. Add `RESEND_API_KEY` to `.env.local` for local submissions; it must not use a `VITE_` prefix, so it stays server-side. The key is not included in the repository.
+
 1. In Cloudflare Dashboard, open the project's Pages deployment settings.
 2. Add an environment variable named `RESEND_API_KEY` as a **secret** in both Preview and Production environments.
 3. Set it to the Resend API key supplied for this project.

@@ -64,6 +64,11 @@ export default function ContactBookingSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      if (!response.headers.get("content-type")?.includes("application/json")) {
+        throw new Error(
+          "The booking service is unavailable. Please try again or call the studio."
+        );
+      }
       const result = await response.json();
 
       if (!response.ok || !result.ok) {
@@ -262,7 +267,7 @@ export default function ContactBookingSection() {
                   />
                 </div>
 
-                <div className="min-w-0">
+                <div className="min-w-0 overflow-hidden">
                   <label
                     htmlFor="date"
                     className="block text-[12px] font-medium text-[#2F2C29] mb-2"
