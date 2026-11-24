@@ -1,4 +1,4 @@
-import { ChevronRight, Images } from "lucide-react";
+import { ChevronDown, ChevronRight, Images } from "lucide-react";
 
 export default function SectionList({
   sections,
@@ -7,7 +7,7 @@ export default function SectionList({
 }) {
   return (
     <aside className="w-full lg:w-[300px] xl:w-[320px] shrink-0">
-      {/* MOBILE: Horizontal Swipeable Section Pills */}
+      {/* MOBILE: Section Picker */}
       <div className="lg:hidden bg-[#DFD6C7]/55 border-b border-[#2F2C29]/10 px-4 py-3">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6E6961]">
@@ -18,40 +18,20 @@ export default function SectionList({
           </span>
         </div>
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
-          {sections.map((sec) => {
-            const isActive = sec.id === activeSectionId;
-            return (
-              <button
-                key={sec.id}
-                type="button"
-                onClick={() => onSelectSection(sec.id)}
-                className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-[3px] text-[13px] font-medium whitespace-nowrap shrink-0 transition-colors cursor-pointer ${
-                  isActive
-                    ? "bg-[#1E1C19] text-[#F6F5F1] shadow-sm"
-                    : "bg-white text-[#2F2C29] border border-[#2F2C29]/12 hover:border-[#2F2C29]/30"
-                }`}
-              >
-                <span
-                  className={`text-[10.5px] font-bold px-1.5 py-0.5 rounded-[2px] ${
-                    isActive
-                      ? "bg-[#8A755F] text-white"
-                      : "bg-[#E1D9CC] text-[#2F2C29]"
-                  }`}
-                >
-                  {sec.number}
-                </span>
-                <span>{sec.name}</span>
-                <span
-                  className={`text-[11px] ${
-                    isActive ? "text-white/75" : "text-[#7A7165]"
-                  }`}
-                >
-                  ({sec.items.length})
-                </span>
-              </button>
-            );
-          })}
+        <div className="relative">
+          <select
+            aria-label="Select website section"
+            value={activeSectionId}
+            onChange={(event) => onSelectSection(event.target.value)}
+            className="w-full appearance-none bg-white text-[#2F2C29] text-[14px] font-medium px-3.5 py-3 pr-10 rounded-[3px] border border-[#2F2C29]/12 focus:border-[#8A755F] focus:outline-none"
+          >
+            {sections.map((sec) => (
+              <option key={sec.id} value={sec.id}>
+                {sec.number}  {sec.name} ({sec.items.length})
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="w-4 h-4 text-[#7A7165] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
         </div>
       </div>
 
