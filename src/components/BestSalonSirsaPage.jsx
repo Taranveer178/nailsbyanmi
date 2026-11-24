@@ -290,7 +290,7 @@ export default function BestSalonSirsaPage({ onBookNow }) {
             >
               <div className="relative aspect-[4/4.6] rounded-[3px] overflow-hidden bg-[#2F2C29] shadow-[0_22px_45px_-16px_rgba(47,44,41,0.18)]">
                 <img
-                  src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1000&q=85"
+                  src="/balayage.webp"
                   alt="Best Hair and Nail Salon in Sirsa - Glam By Amni"
                   className="w-full h-full object-cover object-center"
                 />
