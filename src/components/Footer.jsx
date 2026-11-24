@@ -8,6 +8,11 @@ const exploreLinks = [
   { name: "Services", href: "#services" },
   { name: "Nails", href: "#nails" },
   { name: "Gallery", href: "#gallery", page: "gallery" },
+  {
+    name: "Best Salon in Sirsa",
+    href: "/best-salon-in-sirsa",
+    page: "bestSalonSirsa",
+  },
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];

@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import PrivacyPage from "./components/PrivacyPage";
 import TermsPage from "./components/TermsPage";
 import GalleryPage from "./components/GalleryPage";
+import BestSalonSirsaPage from "./components/BestSalonSirsaPage";
 import { startAdminStateSync } from "./admin/galleryStorage";
 
 const AdminDashboard = lazy(() => import("./admin/AdminDashboard"));
@@ -21,6 +22,7 @@ const AdminDashboard = lazy(() => import("./admin/AdminDashboard"));
 const pagePaths = {
   home: "/",
   gallery: "/gallery",
+  bestSalonSirsa: "/best-salon-in-sirsa",
   admin: "/admin",
   privacy: "/privacy",
   terms: "/terms",
@@ -73,24 +75,40 @@ export default function App() {
         title: "Glam By Anmi | Best Salon in Sirsa for Hair, Nails & Eyelashes",
         description:
           "Glam By Anmi in Sirsa offers expert hair services, nail services, eyelash services, precision haircuts, hair colour, nail extensions and nail art.",
+        keywords:
+          "Glam By Anmi, Glam By Anmi Sirsa, best salon in Sirsa, best hair salon in Sirsa, best nail salon in Sirsa, eyelashes in Sirsa, hair salon Sirsa, nail salon Sirsa",
         path: "/",
       },
       gallery: {
         title: "Hair, Nail & Eyelash Gallery | Glam By Anmi Sirsa",
         description:
           "Explore hair transformations, nail extensions, nail art and eyelash looks from Glam By Anmi, the best salon in Sirsa.",
+        keywords:
+          "Glam By Anmi gallery, hair transformations Sirsa, nail art Sirsa, eyelash looks Sirsa",
         path: "/gallery",
+      },
+      bestSalonSirsa: {
+        title:
+          "Best Salon in Sirsa for Hair, Nails & Eyelashes | Glam By Anmi",
+        description:
+          "Discover Glam By Anmi, a salon in Sirsa for personalized hair care, nail art, glam nail extensions and eyelash services. Explore services and book an appointment.",
+        keywords:
+          "best salon in Sirsa, best hair salon in Sirsa, best nail salon in Sirsa, Glam By Anmi nails, glam nail art Sirsa, best eyelashes in Sirsa, eyelash services Sirsa, hair salon Sirsa",
+        path: "/best-salon-in-sirsa",
+        type: "article",
       },
       privacy: {
         title: "Privacy Policy | Glam By Anmi",
         description:
           "Read the privacy policy for Glam By Anmi, a hair, nail and eyelash salon in Sirsa.",
+        keywords: "Glam By Anmi privacy policy",
         path: "/privacy",
       },
       terms: {
         title: "Terms & Conditions | Glam By Anmi",
         description:
           "Review booking, cancellation and salon terms for Glam By Anmi in Sirsa.",
+        keywords: "Glam By Anmi terms and conditions",
         path: "/terms",
       },
     };
@@ -104,8 +122,14 @@ export default function App() {
       .querySelector('meta[name="description"]')
       ?.setAttribute("content", seo.description);
     document
+      .querySelector('meta[name="keywords"]')
+      ?.setAttribute("content", seo.keywords);
+    document
       .querySelector('meta[property="og:title"]')
       ?.setAttribute("content", seo.title);
+    document
+      .querySelector('meta[property="og:type"]')
+      ?.setAttribute("content", seo.type || "website");
     document
       .querySelector('meta[property="og:description"]')
       ?.setAttribute("content", seo.description);
@@ -165,6 +189,8 @@ export default function App() {
       <main>
         {activePage === "gallery" ? (
           <GalleryPage onBookNow={handleBookFromSubpage} />
+        ) : activePage === "bestSalonSirsa" ? (
+          <BestSalonSirsaPage onBookNow={handleBookFromSubpage} />
         ) : activePage === "privacy" ? (
           <PrivacyPage onBack={() => navigateTo("home")} />
         ) : activePage === "terms" ? (
