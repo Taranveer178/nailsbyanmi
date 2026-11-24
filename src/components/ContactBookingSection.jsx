@@ -21,11 +21,13 @@ const categoryOptions = [
 ];
 
 const framerEase = [0.22, 1, 0.36, 1];
+const bookingEmail = "sehdevra30009@gmail.com";
 
 export default function ContactBookingSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     date: "",
     service: "",
     category: "Nail & Hair Combo",
@@ -39,6 +41,7 @@ export default function ContactBookingSection() {
   const isFormValid =
     formData.name.trim() !== "" &&
     formData.email.trim() !== "" &&
+    formData.phone.trim() !== "" &&
     formData.service.trim() !== "";
 
   const handleChange = (e) => {
@@ -57,14 +60,22 @@ export default function ContactBookingSection() {
     setSubmitted(false);
 
     try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${encodeURIComponent(bookingEmail)}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            _subject: `New appointment request - ${formData.name} - ${formData.service}`,
+            _replyto: formData.email,
+            _template: "table",
+          }),
+        }
+      );
       const result = await response.json().catch(() => null);
 
-      if (!response.ok || !result?.ok) {
+      if (!response.ok || result?.success !== "true") {
         throw new Error(
           result?.message ||
             "We could not send the request. Please try again or call the studio."
@@ -75,6 +86,7 @@ export default function ContactBookingSection() {
       setFormData({
         name: "",
         email: "",
+        phone: "",
         date: "",
         service: "",
         category: "Nail & Hair Combo",
@@ -242,6 +254,27 @@ export default function ContactBookingSection() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="you@email.com"
+                    className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block text-[12px] font-medium text-[#2F2C29] mb-2"
+                  >
+                    Phone number <span className="text-[#8A755F]">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your phone number"
                     className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>
