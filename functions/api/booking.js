@@ -19,14 +19,13 @@ export async function onRequestPost(context) {
   }
 
   const name = String(booking?.name || "").trim();
-  const phone = String(booking?.phone || "").trim();
   const email = String(booking?.email || "").trim();
   const date = String(booking?.date || "Not specified").trim();
   const service = String(booking?.service || "").trim();
   const category = String(booking?.category || "Not specified").trim();
   const notes = String(booking?.notes || "None").trim();
 
-  if (!name || !phone || !email || !service) {
+  if (!name || !email || !service) {
     return Response.json(
       { ok: false, message: "Please complete all required fields." },
       { status: 400, headers },
@@ -43,7 +42,6 @@ export async function onRequestPost(context) {
 
   const safe = {
     name: escapeHtml(name),
-    phone: escapeHtml(phone),
     email: escapeHtml(email),
     date: escapeHtml(date),
     service: escapeHtml(service),
@@ -68,7 +66,6 @@ export async function onRequestPost(context) {
           <div style="font-family:Arial,sans-serif;color:#2F2C29;max-width:600px">
             <h2 style="margin-bottom:20px">New appointment request</h2>
             <p><strong>Name:</strong> ${safe.name}</p>
-            <p><strong>Phone / WhatsApp:</strong> ${safe.phone}</p>
             <p><strong>Email:</strong> ${safe.email}</p>
             <p><strong>Preferred date:</strong> ${safe.date}</p>
             <p><strong>Service:</strong> ${safe.service}</p>
@@ -76,7 +73,7 @@ export async function onRequestPost(context) {
             <p><strong>Notes:</strong><br>${safe.notes.replaceAll("\n", "<br>")}</p>
           </div>
         `,
-        text: `New appointment request\n\nName: ${name}\nPhone / WhatsApp: ${phone}\nEmail: ${email}\nPreferred date: ${date}\nService: ${service}\nStudio session: ${category}\nNotes: ${notes}\n`,
+        text: `New appointment request\n\nName: ${name}\nEmail: ${email}\nPreferred date: ${date}\nService: ${service}\nStudio session: ${category}\nNotes: ${notes}\n`,
       }),
     });
   } catch (error) {

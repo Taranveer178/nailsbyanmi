@@ -63,7 +63,7 @@ export const hairGallery = [
     title: "Soft Editorial Waves & Bridal Styling",
     tag: "Bridal Hair",
     duration: "90 min",
-    image: "/ANMI-%20Stylist.webp",
+    image: "/client1.webp",
   },
 ];
 

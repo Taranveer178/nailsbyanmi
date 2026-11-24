@@ -25,7 +25,6 @@ const framerEase = [0.22, 1, 0.36, 1];
 export default function ContactBookingSection() {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
     date: "",
     service: "",
@@ -39,7 +38,6 @@ export default function ContactBookingSection() {
 
   const isFormValid =
     formData.name.trim() !== "" &&
-    formData.phone.trim() !== "" &&
     formData.email.trim() !== "" &&
     formData.service.trim() !== "";
 
@@ -76,7 +74,6 @@ export default function ContactBookingSection() {
       setSubmitted(true);
       setFormData({
         name: "",
-        phone: "",
         email: "",
         date: "",
         service: "",
@@ -128,7 +125,6 @@ export default function ContactBookingSection() {
 
               <p className="text-[15.5px] md:text-[16.5px] text-[#C8C3BA] leading-[1.65] max-w-[430px] mb-12 md:mb-16">
                 Send a request and Anmi will confirm your slot within the hour.
-                Prefer to talk? Call our Sirsa studio directly.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mb-12 md:mb-14">
@@ -152,19 +148,21 @@ export default function ContactBookingSection() {
 
                 <div>
                   <span className="block text-[12px] text-[#9E988E] font-normal mb-1.5">
-                    Call
+                    Instagram
                   </span>
                   <a
-                    href="tel:+918571952209"
+                    href="https://www.instagram.com/glam_by_anmi/"
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-[16px] md:text-[17px] font-medium text-white hover:text-[#DFD6C7] transition-colors"
                   >
-                    +91 85719 52209
+                    @glam_by_anmi
                   </a>
                 </div>
 
                 <div>
                   <span className="block text-[12px] text-[#9E988E] font-normal mb-1.5">
-                    Instagram &amp; Email
+                    Email
                   </span>
                   <a
                     href="mailto:sehdevra30009@gmail.com"
@@ -178,12 +176,14 @@ export default function ContactBookingSection() {
 
             <div>
               <motion.a
-                href="tel:+918571952209"
+                href="https://www.instagram.com/glam_by_anmi/"
+                target="_blank"
+                rel="noreferrer"
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25, ease: framerEase }}
                 className="cta-fill cta-fill--light group inline-flex items-center gap-3 bg-[#F6F5F1] text-[#1E1C19] text-[14px] font-semibold px-7 py-4 rounded-[3px]"
               >
-                <span>Call the studio</span>
+                <span>Message on Instagram</span>
                 <ArrowRight className="w-4 h-4 stroke-[2] transition-transform duration-300 group-hover:-rotate-45" />
               </motion.a>
             </div>
@@ -223,25 +223,6 @@ export default function ContactBookingSection() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your full name"
-                    className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-[12px] font-medium text-[#2F2C29] mb-2"
-                  >
-                    Phone / WhatsApp <span className="text-[#8A755F]">*</span>
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 85719 52209"
                     className="w-full bg-[#E6DDD0] text-[#2F2C29] placeholder-[#8C8275] text-[14px] px-4 py-3.5 rounded-[2px] border border-transparent focus:border-[#8A755F] focus:bg-[#ECE5DA] focus:outline-none transition-colors"
                   />
                 </div>

@@ -105,7 +105,7 @@ function mergeSavedSections(savedSections, deletedItemIds) {
           (isUnsplashImage(normalizedSavedItem.image) &&
             !isUnsplashImage(item.image)) ||
           (defaultSection.id === "reviews" &&
-            normalizedSavedItem.image === "/ANMI-%20Stylist.webp") ||
+            normalizedSavedItem.image === "/client1.webp") ||
           (defaultSection.id === "hair-services" &&
             (normalizedSavedItem.image === "/logo.png" ||
               normalizedSavedItem.image === "/Balayage-Gloss-after.webp" ||

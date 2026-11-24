@@ -8,7 +8,7 @@ const framerEase = [0.22, 1, 0.36, 1];
 export default function StylistSection() {
   useAdminState();
   const portrait =
-    getVisibleAdminItems("stylist")[0]?.image || "/ANMI-%20Stylist.webp";
+    getVisibleAdminItems("stylist")[0]?.image || "/client 1.webp";
 
   return (
     <section

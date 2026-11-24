@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { getVisibleAdminItems, useAdminState } from "../admin/galleryStorage";
 import ImageWithFallback from "./ImageWithFallback";
 
@@ -131,15 +131,6 @@ export default function Footer({ onNavigate }) {
               Contact
             </h3>
             <ul className="space-y-2.5 text-[14px]">
-              <li>
-                <a
-                  href="tel:+918571952209"
-                  className="inline-flex items-center gap-2 text-[#F6F5F1] hover:text-[#DFD6C7] transition-colors"
-                >
-                  <Phone aria-hidden="true" className="h-4 w-4 shrink-0" />
-                  +91 85719 52209
-                </a>
-              </li>
               <li>
                 <a
                   href="mailto:sehdevra30009@gmail.com"

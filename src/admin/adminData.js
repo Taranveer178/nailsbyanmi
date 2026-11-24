@@ -317,7 +317,7 @@ export const adminSections = [
         tag: "Founder & Lead Artist",
         meta: "Meet the artist",
         status: "visible",
-        image: "/ANMI-%20Stylist.webp",
+        image: "/client%201.webp",
       },
     ],
   },
