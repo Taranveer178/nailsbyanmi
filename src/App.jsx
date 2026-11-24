@@ -186,7 +186,7 @@ export default function App() {
       </main>
       <Footer onNavigate={navigateTo} />
       <a
-        href="https://instagram.com/glambyanmi?igshid=YmMyMTA2M2Y="
+        href="https://www.instagram.com/glam_by_anmi/"
         target="_blank"
         rel="noreferrer"
         aria-label="Message Glam by Anmi on Instagram"
