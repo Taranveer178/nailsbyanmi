@@ -186,10 +186,10 @@ export default function App() {
       </main>
       <Footer onNavigate={navigateTo} />
       <a
-        href="https://www.instagram.com/glam_by_anmi/"
+        href="https://wa.me/918571952209?text=Hi%20Glam%20By%20Anmi%2C%20I%20would%20like%20to%20book%20an%20appointment."
         target="_blank"
         rel="noreferrer"
-        aria-label="Message Glam by Anmi on Instagram"
+        aria-label="Book now on WhatsApp"
         className="fixed z-50 bottom-12 right-5 sm:bottom-14 sm:right-7 flex items-center gap-2 rounded-full bg-[#075E54] text-white pl-2 pr-3 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-transform duration-200 hover:-translate-y-1"
       >
         <svg
@@ -206,7 +206,7 @@ export default function App() {
             d="M28.38 24.7c-.42.94-2.08 1.82-2.89 1.94-.74.11-1.68.17-2.71-.16-.63-.2-1.43-.46-2.46-.9-4.32-1.86-7.14-6.22-7.36-6.51-.21-.29-1.75-2.34-1.75-4.47 0-2.12 1.11-3.16 1.5-3.59.39-.43.86-.54 1.15-.54h.83c.27 0 .62-.1.97.74.35.86 1.22 2.99 1.32 3.21.11.21.18.47.04.75-.14.29-.21.47-.43.72-.21.25-.46.56-.65.75-.21.21-.44.44-.19.87.25.43 1.13 1.87 2.43 3.03 1.67 1.49 3.08 1.95 3.51 2.17.43.21.69.18.94-.11.25-.28 1.08-1.27 1.37-1.71.28-.43.57-.36.97-.21.39.14 2.52 1.18 2.95 1.4.43.21.72.32.83.5.11.18.11 1.04-.24 2.12Z"
           />
         </svg>
-        <span className="text-[13px] font-semibold">Message Us</span>
+        <span className="text-[13px] font-semibold">Book Now</span>
       </a>
     </div>
   );
