@@ -44,7 +44,7 @@ export default function StudioSection() {
 
             {/* Editorial Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-[46px] lg:text-[50px] font-medium text-[#2F2C29] leading-[1.16] tracking-[-0.02em]">
-             Balayage, sculpted nails, and eyelash artistry <span className="text-[#8A755F]">crafted</span> with care at Glam By Anmi.
+             Balayage and sculpted nails <span className="text-[#8A755F]">crafted</span> with care at Glam By Anmi.
             </h2>
           </motion.div>
 
