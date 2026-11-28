@@ -18,7 +18,7 @@ const defaultSlides = [
 	},
 	{
 		id: 2,
-		badgeNumber: "02",
+		badgeNumber: "01",
 		badgeText: "Glam By Anmi · Best Salon in Sirsa",
 		titleLine1: "Luxury hair &",
 		titleLine2: "Bespoke Nail Artistry",
