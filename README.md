@@ -34,7 +34,7 @@ The admin page keeps a local cache for offline recovery, but changes only become
 
 ## Appointment email delivery
 
-Booking requests are sent to `sushantmonga87@gmail.com` by the Cloudflare Worker in `worker.js`, which calls `functions/api/booking.js` and serves the Vite build from `dist`.
+Booking requests are sent to `admin email` by the Cloudflare Worker in `worker.js`, which calls `functions/api/booking.js` and serves the Vite build from `dist`.
 
 For local development, add `RESEND_API_KEY` to `.env.local`. Do not prefix it with `VITE_`; the key must stay server-side.
 
